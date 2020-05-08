@@ -396,7 +396,7 @@
 <p>按流程分析：<br>在sub_400A7D()中，满足s1==“east”，则跳出函数。</p>
 <p>在sub_400BB9()中发现格式化字符串漏洞（可以进行任意地址改写）</p>
 <p><img src="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png" alt="17627983-6cdde7e8a076f299.png"></p>
-<p><strong>printf(&amp;format, &amp;format);</strong></p>
+<p><code>printf(&amp;format, &amp;format);</code></p>
 <p>通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</p>
 <h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</p>
 <blockquote>
