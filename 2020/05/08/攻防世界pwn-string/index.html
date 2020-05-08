@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 string | Hexo</title>
+  <title>攻防世界 string | visionaryxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 string">
 <meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="visionaryxx">
 <meta property="og:description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">

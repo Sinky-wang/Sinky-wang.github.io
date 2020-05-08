@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 level3 | Hexo</title>
+  <title>攻防世界 level3 | visionaryxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="这道题对于我来讲好难好难啊，涉及到了很多新的知识。首先checksec  :可以直接栈溢出；基地址不变化；对数据有执行权限。 查看main()函数：  查看函数function()：  无system,无&#x2F;bin&#x2F;sh，给了一个共享文件libc_32.so.6,明显为ret2libc。  ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 level3">
 <meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="visionaryxx">
 <meta property="og:description" content="这道题对于我来讲好难好难啊，涉及到了很多新的知识。首先checksec  :可以直接栈溢出；基地址不变化；对数据有执行权限。 查看main()函数：  查看函数function()：  无system,无&#x2F;bin&#x2F;sh，给了一个共享文件libc_32.so.6,明显为ret2libc。  ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png">
@@ -22,7 +22,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">

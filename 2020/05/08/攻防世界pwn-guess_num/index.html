@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 guess_num | Hexo</title>
+  <title>攻防世界 guess_num | visionaryxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 guess_num">
 <meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="visionaryxx">
 <meta property="og:description" content="查看关键main()函数，发现gets(&amp;v11)存在栈溢出  进入sub_C3E()函数，确定满足条件即可cat flag。  题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。  注：（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png">
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">

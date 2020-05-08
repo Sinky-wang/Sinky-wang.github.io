@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 int_overflow | Hexo</title>
+  <title>攻防世界 int_overflow | visionaryxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 int_overflow">
 <meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="visionaryxx">
 <meta property="og:description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
