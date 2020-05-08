@@ -396,9 +396,19 @@
 <p>按流程分析：<br>在sub_400A7D()中，满足s1==“east”，则跳出函数。</p>
 <p>在sub_400BB9()中发现格式化字符串漏洞（可以进行任意地址改写）</p>
 <p><img src="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png" alt="17627983-6cdde7e8a076f299.png"></p>
-<figure class="highlight plain"><figcaption><span>&format);```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</span><br><span class="line"></span><br><span class="line">### 攻击思路</span><br><span class="line"></span><br><span class="line">通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</span><br><span class="line"></span><br><span class="line">&gt; 函数调用约定：linux_x64下，参数从左到右放入寄存器：RDI,RSI,RDX,ECX,R8,R9,当参数为7个以上时，前面6个与前面一样，但后面的以此从“右向左”放入栈中。</span><br><span class="line"></span><br><span class="line">&gt; 利用pwntools自带的shellcodecraft工具，生成amd64架构下的shellcode，拿到shell.</span><br><span class="line"></span><br><span class="line">&gt; Pwntools  shellcraft模块：是shellcode的模块，包含一些生成shellcode的函数，子模块声明架构（如：shellcode.arm是ARm架构；shellcraft.amd64是AMD64架构；shellcraft.common是所有架构通用）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;printf(shellcraft.sh())  #打印出shellcode</span><br><span class="line">printf(asm(shellcraft.sh()))  #打印出汇编后的shellcode</span><br></pre></td></tr></table></figure>
-
-
+<p><strong>printf(&amp;format, &amp;format);</strong></p>
+<p>通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</p>
+<blockquote>
+<p>函数调用约定：linux_x64下，参数从左到右放入寄存器：RDI,RSI,RDX,ECX,R8,R9,当参数为7个以上时，前面6个与前面一样，但后面的以此从“右向左”放入栈中。</p>
+</blockquote>
+<blockquote>
+<p>利用pwntools自带的shellcodecraft工具，生成amd64架构下的shellcode，拿到shell.</p>
+</blockquote>
+<blockquote>
+<p>Pwntools  shellcraft模块：是shellcode的模块，包含一些生成shellcode的函数，子模块声明架构（如：shellcode.arm是ARm架构；shellcraft.amd64是AMD64架构；shellcraft.common是所有架构通用）</p>
+</blockquote>
+<p><code>printf(shellcraft.sh())  #打印出shellcode</code><br><code>printf(asm(shellcraft.sh()))  #打印出汇编后的shellcode</code></p>
 <p>用gdb调试程序，在printf下断点，输入%x测试，发现输出如图：</p>
 <p><img src="https://i.loli.net/2020/05/08/pYcXRjQuOKesnf6.png" alt="17627983-fe71239050c56166.png"></p>
 <p>填写address时我输入的是56（0x38），也就是[rsp+16]的位置，即格式化字符串的第7个参数（printf的第8个参数）</p>
