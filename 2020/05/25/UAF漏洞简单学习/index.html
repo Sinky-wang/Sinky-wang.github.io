@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CVE-2019-5786漏洞复现及exp | visionaryxx</title>
+  <title>UAF漏洞简单学习 | visionaryxx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言： 这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！ 环境kaliwin7_x86Google_chrome_(32bit)_v72.0.3626.119 浏览下载链接推荐：https:&#x2F;&#x2F;dl.google.com&#x2F;release2&#x2F;chrome&#x2F;AMavr_Q0teHn_72.0.3626.119&#x2F;72.0.3626.1">
+  <meta name="description" content="UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。 产生原因uaf漏洞成因：一块堆内存被释放之后又被使用。再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。 由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。 分析方式分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。 uaf异常触发点：对已释放的对象进行操作导致的异常，所以异">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2019-5786漏洞复现及exp">
-<meta property="og:url" content="https://visionaryxx.github.io/2020/05/12/CVE-2019-5786/index.html">
+<meta property="og:title" content="UAF漏洞简单学习">
+<meta property="og:url" content="https://visionaryxx.github.io/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="visionaryxx">
-<meta property="og:description" content="前言： 这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！ 环境kaliwin7_x86Google_chrome_(32bit)_v72.0.3626.119 浏览下载链接推荐：https:&#x2F;&#x2F;dl.google.com&#x2F;release2&#x2F;chrome&#x2F;AMavr_Q0teHn_72.0.3626.119&#x2F;72.0.3626.1">
+<meta property="og:description" content="UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。 产生原因uaf漏洞成因：一块堆内存被释放之后又被使用。再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。 由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。 分析方式分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。 uaf异常触发点：对已释放的对象进行操作导致的异常，所以异">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-12T13:25:06.308Z">
-<meta property="article:modified_time" content="2020-05-12T14:03:52.552Z">
+<meta property="article:published_time" content="2020-05-25T04:53:14.169Z">
+<meta property="article:modified_time" content="2020-05-25T05:36:44.170Z">
 <meta property="article:author" content="Visionary">
-<meta property="article:tag" content="chrome_bug">
+<meta property="article:tag" content="chrome">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
@@ -282,11 +282,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/05/12/CVE-2019-5786/" class="article-date">
-      <time datetime="2020-05-12T13:25:06.308Z" itemprop="datePublished">2020-05-12</time>
+      <a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-05-25T04:53:14.169Z" itemprop="datePublished">2020-05-25</time>
 </a>
     </div>
   
@@ -299,7 +299,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CVE-2019-5786漏洞复现及exp
+      UAF漏洞简单学习
     </h1>
   
 
@@ -310,7 +310,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -320,17 +320,22 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>前言：</p>
-<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali<br>win7_x86<br>Google_chrome_(32bit)_v72.0.3626.119</p>
-<p>浏览下载链接推荐：<a href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe" target="_blank" rel="noopener">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
-<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。</p>
-<p><code>root@kali:~# msfconsole -q</code></p>
-<p><code>msf5 &gt; search chrome_filereader</code></p>
+        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
+<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
+<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
+<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
+<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
+<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
 <blockquote>
-<p>注：</p>
-<p>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。</p>
-<p>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。</p>
+<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
+<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
+</blockquote>
+<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
+<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
+<p>这样调试器会定位到最先出错的位置。</p>
+<blockquote>
+<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
 </blockquote>
 
       
@@ -387,13 +392,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/05/12/CVE-2019-5786/">CVE-2019-5786漏洞复现及exp</a></p>
+        <p><span>本文标题:</span><a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Visionary 的个人博客">Visionary</a></p>
-        <p><span>发布时间:</span>2020年05月12日 - 21时25分</p>
-        <p><span>最后更新:</span>2020年05月12日 - 22时03分</p>
+        <p><span>发布时间:</span>2020年05月25日 - 12时53分</p>
+        <p><span>最后更新:</span>2020年05月25日 - 13时36分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/12/CVE-2019-5786/" title="CVE-2019-5786漏洞复现及exp">https://visionaryxx.github.io/2020/05/12/CVE-2019-5786/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://visionaryxx.github.io/2020/05/12/CVE-2019-5786/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" title="UAF漏洞简单学习">https://visionaryxx.github.io/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://visionaryxx.github.io/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -406,18 +411,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/25/%E5%88%9D%E8%AF%86Meterpreter/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          UAF漏洞简单学习
+          初识Meterpreter
         
       </div>
     </a>
   
   
-    <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">攻防世界 guess_num</div>
+    <a href="/2020/05/12/CVE-2019-5786/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CVE-2019-5786漏洞复现及exp</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -428,7 +433,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#复现："><span class="toc-number">2.</span> <span class="toc-text">复现：</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#产生原因"><span class="toc-number">1.</span> <span class="toc-text">产生原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分析方式"><span class="toc-number">2.</span> <span class="toc-text">分析方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调试方式"><span class="toc-number">3.</span> <span class="toc-text">调试方式</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -497,13 +502,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" title="上一篇: UAF漏洞简单学习">
+            <a href="/2020/05/25/%E5%88%9D%E8%AF%86Meterpreter/" title="上一篇: 初识Meterpreter">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" title="下一篇: 攻防世界 guess_num">
+            <a href="/2020/05/12/CVE-2019-5786/" title="下一篇: CVE-2019-5786漏洞复现及exp">
                 <i class="fa fa-angle-right"></i>
             </a>
         

