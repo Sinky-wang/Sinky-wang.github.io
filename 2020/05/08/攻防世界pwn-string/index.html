@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 string | visionaryxx</title>
+  <title>攻防世界 string | Sinky-wang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 string">
-<meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/index.html">
-<meta property="og:site_name" content="visionaryxx">
+<meta property="og:url" content="https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/index.html">
+<meta property="og:site_name" content="Sinky-wang">
 <meta property="og:description" content="checksec 查看保护机制  注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000. 思路分析IDA64查看，在sub_400CA6()中发现：v1被强">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png">
   
-    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
@@ -175,7 +175,7 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a  href="https://visionaryxx.github.io">博客首页</a></li>
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
                         
                             <li><a  href="/archives">文章归档</a></li>
                         
@@ -192,7 +192,7 @@
                             
                                 <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                             
-                                <a class="fl github"  target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                             
                                 <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                             
@@ -258,7 +258,7 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="https://visionaryxx.github.io">博客首页</a></li>
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
                 
                     <li><a href="/archives">文章归档</a></li>
                 
@@ -276,7 +276,7 @@
                     
                         <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                     
-                        <a class="github" target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                     
                         <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                     
@@ -427,8 +427,8 @@
         <p><span>发布时间:</span>2020年05月08日 - 09时50分</p>
         <p><span>最后更新:</span>2020年05月08日 - 10时45分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="攻防世界 string">https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>

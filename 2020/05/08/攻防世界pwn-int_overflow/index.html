@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 int_overflow | visionaryxx</title>
+  <title>攻防世界 int_overflow | Sinky-wang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界 int_overflow">
-<meta property="og:url" content="https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/index.html">
-<meta property="og:site_name" content="visionaryxx">
+<meta property="og:url" content="https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/index.html">
+<meta property="og:site_name" content="Sinky-wang">
 <meta property="og:description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
   
-    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
@@ -174,7 +174,7 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a  href="https://visionaryxx.github.io">博客首页</a></li>
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
                         
                             <li><a  href="/archives">文章归档</a></li>
                         
@@ -191,7 +191,7 @@
                             
                                 <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                             
-                                <a class="fl github"  target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                             
                                 <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                             
@@ -257,7 +257,7 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="https://visionaryxx.github.io">博客首页</a></li>
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
                 
                     <li><a href="/archives">文章归档</a></li>
                 
@@ -275,7 +275,7 @@
                     
                         <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                     
-                        <a class="github" target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                     
                         <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                     
@@ -410,8 +410,8 @@
         <p><span>发布时间:</span>2020年05月08日 - 09时36分</p>
         <p><span>最后更新:</span>2020年05月08日 - 09时48分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" title="攻防世界 int_overflow">https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://visionaryxx.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" title="攻防世界 int_overflow">https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>

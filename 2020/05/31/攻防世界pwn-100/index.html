@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界pwn-100 | visionaryxx</title>
+  <title>攻防世界pwn-100 | Sinky-wang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只">
 <meta property="og:type" content="article">
 <meta property="og:title" content="攻防世界pwn-100">
-<meta property="og:url" content="https://visionaryxx.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/index.html">
-<meta property="og:site_name" content="visionaryxx">
+<meta property="og:url" content="https://sinky-wang.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/index.html">
+<meta property="og:site_name" content="Sinky-wang">
 <meta property="og:description" content="分析查壳：checksec  64位，无stack,无PIE；  运行程序，输入字符，无反馈，无限制。   ida查看main函数，发现存在栈溢出，参数a1大小为0x40.然而函数中获取大于等于a2（a2&#x3D;200）的数值存入了a1. 攻击思路无system函数，无&#x2F;bin&#x2F;sh字符串，有read,puts。参数经过寄存器传递（也可IDA查看），可以泄露libc,写入&#x2F;bin&#x2F;sh。   puts只">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/05/31/mfOTnUiRdaMHtGE.png">
@@ -28,7 +28,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/05/31/mfOTnUiRdaMHtGE.png">
   
-    <link rel="alternative" href="/atom.xml" title="visionaryxx" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
   
   
     <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
@@ -178,7 +178,7 @@
                     <nav class="header-menu">
                         <ul>
                         
-                            <li><a  href="https://visionaryxx.github.io">博客首页</a></li>
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
                         
                             <li><a  href="/archives">文章归档</a></li>
                         
@@ -195,7 +195,7 @@
                             
                                 <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                             
-                                <a class="fl github"  target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                             
                                 <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                             
@@ -261,7 +261,7 @@
             <nav class="header-menu">
                 <ul>
                 
-                    <li><a href="https://visionaryxx.github.io">博客首页</a></li>
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
                 
                     <li><a href="/archives">文章归档</a></li>
                 
@@ -279,7 +279,7 @@
                     
                         <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
                     
-                        <a class="github" target="_blank" href="https://visionaryxx.github.io/" title="github">github</a>
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
                     
                         <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
                     
@@ -419,8 +419,8 @@
         <p><span>发布时间:</span>2020年05月31日 - 21时59分</p>
         <p><span>最后更新:</span>2020年05月31日 - 23时56分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" title="攻防世界pwn-100">https://visionaryxx.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://visionaryxx.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/" title="攻防世界pwn-100">https://sinky-wang.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/　　作者: Visionary" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
