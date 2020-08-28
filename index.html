@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
+                        <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 10px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
                     </div>
                 </section>
                 
@@ -292,6 +292,147 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-类型漏洞合集" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/08/24/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" class="article-date">
+      <time datetime="2020-08-24T06:55:46.185Z" itemprop="datePublished">2020-08-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/24/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/">各类型软件漏洞合集</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-格式化串漏洞"><a href="#0x01-格式化串漏洞" class="headerlink" title="0x01 格式化串漏洞"></a>0x01 格式化串漏洞</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>格式化串漏洞产生于数据输出函数中对输出格式解析的缺陷。当输入输出函数的格式控制符能够被外界影响时，攻击者可以利用读写内存的方法修改函数返回地址，劫持进程，使shellcoed得到执行。</p>
+<p>此类漏洞发生条件苛刻，实际案例很少。</p>
+<h2 id="能够引起此漏洞的函数"><a href="#能够引起此漏洞的函数" class="headerlink" title="能够引起此漏洞的函数"></a>能够引起此漏洞的函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int printf(const char* format [,argument]...);</span><br><span class="line">int wprintf(const wchar_t* format [,argument]...);</span><br><span class="line">int fwprintf(FILE* stream,const wchar_t* format [,argument]...);</span><br><span class="line">int sprintf(char buffer,const char* format [,argument]...);</span><br><span class="line">int swprintf(wchar_t *buffer,const wchar_t *format [,argument]...);</span><br><span class="line">int vprintf(const char* format,va_list argptr );</span><br><span class="line">int vwprintf(const wchar_t* format,va_list argptr );</span><br><span class="line">int vfprintf(FILE *stream,const char* format,va_list argptr );</span><br><span class="line">int vfwprintf(FILE *stream,const wchar_t* format,va_list argptr );</span><br><span class="line">int vsprintf(char *buffer,const char* format,va_list argptr );</span><br><span class="line">int vswprintf(wchar_t *buffer,const wchar_t* format,va_list argptr );</span><br></pre></td></tr></table></figure>
+
+<h1 id="0x02-GS安全编译选项保护"><a href="#0x02-GS安全编译选项保护" class="headerlink" title="0x02 GS安全编译选项保护"></a>0x02 GS安全编译选项保护</h1><h2 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h2><p>在所有函数调用发生时，GS编译选项会向栈帧内压入一个额外的随机DWORD,这个随机数被称为canary，在EBP前，系统在.data内存区存放了canary副本，函数返回前系统会执行安全验证操作，比较栈帧中canary与内存区副本是否一致，不一致则证明发生溢出，系统将进行异常处理。</p>
+<h2 id="以下情况不会应用GS"><a href="#以下情况不会应用GS" class="headerlink" title="以下情况不会应用GS"></a>以下情况不会应用GS</h2><ul>
+<li>函数不包含缓冲区</li>
+<li>函数被定义为具有变量参数列表</li>
+<li>函数使用无保护的关键字标记</li>
+<li>函数在第一个语句中包含内嵌汇编代码</li>
+<li>缓冲区不是8字节类型且大小不大于4个字节。</li>
+</ul>
+<h2 id="典型突破GS的方法"><a href="#典型突破GS的方法" class="headerlink" title="典型突破GS的方法"></a>典型突破GS的方法</h2><h3 id="利用未保护的内存"><a href="#利用未保护的内存" class="headerlink" title="利用未保护的内存"></a>利用未保护的内存</h3><p>为了将GS对性能的影响降到最小，并不会所有的函数都会被保护，我们可以利用一些未被保护的函数绕过GS保护。</p>
+<blockquote>
+<p>例子：函数中不包含4字节以上的缓冲区，不受到GS保护，函数返回前未进行任何安全检测，可以覆盖返回地址。</p>
+</blockquote>
+<figure class="highlight plain"><figcaption><span>eax,1</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mov esp,ebp</span><br><span class="line">pop ebp</span><br><span class="line">retn</span><br></pre></td></tr></table></figure>
+
+<h3 id="覆盖虚函数"><a href="#覆盖虚函数" class="headerlink" title="覆盖虚函数"></a>覆盖虚函数</h3><p>程序只有在函数返回时才会check，而在此之前没有任何检查措施，我们可以在程序检查cookie之前劫持程序流程，实现溢出。</p>
+<blockquote>
+<p>例子：利用C++的虚函数来绕过GS机制。</p>
+<blockquote>
+<p>当函数中存在溢出，可能会影响到虚表指针，继而可以控制虚表指针使其指向我们可以控制的内存空间。<br>虚函数实现过程：程序根据虚表指针找到虚表，然后从虚表中取出要调用的虚函数地址，根据地址转入虚函数执行。</p>
+</blockquote>
+</blockquote>
+<h3 id="攻击异常处理"><a href="#攻击异常处理" class="headerlink" title="攻击异常处理"></a>攻击异常处理</h3><p>GS对S.E.H没有提供保护。我们可以通过攻击异常处理绕过GS.</p>
+<p>通过超长字符串覆盖掉异常处理函数指针，想办法触发一个异常，程序就会转入异常处理，由于异常处理函数指针已经被覆盖，我们就可以通过劫持S.E.H来控制程序的后续流程。</p>
+<h3 id="同时替换栈中和-data中的Cookie"><a href="#同时替换栈中和-data中的Cookie" class="headerlink" title="同时替换栈中和.data中的Cookie"></a>同时替换栈中和.data中的Cookie</h3><p>cookie的生成具有很强的随机性，因为才出来基本不可能。同时替换栈中和.data中的cookie保证溢出后的一致性。</p>
+<blockquote>
+<p>例子：将shellcode赋值为8个0x90,OD运行断在test函数的if语句处，从if_addr取出cookie，与ebp异或后放入ebp-4的位置去。（函数返回前的校验过程：程序从ebp-4的位置取出cookie,与ebp异或后与if_addr处cookie比较一致性），如此.data中cookie成功修改为0x90.<br>接下来控制栈中cookie，通过超长字符串覆盖变量，修改cookie。<br>布置shellcode:首先放4个0x90用于修改if_addr，然后跟着弹出“failwest”的机器码，然后用0x90填充至cookie的位置，接下来跟着90909090与当前ebp异或的结果，最后再加上4个字节的填充和shellcode起始地址(用来覆盖函数返回地址)</p>
+</blockquote>
+<h1 id="0x03-SafeSEH：对异常处理的保护机制"><a href="#0x03-SafeSEH：对异常处理的保护机制" class="headerlink" title="0x03 SafeSEH：对异常处理的保护机制"></a>0x03 SafeSEH：对异常处理的保护机制</h1><p>在程序调用异常处理函数前，对要调用的异常处理函数进行校验，当发现函数不可靠将终止异常处理函数的调用。</p>
+<h2 id="校验流程"><a href="#校验流程" class="headerlink" title="校验流程"></a>校验流程</h2><p>异常处理函数的调用是通过RtlDispatchException()函数处理实现，SafeSEH机制也是从此处开始。其校验流程如下：</p>
+<ul>
+<li>检查异常处理链是否位于当前程序的栈中</li>
+<li>异常处理指针是否指向当前程序栈中</li>
+<li>调用函数RtlIsVaildHandler()对异常处理函数进行校验<ul>
+<li>异常处理函数地址是否在加载模块的内存空间</li>
+<li>判断程序是否设置了IMAGE_DLLCHARACTERISTICS_NO_SEH标识（标识被设置，函数返回校验失败）</li>
+<li>程序中是否包含安全S.E.H表，将异常处理函数地址与该表匹配，成功则继续</li>
+<li>判断是否设置ILonly标识。（设置此标识，证明该程序只包含.NET编译人中间语言，校验失败）</li>
+<li>判断异常处理函数地址是否位于不可执行页上，位于，则检测DEP是否开启，未开启则校验成功</li>
+<li>判断系统是否允许跳转到加载模块的内存空间外执行，允许则返回成功</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>RtlIsVaildHandler()允许异常处理函数执行的情况：</p>
+<blockquote>
+<p>异常处理函数位于加载模块内存范围之外，DEP关闭<br>异常处理函数位于加载模块内存范围之内，相应模块未启用SafeSEH，且模块不是纯IL（中间语言）.<br>异常处理函数位于加载模块内存范围之内，相应模块未启用SafeSEH，异常处理函数地址包含在安全SEH表中。</p>
+</blockquote>
+</blockquote>
+<h2 id="绕过SafeSEH（不考虑DEP影响）"><a href="#绕过SafeSEH（不考虑DEP影响）" class="headerlink" title="绕过SafeSEH（不考虑DEP影响）"></a>绕过SafeSEH（不考虑DEP影响）</h2><ul>
+<li>攻击返回地址绕过。<ul>
+<li>一个程序启用了SafeSEH但是未启用GS(或被攻击函数不受到GS保护)，攻击函数返回地址</li>
+</ul>
+</li>
+<li>利用虚函数绕过</li>
+<li>从堆中绕过</li>
+<li>利用未启用SafeSEH模块绕过</li>
+<li>利用加载模块之外的地址绕过SafeSEH</li>
+<li></li>
+</ul>
+<h1 id="0x04-DEP"><a href="#0x04-DEP" class="headerlink" title="0x04 DEP"></a>0x04 DEP</h1><h2 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h2><p>溢出攻击的根源在于现代计算机对数据和代码没有明确区分这一先天缺陷，DEP(数据执行保护)就是用来弥补计算机对数据和代码混淆这一天然缺陷。</p>
+<p>DEP基本原理是将数据所在内存页标识为不可执行，当程序溢出成功转入shellcode时，程序会尝试在数据页面上执行指令，此时CPU就会抛出异常，而不是去执行恶意指令。</p>
+<p>DEP主要作用是阻止数据页执行代码，分为软件DEP和硬件DEP.</p>
+<p>软件DEP即SafeSEH，与CPU硬件无关。</p>
+<p>硬件DEP是由Windows利用软件模拟实现，对操作系统提供一定的保护。（硬件DEP才是真正的DEP,需要CPU支持，AMD称之为NX，Intel称之为XD）</p>
+<h2 id="攻击DEP方法"><a href="#攻击DEP方法" class="headerlink" title="攻击DEP方法"></a>攻击DEP方法</h2><h3 id="攻击未启用DEP程序"><a href="#攻击未启用DEP程序" class="headerlink" title="攻击未启用DEP程序"></a>攻击未启用DEP程序</h3><h3 id="利用Ret2Libc挑战DEP"><a href="#利用Ret2Libc挑战DEP" class="headerlink" title="利用Ret2Libc挑战DEP"></a>利用Ret2Libc挑战DEP</h3><p>ret2libc是return-to-libc的缩写，由于DEP不允许我们直接到非可执行也执行指令，我们需要在其他可执行的位置找到符合我们要求的指令，让这条指令替我们工作，为了控制此条指令，在指令执行后还需要一个返回指令，以便回收程序的控制权。</p>
+<h4 id="三种相对有效的绕过DEP的exploit方法"><a href="#三种相对有效的绕过DEP的exploit方法" class="headerlink" title="三种相对有效的绕过DEP的exploit方法"></a>三种相对有效的绕过DEP的exploit方法</h4><ul>
+<li>通过跳转到ZwSetInformationProcess函数将DEP关闭后再转入shellcode执行</li>
+<li>通过跳转到VirtualProtect函数来将shellcode所在内存页设置为可执行状态，然后在转入shellcode执行</li>
+<li>通过跳转到VIrtualAlloc函数开辟一段具有执行权限的内存空间建，然后将shellcode复制到这段内存中执行</li>
+</ul>
+<h3 id="利用可执行内存挑战DEP"><a href="#利用可执行内存挑战DEP" class="headerlink" title="利用可执行内存挑战DEP"></a>利用可执行内存挑战DEP</h3><p>有时候在进程的内存空间中会存在一段可读可写可执行的内存，如果能够将shellcode复制到这段内存中，并劫持程序流程，我们的shellcode就有执行的机会。此处需要一些运气，然而我在做实验上一向运气很差……,如果被攻击的程序内存空间中存在这样一个可执行的数据区域，就可以直接通过memcpy函数将shellcode复制到这段内存区域中执行。</p>
+<h3 id="利用-NET挑战DEP"><a href="#利用-NET挑战DEP" class="headerlink" title="利用.NET挑战DEP"></a>利用.NET挑战DEP</h3><p>.NET的文件具有和PE文件一样的结构，即也具有.text等段，这些段会被映射到内存中，也会具有一定的可执行属性。将shellcode放到.NET中具有可执行属性的段中，然后让程序转入这个区域执行，就可以执行shellcode了。</p>
+<h3 id="利用java-applet挑战DEP"><a href="#利用java-applet挑战DEP" class="headerlink" title="利用java applet挑战DEP"></a>利用java applet挑战DEP</h3><p>java applet与.NET类似，都可以被IE浏览器加载到客户端，而且加载到IE进程的内存空间后这些控件所在内存空间都具有可执行属性。</p>
+<h1 id="0x05-ASLR"><a href="#0x05-ASLR" class="headerlink" title="0x05 ASLR"></a>0x05 ASLR</h1><h2 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h2><p>ASLR,通过加载程序的时候不再使用固定的基址加载，从而干扰shellcode定位的一种保护机制。包含了映像随机化、堆栈随机化、PEB与TEB随机化。</p>
+<p>（支持ASLR的程序在它的PE头中会设置IMAGE_DLL_CHARACTERISITCS_DYNAMIC_BASE标识来说明，编译程序时启用/dynmicbase链接选项就可以支持ASLR了）</p>
+<h3 id="映像随机化"><a href="#映像随机化" class="headerlink" title="映像随机化"></a>映像随机化</h3><p>在PE文件映射到内存中，对其加载的虚拟地址进行随机化处理，这个地址是在系统启动时确定的，系统重启红藕这个地址会变化。</p>
+<p>映像随机化只对加载基址的前2个字节做了随机处理。</p>
+<h3 id="堆栈随机化"><a href="#堆栈随机化" class="headerlink" title="堆栈随机化"></a>堆栈随机化</h3><p>在程序运行时随机的选择堆栈基址，堆栈基址在打开程序的时候确定。</p>
+<h3 id="PEB和TEB随机化"><a href="#PEB和TEB随机化" class="headerlink" title="PEB和TEB随机化"></a>PEB和TEB随机化</h3><p>TEB存放在FS:0和FS:[0x18]处，PEB存放在TEB偏移0x30的位置。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E/" rel="tag">漏洞</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-CVE-2006-3439" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -1202,71 +1343,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CVE-2020-6418" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/07/17/CVE-2020-6418/" class="article-date">
-      <time datetime="2020-07-17T05:11:49.434Z" itemprop="datePublished">2020-07-17</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/17/CVE-2020-6418/">CVE-2020-6418</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p>
-<p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p>
-<p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p>
-<p>受影响产品版本：</p>
-<p>Google Chrome Version&lt;80.0.3987.122</p>
-<p>适用于windows,Mac,Linux.</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418" target="_blank" rel="noopener">http://blog.nsfocus.net/cve-2020-6418</a></p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E8%B0%83%E8%AF%95/" rel="tag">chrome调试</a></li></ul>
     </div>
 
       
