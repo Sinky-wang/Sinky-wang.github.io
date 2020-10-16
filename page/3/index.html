@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
                     </div>
                 </section>
                 
@@ -299,7 +299,7 @@
   
     <div class="article-meta">
       <a href="/2020/10/16/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.407Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.319Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -513,11 +513,86 @@
 
 
   
+    <article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.319Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
+<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
+<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
+<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
+<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
+<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
+<blockquote>
+<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
+<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
+</blockquote>
+<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
+<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
+<p>这样调试器会定位到最先出错的位置。</p>
+<blockquote>
+<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-PHP学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2020/10/16/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.398Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.304Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -575,11 +650,71 @@
 
 
   
+    <article id="post-Loving strangers" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/Loving%20strangers/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.288Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/Loving%20strangers/">Loving strangers</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>你爱的人是我杀的，不爱你是假的，想忘了你是真的    </p>
+<p>如果我有枪我会保护你，也会杀了你，但我把枪丢了，踉踉跄跄的跑到你面前说我害怕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">I’ve got a hole, oh in my pocket</span><br><span class="line"></span><br><span class="line">我口袋破了一个洞</span><br><span class="line"></span><br><span class="line">where all the money has gone</span><br><span class="line"></span><br><span class="line">钱都从那里消失了</span><br><span class="line"></span><br><span class="line">I’ve got a whole lot of work to do with your heart</span><br><span class="line"></span><br><span class="line">我想经常存在于你的心里</span><br><span class="line"></span><br><span class="line">Cuz it’s so busy, mine’s not</span><br><span class="line"></span><br><span class="line">因为你的心很忙，我的心却很悠闲</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">It’s just the start of the winter</span><br><span class="line"></span><br><span class="line">那是冬天的开始的季节</span><br><span class="line"></span><br><span class="line">And I’m all alone</span><br><span class="line"></span><br><span class="line">我独自一人</span><br><span class="line"></span><br><span class="line">But I’ve got my eye right on you</span><br><span class="line"></span><br><span class="line">我所有的目光全都在你身上</span><br><span class="line"></span><br><span class="line">Give me a coin</span><br><span class="line"></span><br><span class="line">给我一枚硬币</span><br><span class="line"></span><br><span class="line">And I&#39;ll take you to the moon</span><br><span class="line"></span><br><span class="line">我将带你去往月球</span><br><span class="line"></span><br><span class="line">Now give me a beer</span><br><span class="line"></span><br><span class="line">现在请给我一杯啤酒</span><br><span class="line"></span><br><span class="line">And I’ll kiss you so foolishly</span><br><span class="line"></span><br><span class="line">我将像个呆瓜一样吻你</span><br><span class="line"></span><br><span class="line">like you do when you lie, when you’re not in my thoughts</span><br><span class="line"></span><br><span class="line">你说谎的时候，不会站在我的视角考虑</span><br><span class="line"></span><br><span class="line">like you do when you lie</span><br><span class="line"></span><br><span class="line">当你说谎的时候</span><br><span class="line"></span><br><span class="line">And I know it’s not my imagination</span><br><span class="line"></span><br><span class="line">我知道那不是我的幻想</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">爱啊</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上一个陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">啊哈</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Nahnahnah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了一个陌生人</span><br><span class="line"></span><br><span class="line">Ahah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mood/" rel="tag">mood</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-MIPS架构学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2020/10/16/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.395Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.288Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -644,143 +779,11 @@
 
 
   
-    <article id="post-Loving strangers" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/Loving%20strangers/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.391Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/Loving%20strangers/">Loving strangers</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>你爱的人是我杀的，不爱你是假的，想忘了你是真的    </p>
-<p>如果我有枪我会保护你，也会杀了你，但我把枪丢了，踉踉跄跄的跑到你面前说我害怕</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">I’ve got a hole, oh in my pocket</span><br><span class="line"></span><br><span class="line">我口袋破了一个洞</span><br><span class="line"></span><br><span class="line">where all the money has gone</span><br><span class="line"></span><br><span class="line">钱都从那里消失了</span><br><span class="line"></span><br><span class="line">I’ve got a whole lot of work to do with your heart</span><br><span class="line"></span><br><span class="line">我想经常存在于你的心里</span><br><span class="line"></span><br><span class="line">Cuz it’s so busy, mine’s not</span><br><span class="line"></span><br><span class="line">因为你的心很忙，我的心却很悠闲</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">It’s just the start of the winter</span><br><span class="line"></span><br><span class="line">那是冬天的开始的季节</span><br><span class="line"></span><br><span class="line">And I’m all alone</span><br><span class="line"></span><br><span class="line">我独自一人</span><br><span class="line"></span><br><span class="line">But I’ve got my eye right on you</span><br><span class="line"></span><br><span class="line">我所有的目光全都在你身上</span><br><span class="line"></span><br><span class="line">Give me a coin</span><br><span class="line"></span><br><span class="line">给我一枚硬币</span><br><span class="line"></span><br><span class="line">And I&#39;ll take you to the moon</span><br><span class="line"></span><br><span class="line">我将带你去往月球</span><br><span class="line"></span><br><span class="line">Now give me a beer</span><br><span class="line"></span><br><span class="line">现在请给我一杯啤酒</span><br><span class="line"></span><br><span class="line">And I’ll kiss you so foolishly</span><br><span class="line"></span><br><span class="line">我将像个呆瓜一样吻你</span><br><span class="line"></span><br><span class="line">like you do when you lie, when you’re not in my thoughts</span><br><span class="line"></span><br><span class="line">你说谎的时候，不会站在我的视角考虑</span><br><span class="line"></span><br><span class="line">like you do when you lie</span><br><span class="line"></span><br><span class="line">当你说谎的时候</span><br><span class="line"></span><br><span class="line">And I know it’s not my imagination</span><br><span class="line"></span><br><span class="line">我知道那不是我的幻想</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">爱啊</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上一个陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">啊哈</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Nahnahnah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了一个陌生人</span><br><span class="line"></span><br><span class="line">Ahah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br></pre></td></tr></table></figure>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mood/" rel="tag">mood</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.388Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
-<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
-<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>objdump -d 1</code>查看它的机器码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
-
-<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
-<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-Dlink-Dir-823G路由器漏洞挖掘过程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2020/10/16/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.384Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.272Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -887,11 +890,83 @@
 
 
   
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.272Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
+
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-DDCTF2019re" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2020/10/16/DDCTF2019re/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.381Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.250Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -957,7 +1032,7 @@
   
     <div class="article-meta">
       <a href="/2020/10/16/CVE-2020-6418/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.377Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.235Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -1022,7 +1097,7 @@
   
     <div class="article-meta">
       <a href="/2020/10/16/CVE-2019-5786/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.308Z" itemprop="datePublished">2020-10-16</time>
+      <time datetime="2020-10-16T04:29:57.219Z" itemprop="datePublished">2020-10-16</time>
 </a>
     </div>
   
@@ -1106,71 +1181,6 @@
 <h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
 <h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
 <p><a href="https://github.com/exodusintel/CVE-2019-5786" target="_blank" rel="noopener">https://github.com/exodusintel/CVE-2019-5786</a> </p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CVE-2019-0808" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/CVE-2019-0808/" class="article-date">
-      <time datetime="2020-10-16T03:47:33.276Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/CVE-2019-0808/">CVE-2019-0808</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Chrome基于多进程架构，主要包括浏览器进程和渲染进程，进程间通过IPC通信（Mojo），其中渲染进程运行着不可信的HTML和JS代码。浏览器中的每一个tab为一个独立的进程，运行在Untruster的低权限等级，并通过沙箱引擎隔离。因此像CVE-2019-5768这样的渲染进程中的远程代码执行漏洞仍需要结合其他高权限漏洞实现沙箱逃逸。</p>
-<ul>
-<li>利用浏览器进程的漏洞，比如IndexedDB,Mojo等</li>
-<li>利用操作系统内核漏洞，比如与CVE-2019-5768组合的win32k.sys内核提权漏洞CVE-2019-0808</li>
-</ul>
-<h2 id="漏洞原理分析"><a href="#漏洞原理分析" class="headerlink" title="漏洞原理分析"></a>漏洞原理分析</h2><p>CVE-2019-0808是win32k.sys中的一个空指针解引用漏洞，根据360Blog,漏洞存在于win32k!xxxMNMouseMove函数中：</p>
-<p>首先分析xxxMNMouseMove函数：</p>
 
       
       
