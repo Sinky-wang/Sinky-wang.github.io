@@ -21,7 +21,7 @@ self.addEventListener('active', function () {
 });
 
 var precacheUrls = [
-'/','/posts/2371/','/posts/23648/','/posts/2874/','/posts/64036/','/posts/59247/','/posts/61516/','/posts/55466/','/posts/46552/','/posts/11816/','/posts/11594/','/posts/14181/','/posts/3013/','/posts/53423/','/posts/17972/','/posts/14155/','/posts/4681/','/posts/55706/','/posts/7456/','/posts/37051/','/posts/37771/','/posts/52788/','/posts/53615/','/posts/24311/','/posts/23309/','/posts/52610/','/posts/54486/','/posts/54610/','/posts/1776/','/posts/15058/','/posts/5353/',
+'/','/posts/61516/','/posts/11816/','/posts/53423/','/posts/54486/','/posts/54610/','/posts/52610/','/posts/1776/','/posts/52788/','/posts/55706/','/posts/14181/','/posts/5353/','/posts/3013/','/posts/53615/','/posts/57077/','/posts/64036/','/posts/59247/','/posts/46552/','/posts/14155/','/posts/2371/','/posts/24311/','/posts/11594/','/posts/59983/','/posts/23648/','/posts/15058/','/posts/17972/','/posts/39342/','/posts/2874/','/posts/4681/','/posts/23309/','/posts/37051/','/posts/37771/','/posts/55466/','/posts/7456/',
 ];
 toolbox.precache(precacheUrls);
 toolbox.options = {"networkTimeoutSeconds":5};
