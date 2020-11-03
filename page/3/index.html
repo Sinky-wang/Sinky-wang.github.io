@@ -389,6 +389,81 @@
 
 
   
+    <article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.319Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
+<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
+<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
+<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
+<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
+<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
+<blockquote>
+<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
+<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
+</blockquote>
+<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
+<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
+<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
+<p>这样调试器会定位到最先出错的位置。</p>
+<blockquote>
+<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
+</blockquote>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-SQL学习与整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -588,81 +663,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" rel="tag">学习记录</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-UAF漏洞简单学习" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.319Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/UAF%E6%BC%8F%E6%B4%9E%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0/">UAF漏洞简单学习</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>UAF漏洞是一种内存破坏漏洞，通常存在于浏览器中。</p>
-<h2 id="产生原因"><a href="#产生原因" class="headerlink" title="产生原因"></a>产生原因</h2><p>uaf漏洞成因：一块堆内存被释放之后又被使用。<br>再一次被使用是指：指针存在（悬垂指针被引用）引用结果不可预测。</p>
-<p>由于大多数堆内存都是C++对象，所以利用的核心思路即：分配堆去占坑，占的坑中又自己构造的虚表。</p>
-<h2 id="分析方式"><a href="#分析方式" class="headerlink" title="分析方式"></a>分析方式</h2><p>分析uaf漏洞的要点在于弄清楚对象是在哪里被分配，被释放，被重用。</p>
-<p>uaf异常触发点：对已释放的对象进行操作导致的异常，所以异常点即重用点。</p>
-<p>而由于是对对象的操作，可以列出这个对象的所有方法，找出分配和释放的方法，对其下断来分析uaf过程。</p>
-<blockquote>
-<p>1.悬垂指针：指一类不指向任何合法的或者有效的（即与指针的含义不符）的对象的指针，比如一个对象的指针，如果这个对象已经被释放或者回收，但是指针没有进行任何的修改，仍然执行已被释放的内存，这个指针就叫做悬垂指针。</p>
-<p>2.UAF漏洞：Use-AFTER-Free是一种内存破坏漏洞，简单来说，漏洞的原因是使用了悬垂指针。</p>
-</blockquote>
-<p>常见与UAF漏洞配合使用的是堆喷射，分配大量内存，增大靶子的面积，使eip跳进分配的内存中，而分配的内存中又充满了滑板指令，只要命中了滑板指令就可以命中shellcode</p>
-<h2 id="调试方式"><a href="#调试方式" class="headerlink" title="调试方式"></a>调试方式</h2><p>对于uaf漏洞，调试器捕获到的异常并不是漏洞发生的第一现场，所以一般要使用gflags开启PageHeap和UST（windbg自带gflags工具）</p>
-<p><code>gflags.exe /i 程序名.exe +hpa +ust</code></p>
-<p>这样调试器会定位到最先出错的位置。</p>
-<blockquote>
-<p>技巧：<br>1.在ida中查找函数后，在windbg下断<br>2.打开poc文件后出现crash就是对象被重用，根据crash地址来找到重用的对象起始地址<br>3.对对象起始使用 <code>!heap -p -a 地址</code> 可获得这个对象的分配信息，由回溯还可以知道是什么函数分配的。<br>4.对分配函数下断到达分配现场<br>5.在回溯中，分配函数一般为RtlAllocateHeap的上层，而释放函数一般就是FreeHeap的上层。</p>
-</blockquote>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
     </div>
 
       
